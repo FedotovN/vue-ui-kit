@@ -1,10 +1,13 @@
+import { colors } from "../../../types/colors";
 import CircularProgressLoader from "./CircularProgressLoader.vue";
 import CircularProgressLoaderProps from "@/types/props/Loader/CircularProgressLoaderProps"
 import "@testing-library/jest-dom";
 import { render, screen, waitFor } from "@testing-library/vue";
-import { nextTick } from "vue";
+import { VueElement, nextTick } from "vue";
 describe('Circular Progress Loader', () => {
     let defaultProps: CircularProgressLoaderProps;
+    let props: typeof defaultProps;
+    let loader;
     beforeAll(() => {
         defaultProps = {
             value: 0,
@@ -14,10 +17,12 @@ describe('Circular Progress Loader', () => {
             showProgress: true,
         };
     })
-    test('Renders proper progress text node', async () => {
-        const props = { ...defaultProps };
+    beforeEach(() => {
+        props = { ...defaultProps };
         const { container } = render(CircularProgressLoader, { props });
-        const loader = container.firstChild;
+        loader = container.firstChild;
+    })
+    test('Renders proper progress text node', async () => {
         const labelContainer = loader.querySelector('.circular-progress-loader-label-default');
         expect(labelContainer).toHaveTextContent(props.value.toString());
         props.value += Math.round(Math.random() * 100);
@@ -25,16 +30,47 @@ describe('Circular Progress Loader', () => {
             expect(labelContainer).toHaveTextContent(props.value.toString());
         })
     })
-    test('Changes CSS classes', async () => {
-        // TODO
+    test('Accept proper percentage css value', async () => {
+        props.value += Math.round(Math.random() * 100);
+        const expectedPercentage = Math.round((props.value / props.max) * 100)
+        waitFor(() => {
+            expect(loader.style.getPropertyValue('--percentage')).toBe(expectedPercentage);
+        });
     })
-    test('Dynamicly changes color', async () => {
-        // TODO
+    test('Dynamicaly changes CSS color property', async () => {
+        expect(loader).toHaveStyle({
+            '--accent-color': colors[props.color].join(', '),
+        });
+        props.color = 'secondary'
+        waitFor(() => {
+            expect(loader).toHaveStyle({
+                '--accent-color': colors[props.color].join(', '),
+            });
+        })
     })
-    test('Corner case: value too high', async () => {
-        // TODO
+    test('Hides progress text node if default slot appears', async () => {
+        const text = 'Block node';
+        const { container } = render(CircularProgressLoader, { 
+            slots: {
+                default: `
+                    <div>${text}</div>
+                `
+            }, 
+            props
+        });
+        expect(container.firstChild).toHaveTextContent(text);
+        expect(container.firstChild).not.toHaveTextContent(props.value.toString());
     })
-    test('Corner case: value too low', async () => {
-        // TODO
+    test('CORNER CASE: value too high', async () => {
+        props.value = props.max + 1000;
+        waitFor(() => {
+            expect(loader.style.getPropertyValue('--percentage')).toBe(props.max.toString());
+        });      
+    })
+    test('CORNER CASE: value too low', async () => {
+        props.value = props.max - 1000;
+        waitFor(() => {
+            expect(loader.style.getPropertyValue('--percentage')).toBe(props.min.toString());
+        });
     })
 })
