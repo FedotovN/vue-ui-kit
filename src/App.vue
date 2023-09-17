@@ -38,7 +38,7 @@
         <CircularProgressLoader show-progress :value="val" rounded color="success">
         </CircularProgressLoader>
         <CircularProgressLoader :value="val" rounded color="secondary"></CircularProgressLoader>
-        <CircularProgressLoader :value="val" rounded color="secondary"></CircularProgressLoader>
+        <CircularProgressLoader :value="val" rounded color="primary"></CircularProgressLoader>
       </div>
       <div class="flex gap-2">
         <ProgressBar show-progress :value="val" outlined flat color="alert"></ProgressBar>

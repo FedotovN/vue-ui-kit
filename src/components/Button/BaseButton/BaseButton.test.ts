@@ -4,7 +4,7 @@ import "@testing-library/jest-dom";
 import BaseButton from './BaseButton.vue';
 import BaseButtonProps from '@/types/props/Button/BaseButtonProps';
 
-describe('Base Button', () => {
+describe('Button: Base Button', () => {
   let phrase, DOMElement, elementTextContent;
   beforeAll(() => {
     phrase = 'Hello there!';

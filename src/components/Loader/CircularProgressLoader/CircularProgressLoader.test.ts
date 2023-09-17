@@ -2,9 +2,8 @@ import { colors } from "../../../types/colors";
 import CircularProgressLoader from "./CircularProgressLoader.vue";
 import CircularProgressLoaderProps from "@/types/props/Loader/CircularProgressLoaderProps"
 import "@testing-library/jest-dom";
-import { render, screen, waitFor } from "@testing-library/vue";
-import { VueElement, nextTick } from "vue";
-describe('Circular Progress Loader', () => {
+import { render, waitFor } from "@testing-library/vue";
+describe('Loader: Circular Progress Loader', () => {
     let defaultProps: CircularProgressLoaderProps;
     let props: typeof defaultProps;
     let loader;

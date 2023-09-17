@@ -1,6 +1,6 @@
 <script setup lang="ts">
-    import ProgressBarProps from '../../../types/props/Loader/ProgressBarProps';
-    import useColor from '../../../composables/useColor';
+    import useColor from "../../../composables/useColor";
+    import ProgressBarProps from "@/types/props/Loader/ProgressBarProps";
     import { computed } from 'vue';
     const { getColor } = useColor();
     const props = withDefaults(defineProps<ProgressBarProps>(), {
