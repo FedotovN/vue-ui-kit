@@ -1,3 +1,3 @@
-import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
+import { faUserSecret, faInfoCircle, faXmarkCircle } from '@fortawesome/free-solid-svg-icons'
 
-export default [ faUserSecret ]
+export default [ faUserSecret, faInfoCircle, faXmarkCircle ]

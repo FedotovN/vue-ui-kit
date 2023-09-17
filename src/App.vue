@@ -4,14 +4,20 @@
   import ProgressBar from './components/Loader/ProgressBar/ProgressBar.vue';
   import BaseButton from './components/Button/BaseButton/BaseButton.vue';
   import CircularProgressLoader from "./components/Loader/CircularProgressLoader/CircularProgressLoader.vue";
+  import BaseInput from "./components/Input/BaseInput/BaseInput.vue"
   import { IColors } from './types/colors';
   import useColor from './composables/useColor';
   const { setColor } = useColor();
   const val = ref(0);
   const targetKey = ref<keyof IColors>('primary');
+  const error = ref('');
   function onInput(event: Event) {
     const input = (event.target as HTMLInputElement);
     const value = input.value as keyof IColors;
+    if (!['primary', 'alert', 'success', 'none', 'secondary'].includes(value)) {
+      error.value = 'Input correct color key!';
+    }
+    else error.value = '';
     targetKey.value = value;
   }
   function onColorInput(event: Event) {
@@ -28,29 +34,12 @@
 <template>
   <div class="flex w-full p-2 bg-gray-100 h-screen justify-center items-center flex-col gap-4">
     Value: {{ val }}
-    <div class="flex gap-2">
-      <input type="text" @input="onInput">
+    <div class="flex gap-2 h-92">
       <input type="color" @input="onColorInput">
     </div>
-    <div class="flex p-2 border rounded shadow w-96 items-center flex-col gap-2">
-      <div class="flex gap-2">
-        <CircularProgressLoader :min="-500" show-progress :value="val" rounded color="alert" /> 
-        <CircularProgressLoader show-progress :value="val" rounded color="success">
-        </CircularProgressLoader>
-        <CircularProgressLoader :value="val" rounded color="secondary"></CircularProgressLoader>
-        <CircularProgressLoader :value="val" rounded color="primary"></CircularProgressLoader>
-      </div>
-      <div class="flex gap-2">
-        <ProgressBar show-progress :value="val" outlined flat color="alert"></ProgressBar>
-        <ProgressBar show-progress :value="val" color="secondary"></ProgressBar>
-      </div>
-      <div class="flex gap-2">
-        <BaseButton @click="val -= 20" color="alert" raised>Sub 20</BaseButton>
-        <BaseButton @click="val += 10" outlined rounded color="secondary">Add 10</BaseButton>
-      </div>
-      <div class="flex w-full justify-center py-6">
-        <input type="range" @input="onRangeInput" :value="val" class="w-full">
-      </div>
+    <div class="flex gap-2">
+      <BaseInput :value="targetKey" placeholder="Color key" @input="onInput" :error-message="error" description="Type in IColor key!"></BaseInput>  
+      <BaseInput></BaseInput>
     </div>
   </div>
 </template>

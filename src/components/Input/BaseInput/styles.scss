@@ -1,0 +1,100 @@
+.base-input-wrapper {
+    --active-color: none;
+    --error-color: none;
+    --force-width: 100%;
+    position: relative;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 10px;
+    width: var(--force-width);
+    .base-input-label {
+        position: absolute;
+        top: 18px;
+        transform: translateY(-50%);
+        left: 2.5%;
+        pointer-events: none;
+        transition: .15s all;
+        color: #454545;
+        &.lifted {
+            top: -10px;
+            color: #bebebe;
+        }
+        &.highlight {
+            color: rgb(var(--active-color));
+        }
+        &.error {
+            color: rgb(var(--error-color));
+        }
+    }
+    .base-input-description {
+        display: flex;
+        align-items: center;
+        position: absolute;
+        border: 1px solid #dfdfdf;
+        width: 100%;
+        gap: 15px;
+        padding: 5px 10px;
+        background-color: #eeeeee;
+        border-radius: 4px;
+        color: #8e8e8e;
+        white-space: wrap;
+        overflow: hidden;
+        bottom: -35px;
+        &.lower {
+            bottom: -75px;
+        }
+        small {
+            white-space: pre-wrap;
+            max-width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+    .base-input-error {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        bottom: -35px;
+        width: 100%;
+        padding: 5px 10px;
+        background-color: rgba(var(--error-color), .2);
+        border-radius: 4px;
+        color: white;
+        transition: .15s color;
+        overflow: hidden;
+        small {
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        &.highlight {
+            color: rgb(var(--error-color));
+        }
+        &.downlight {
+            color: rgba(var(--error-color), .5);
+            background-color: rgba(var(--error-color), .1);
+        }
+        &.show {
+            text-overflow: ellipsis;
+        }
+    }
+    input { 
+        padding: 5px 0 5px 12px;
+        width: 100%;
+        font-size: 16px;
+        background-color: transparent;
+        border: 1px solid #dadada;
+        border-radius: 3px;
+        box-sizing: border-box;
+        transition: .15s border-color;
+        &:focus {
+            outline: none;
+            border-color: rgb(var(--active-color));
+            background-color: rgba(var(--active-color), .05);
+        }
+        &.error:not(:focus) {
+            border-color: rgba(var(--error-color), .5);
+            background-color: rgba(var(--error-color), .05);
+        }
+    }
+}
