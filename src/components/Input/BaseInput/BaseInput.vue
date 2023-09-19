@@ -26,8 +26,8 @@
 </script>
 <template>
     <div class="base-input-wrapper" :style="style">
-        <small v-if="placeholder" :class="`base-input-label ${focused || value ? 'lifted' : ''} ${ focused ? 'highlight' : '' } ${ errorMessage ? 'error' : '' }`">{{ placeholder }}</small>
-        <input @focusin="focused = true" @focusout="focused = false" @input="onInput" :value="value" :class="`${errorMessage ? 'error' : ''}`" v-bind="$attrs"  />
+        <small v-if="placeholder" :class="`base-input-label ${focused || modelValue?.toString() ? 'lifted' : ''} ${ focused ? 'highlight' : '' } ${ errorMessage ? 'error' : '' }`">{{ placeholder }}</small>
+        <input @focusin="focused = true" @focusout="focused = false" @input="onInput" :value="modelValue" :class="`${errorMessage ? 'error' : ''}`" v-bind="$attrs"  />
         <div :class="`base-input-error  ${errorMessage ? 'show' : ''} ${!focused ? 'highlight' : 'downlight' }`" v-if="errorMessage" >
             <font-awesome-icon icon="fa-solid fa-xmark-circle"></font-awesome-icon>
             <small>{{ errorMessage }}</small>

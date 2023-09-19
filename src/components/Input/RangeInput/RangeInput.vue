@@ -37,7 +37,6 @@
 </script>
 <template>
   <div class="range-input-wrapper" :style="style">
-    {{ maxValue }}
     <div class="range-input-body">
       <div class="range-input-path">
         <div class="range-input-progress"></div>

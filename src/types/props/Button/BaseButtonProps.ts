@@ -8,5 +8,6 @@ export default interface BaseButtonProps {
     fill?: boolean,
     bold?: boolean,
     caps?: boolean,
+    width?: string,
     color?: keyof IColors,
 }

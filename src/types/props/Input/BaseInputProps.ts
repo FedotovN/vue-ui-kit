@@ -1,7 +1,7 @@
 import { IColors } from "@/types/colors";
 
 export default interface BaseInputProps {
-    value?: string,
+    modelValue?: string,
     placeholder?: string,
     description?: string,
     errorMessage?: string,

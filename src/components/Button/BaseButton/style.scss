@@ -1,6 +1,7 @@
 @import '../../../style.scss';
 .button {
     --accent-color: #ddd;
+    --force-width: auto,
     border-width: 1px;
     border-radius: 9999px;
     padding: 5px 10px;
@@ -10,7 +11,7 @@
     border-radius: 4px;
     cursor: pointer;
     transition: .15s all;
-    width: 125px;
+    width: var(--force-width);
     text-align: center;
     user-select: none;
     &.default {

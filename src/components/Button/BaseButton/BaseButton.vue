@@ -6,10 +6,14 @@
     const { getColor } = useColor();
     const props = withDefaults(defineProps<BaseButtonProps>(), {
         color: 'primary',
+        width: 'auto',
     });
     const styles = computed(() => {
         const [red, green, blue] = getColor(props.color as keyof IColors);
-        return {'--accent-color': `${red}, ${green}, ${blue}`};
+        return {
+            '--accent-color': `${red}, ${green}, ${blue}`,
+            '--force-width': props.width,
+        };
     });
 </script>
 <template>
