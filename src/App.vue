@@ -1,16 +1,16 @@
 <script setup lang="ts">
   import { ref } from 'vue';
   import hexToRGB from './utils/hexToRgba';
-  import ProgressBar from './components/Loader/ProgressBar/ProgressBar.vue';
-  import BaseButton from './components/Button/BaseButton/BaseButton.vue';
-  import CircularProgressLoader from "./components/Loader/CircularProgressLoader/CircularProgressLoader.vue";
   import BaseInput from "./components/Input/BaseInput/BaseInput.vue"
+  import BaseRange from "./components/Input/RangeInput/RangeInput.vue";
   import { IColors } from './types/colors';
   import useColor from './composables/useColor';
   const { setColor } = useColor();
   const val = ref(0);
   const targetKey = ref<keyof IColors>('primary');
   const error = ref('');
+  const min = ref<number>(0);
+  const max = ref<number>(100);
   function onInput(event: Event) {
     const input = (event.target as HTMLInputElement);
     const value = input.value as keyof IColors;
@@ -38,8 +38,7 @@
       <input type="color" @input="onColorInput">
     </div>
     <div class="flex gap-2">
-      <BaseInput :value="targetKey" placeholder="Color key" @input="onInput" :error-message="error" description="Type in IColor key!"></BaseInput>  
-      <BaseInput></BaseInput>
+      <base-range v-model:min-value="min" v-model:max-value="max"></base-range>
     </div>
   </div>
 </template>

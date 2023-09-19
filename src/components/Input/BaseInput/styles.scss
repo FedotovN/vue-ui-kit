@@ -7,6 +7,7 @@
     flex-flow: column nowrap;
     gap: 10px;
     width: var(--force-width);
+    margin-top: 12.5px;
     .base-input-label {
         position: absolute;
         top: 18px;
@@ -29,34 +30,25 @@
     .base-input-description {
         display: flex;
         align-items: center;
-        position: absolute;
         border: 1px solid #dfdfdf;
-        width: 100%;
         gap: 15px;
         padding: 5px 10px;
         background-color: #eeeeee;
         border-radius: 4px;
         color: #8e8e8e;
-        white-space: wrap;
         overflow: hidden;
-        bottom: -35px;
         &.lower {
             bottom: -75px;
         }
         small {
-            white-space: pre-wrap;
-            max-width: 100%;
             overflow: hidden;
             text-overflow: ellipsis;
         }
     }
     .base-input-error {
-        position: absolute;
         display: flex;
         align-items: center;
         gap: 15px;
-        bottom: -35px;
-        width: 100%;
         padding: 5px 10px;
         background-color: rgba(var(--error-color), .2);
         border-radius: 4px;
@@ -73,9 +65,6 @@
         &.downlight {
             color: rgba(var(--error-color), .5);
             background-color: rgba(var(--error-color), .1);
-        }
-        &.show {
-            text-overflow: ellipsis;
         }
     }
     input { 

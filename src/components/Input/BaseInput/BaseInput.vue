@@ -27,7 +27,7 @@
 <template>
     <div class="base-input-wrapper" :style="style">
         <small v-if="placeholder" :class="`base-input-label ${focused || value ? 'lifted' : ''} ${ focused ? 'highlight' : '' } ${ errorMessage ? 'error' : '' }`">{{ placeholder }}</small>
-        <input v-bind="$attrs" @input="onInput" :value="value" @focusin="focused = true" @focusout="focused = false" :class="`${errorMessage ? 'error' : ''}`"  />
+        <input @focusin="focused = true" @focusout="focused = false" @input="onInput" :value="value" :class="`${errorMessage ? 'error' : ''}`" v-bind="$attrs"  />
         <div :class="`base-input-error  ${errorMessage ? 'show' : ''} ${!focused ? 'highlight' : 'downlight' }`" v-if="errorMessage" >
             <font-awesome-icon icon="fa-solid fa-xmark-circle"></font-awesome-icon>
             <small>{{ errorMessage }}</small>
