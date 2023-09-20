@@ -11,4 +11,4 @@ export default {
         "^.+\\.vue$": "./vue3JestHack.cjs",
         "^.+\\.(ts|tsx)$": ["ts-jest", { tsconfig: `./tsconfig.node.json` }],
     }
-}
+} as import("ts-jest").JestConfigWithTsJest
