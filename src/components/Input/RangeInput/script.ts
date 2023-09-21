@@ -17,7 +17,6 @@ function normalize(min: number, max: number, value: number, side: 'min' | 'max',
     }
     if(limit && value > limit) value = limit
     if(minimum && value < (minimum || 0)) value = minimum
-    console.log(value, side, min + minimalRange);    
     return value
 }
 function getIntends(min: number, max: number, limit?: number, ): [number, number] {

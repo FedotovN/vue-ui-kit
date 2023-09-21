@@ -9,7 +9,7 @@
     minimum: 0,
     minValue: 0,
     minimalRange: 5,
-    step: 5,
+    step: 1,
     color: 'primary',
     width: '100%',
   });

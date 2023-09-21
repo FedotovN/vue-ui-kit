@@ -4,10 +4,12 @@
     --thumb-diameter: 18px;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 15px;
     .base-toggle-label {
         pointer-events: none;
         user-select: none;
+        padding: 0;
+        margin: 0;
         &.colored {
             color: rgb(var(--accent-color));
         }

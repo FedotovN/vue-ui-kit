@@ -1,0 +1,26 @@
+.base-checkbox-wrapper {
+    --accent-color: none;
+    height: 16px;
+    width: 16px;
+    border: 1px solid #bebebe;
+    border-radius: 2px;
+    cursor: pointer;
+    .base-checkbox-svg-container {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: .15s background-color;
+        svg {
+            width: 90%;
+        }
+        &.neutral {
+            background-color: rgba(var(--accent-color), .7);
+        }
+        &.active {
+            background-color: rgba(var(--accent-color), .9);
+            fill: white;
+        }
+    }
+}

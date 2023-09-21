@@ -18,6 +18,7 @@
         '--success-color': getColor(props.successColor).join(', '),
         '--force-width': props.width,
     }))
+    const liftPlaceholder = computed(() => focused || props.modelValue?.toString());
     const focused = ref(false);
     function onInput(event: Event) {
         const input = event.target as HTMLInputElement;
@@ -26,7 +27,7 @@
 </script>
 <template>
     <div class="base-input-wrapper" :style="style">
-        <small v-if="placeholder" :class="`base-input-label ${focused || modelValue?.toString() ? 'lifted' : ''} ${ focused ? 'highlight' : '' } ${ errorMessage ? 'error' : '' }`">{{ placeholder }}</small>
+        <small v-if="placeholder" :class="`base-input-label ${liftPlaceholder ? 'lifted' : ''} ${ focused ? 'highlight' : '' } ${ errorMessage ? 'error' : '' }`">{{ placeholder }}</small>
         <input data-testid="base-input__input" @focusin="focused = true" @focusout="focused = false" @input="onInput" :value="modelValue" :class="`${errorMessage ? 'error' : ''}`" v-bind="$attrs"  />
         <div :class="`base-input-error  ${errorMessage ? 'show' : ''} ${!focused ? 'highlight' : 'downlight' }`" v-if="errorMessage" >
             <font-awesome-icon icon="fa-solid fa-xmark-circle"></font-awesome-icon>
