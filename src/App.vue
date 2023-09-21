@@ -10,7 +10,7 @@
     <BaseCheckbox v-model="state" neutral-condition></BaseCheckbox>
     <BaseCheckbox v-model="secondState" neutral-condition color='alert' rounded outlined></BaseCheckbox>
     <BaseCheckbox v-model="state" neutral-condition color="warning"></BaseCheckbox>
-    <BaseCheckbox v-model="secondState" neutral-condition color="secondary" outlined></BaseCheckbox>
+    <BaseCheckbox v-model="secondState" neutral-condition color="secondary"></BaseCheckbox>
     <BaseCheckbox v-model="state" neutral-condition color="success"></BaseCheckbox>
 
   </div>
