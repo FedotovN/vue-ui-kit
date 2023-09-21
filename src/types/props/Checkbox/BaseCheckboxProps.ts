@@ -1,7 +1,8 @@
 import { IColors } from "@/types/colors";
-import CheckboxState from "./CheckboxValue";
 export default interface BaseCheckboxProps {
+    outlined?: boolean,
+    size?: string,
     color?: keyof IColors,
-    modelValue?: CheckboxState | number,
-    neutralCondition?: boolean,
+    modelValue?: boolean,
+    rounded?: boolean,
 }

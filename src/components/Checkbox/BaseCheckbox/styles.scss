@@ -1,10 +1,35 @@
 .base-checkbox-wrapper {
     --accent-color: none;
-    height: 16px;
-    width: 16px;
+    --size: none;
+    height: var(--size);
+    width: var(--size);
     border: 1px solid #bebebe;
     border-radius: 2px;
     cursor: pointer;
+    transition: .15s border-color;
+    svg {
+        transition: .15s fill;
+    }
+    &.rounded {
+        border-radius: 9999px;
+        & .base-checkbox-svg-container {
+            border-radius: 9999px;
+            svg {
+                width: 80%;
+            }
+        }
+    }
+    &.outlined {
+        &.checked {
+            border-color: rgb(var(--accent-color));
+            .base-checkbox-svg-container {
+                background-color: transparent;
+            }
+            svg {
+                fill: rgb(var(--accent-color));
+            }
+        }
+    }
     .base-checkbox-svg-container {
         height: 100%;
         width: 100%;
@@ -15,11 +40,8 @@
         svg {
             width: 90%;
         }
-        &.neutral {
-            background-color: rgba(var(--accent-color), .7);
-        }
-        &.active {
-            background-color: rgba(var(--accent-color), .9);
+        &.checked {
+            background-color: rgba(var(--accent-color), 1);
             fill: white;
         }
     }
