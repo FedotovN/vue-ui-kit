@@ -8,6 +8,7 @@
     gap: 10px;
     width: var(--force-width);
     margin-top: 12.5px;
+    margin-bottom: 16px;
     .base-input-label {
         position: absolute;
         top: 18px;
@@ -27,44 +28,28 @@
             color: rgb(var(--error-color));
         }
     }
-    .base-input-description {
-        display: flex;
-        align-items: center;
-        border: 1px solid #dfdfdf;
-        gap: 15px;
-        padding: 5px 10px;
-        background-color: #eeeeee;
-        border-radius: 4px;
-        color: #8e8e8e;
-        overflow: hidden;
-        &.lower {
-            bottom: -75px;
-        }
-        small {
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-    }
     .base-input-error {
+        position: absolute;
         display: flex;
         align-items: center;
-        gap: 15px;
-        padding: 5px 10px;
-        background-color: rgba(var(--error-color), .2);
-        border-radius: 4px;
-        color: white;
-        transition: .15s color;
+        transition: .15s color opacity transform;
         overflow: hidden;
+        white-space: nowrap;
+        max-width: 100%;
+        opacity: 0;
         small {
             overflow: hidden;
             text-overflow: ellipsis;
+        }
+        &.shown {
+            transform: translateY(calc(100% + 16px));
+            opacity: 1;
         }
         &.highlight {
             color: rgb(var(--error-color));
         }
         &.downlight {
             color: rgba(var(--error-color), .5);
-            background-color: rgba(var(--error-color), .1);
         }
     }
     input { 
