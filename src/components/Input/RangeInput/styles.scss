@@ -47,6 +47,9 @@
                 appearance: none;
                 background-color: rgb(var(--accent-color));
                 cursor: pointer;
+                &:active {
+                    cursor: grabbing;
+                }
                 &:hover {
                     box-shadow: 0 0 0 10px rgba(var(--accent-color), .3);
                 }
@@ -58,8 +61,12 @@
             &::-moz-range-thumb {
                 pointer-events: auto;
                 appearance: none;
+                cursor: pointer;
                 &:hover {
                     box-shadow: 0 0 0 10px rgba(var(--accent-color), .3);
+                }
+                &:active {
+                    cursor: grabbing;
                 }
                 width: 16px;
                 height: 16px;
