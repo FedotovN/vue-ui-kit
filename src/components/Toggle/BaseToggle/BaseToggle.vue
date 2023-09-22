@@ -28,4 +28,4 @@
         <small :class="`base-toggle-label ${paintLabel && modelValue ? 'colored' : ''}`" v-if="truthyLabel || falsyLabel">{{  getLabel()  }}</small>
     </div>
 </template>
-<style scoped lang="scss" src="./BaseToggle.scss" />
+<style scoped lang="scss" src="./style.scss" />

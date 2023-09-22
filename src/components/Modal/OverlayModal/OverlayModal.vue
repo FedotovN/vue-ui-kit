@@ -24,7 +24,10 @@
                         <h3>{{ modal.header }}</h3>
                         <svg @click="close" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <rect width="16" height="16" id="icon-bound" fill="none"></rect> <polygon points="14.707,2.707 13.293,1.293 8,6.586 2.707,1.293 1.293,2.707 6.586,8 1.293,13.293 2.707,14.707 8,9.414 13.293,14.707 14.707,13.293 9.414,8 "></polygon> </g></svg>
                     </div>
-                    <div class="overlay-modal-body">
+                    <div class="overlay-modal-inner-component" v-if="modal.component" s>
+                        <component :is="modal.component">123</component>
+                    </div>
+                    <div class="overlay-modal-body" v-else>
                         <div v-if="allowHTML" v-html="modal.content"></div>
                         <p v-else>{{ modal.content }}</p>
                     </div>
@@ -35,4 +38,4 @@
 </template>
 
 
-<style scoped lang="scss" src="./OverlayModal.scss" />
+<style scoped lang="scss" src="./style.scss" />

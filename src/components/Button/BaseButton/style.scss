@@ -1,7 +1,9 @@
 .button {
     --accent-color: #ddd;
     --force-width: auto,
+    outline: none;
     border-width: 1px;
+    border-color: transparent;
     border-radius: 9999px;
     padding: 5px 10px;
     display: flex;

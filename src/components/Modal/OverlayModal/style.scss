@@ -10,6 +10,9 @@
     left: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, .4);
+    .overlay-modal-inner-component {
+        padding-top: 10px;
+    }
     .overlay-model-content {
         position: relative;
         background-color: white;
@@ -23,6 +26,8 @@
             border-bottom: 1px solid #dadada;
             font-weight: bold;
             display: flex;
+            justify-content: space-between;
+            align-items: center;
             h3 {
                 overflow: hidden;
                 white-space: nowrap;
@@ -30,9 +35,6 @@
                 max-width: calc(100% - 30px);
             }
             svg {
-                position: absolute;
-                right: 10px;
-                top: 14px;
                 height: 16px;
                 width: 16px;
                 cursor: pointer;

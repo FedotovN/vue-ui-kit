@@ -9,8 +9,8 @@ export default function useModal() {
     function get(id) {
         return modals.value.find(modal => modal.id === id);
     }
-    function open(data: OverlayModal) {
-        const targetModal = data;
+    function open(id) {
+        const targetModal = get(id);
         modal.value = targetModal;
     }
     function close() {
