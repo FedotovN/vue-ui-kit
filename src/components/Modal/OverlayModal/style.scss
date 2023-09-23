@@ -10,9 +10,6 @@
     left: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, .4);
-    .overlay-modal-inner-component {
-        padding-top: 10px;
-    }
     .overlay-model-content {
         position: relative;
         background-color: white;
@@ -21,13 +18,19 @@
         width: var(--force-width);
         max-width: calc(100% - 5px);
         overflow: hidden;
+        transition: .15s width;
         .overlay-modal-header {
             padding-bottom: 10px;
+            margin-bottom: 10px;
             border-bottom: 1px solid #dadada;
-            font-weight: bold;
+            color: #565656;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            &.hidden {
+                border-bottom: none;
+                padding-bottom: 0;
+            }
             h3 {
                 overflow: hidden;
                 white-space: nowrap;
