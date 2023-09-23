@@ -2,12 +2,12 @@ import OverlayModal from "@/types/props/Modal/OverlayModal";
 import OverlayModalProps from "@/types/props/Modal/OverlayModalProps";
 import OverlayModalVue from "./OverlayModal.vue";
 import BaseButton from "../../../components/Button/BaseButton/BaseButton.vue";
-import { fireEvent, render, screen, waitFor } from "@testing-library/vue";
+import { fireEvent, render } from "@testing-library/vue";
 import '@testing-library/jest-dom';
 import useModal from "../../../composables/useModal";
 import { nextTick, shallowRef } from "vue";
 import { IColors, colors } from "../../../types/colors";
-const { add, open } = useModal();
+const { add, open, close } = useModal();
 function mount(props: OverlayModalProps = { defaultWidth: '400px', allowHTML: false, color: 'primary' }) {
     const { container, rerender } = render(OverlayModalVue, { props });
     const modal = container.firstChild;
@@ -83,7 +83,7 @@ describe('Modal: Overlay Modal', () => {
             expect(checkColor(color as keyof IColors, component)).toBeTruthy();
         }    
     });
-    it('Changes width', async () => {
+    it('Changes default width', async () => {
         const props: OverlayModalProps = { defaultWidth: '200px' }
         const { body, rerender } =  mount(props);
         await addAndOpen({ id: '7' });
@@ -99,5 +99,27 @@ describe('Modal: Overlay Modal', () => {
             await rerender(props);
             expect(checkWidth(component, arr[index])).toBeTruthy();
         }    
+    });
+    it('Changes modal width', async () => {
+        const { body, rerender } =  mount();
+        function checkWidth(component, width?: string,): boolean {
+            const resulted = component.style.getPropertyValue('--force-width');
+            const expected = width;
+            return resulted === expected;
+        }
+        const component = getWrapper(body);
+        const data = [
+            { w: '100px', id: '8' },
+            { w: '200px', id: '9' },
+            { w: '300px', id: '10' },
+            { w: '400px', id: '11' },
+        ];
+        for (let i = 0; i < data.length; i++) {
+            const info: OverlayModal = { id: data[i].id, width: data[i].w };
+            await addAndOpen(info);
+            await rerender({ defaultWidth: '500px' } as OverlayModalProps);
+            expect(checkWidth(component, info.width)).toBeTruthy();
+            close();
+        }
     });
 }); 
