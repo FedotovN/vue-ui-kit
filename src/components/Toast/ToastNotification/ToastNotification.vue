@@ -6,14 +6,16 @@
     const { getColor } = useColor();
     const props = defineProps<ToastNotificationProps>();
     const style = computed(() => ({
-        '--accent-color': getColor(props.toast.color).join(', '),
+        '--accent-color': getColor(props.toast.color || 'none').join(', '),
         '--min-width': props.minWidth,
         '--max-width': props.maxWidth,
+        '--delay': `${(props.toast.delay / 1000) + 1.5}s`,
     }));
 </script>
 <template>
     <div class="toast-notification" :style="style">
-        <div class="toast-notification-content">
+        <div class="toast-notification-html" v-if="props.toast.parseHtml" v-html="props.toast.content"></div>
+        <div :class="`toast-notification-content ${props.toast.centerText ? 'center-text' : ''}`" v-else>
             <small>{{ (toast as ToastData).content }}</small>
         </div>
     </div>

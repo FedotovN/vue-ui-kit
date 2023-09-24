@@ -3,7 +3,9 @@ import { IColors } from "./colors";
 interface ToastData {
     content?: string,
     color?: keyof IColors,
-    allowHtml?: boolean,
+    parseHtml?: boolean,
+    centerText?: boolean,
+    delay?: number,
 }
 interface Toast extends ToastData {
     id: number,
