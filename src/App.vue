@@ -1,33 +1,15 @@
 <script setup lang="ts">
-  import { shallowRef, ref } from "vue";
-  import OverlayModalExample from "./OverlayModalExample.vue";
-  import OverlayModal from "./components/Modal/OverlayModal/OverlayModal.vue";
-  import BaseButton from "./components/Button/BaseButton/BaseButton.vue";
-  import BaseToggle from "./components/Toggle/BaseToggle/BaseToggle.vue";
-  import useModal from "./composables/useModal";
-  const { open, add } = useModal();
-  const val = ref(true);
-  add({
-    header: 'Modal window!',
-    id: '0',
-    width: '500px',
-    component: shallowRef(OverlayModalExample)
-  })
-  const onClick = () => {
-    open('0');
-  };
-  
+import OverlayToast from './components/Toast/OverlayToast/OverlayToast.vue';
+import BaseButton from './components/Button/BaseButton/BaseButton.vue';
+import useToast from "./composables/useToast";
+const { add } = useToast();
+const show = () => {
+  add({ color: 'alert', content: 'Bla' }, 100000);
+}
 </script>
 <template>
-  <div class="flex">
-    <OverlayModal default-width="" />
-    <base-button @click="onClick" flat>Open modal</base-button>
-    <base-toggle v-model="val" paint-label truthy-label="True" falsy-label="False"></base-toggle>
+  <div>
+    <OverlayToast min-width="250px"></OverlayToast>
+    <base-button @click="show">Add toast</base-button>
   </div>
 </template>
-<style scoped lang="scss">
-  .flex {
-    display: flex;
-    gap: 5px;
-  }
-</style>

@@ -1,0 +1,30 @@
+.toast-notification {
+    --accent-color: none;
+    --min-width: none;
+    --max-width: none;
+    pointer-events: visible;
+    padding: 10px 15px;
+    right: 10px;
+    cursor: pointer;
+    min-height: 50px;
+    max-height: 200px;
+    max-width: var(--max-width);
+    min-width: var(--min-width);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border-radius: 4px;
+    background-color: rgb(var(--accent-color));
+    transition: .15s all;
+    &-content {
+        user-select: none;
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        color: white;
+    }
+    &:hover {
+        scale: .99;
+        filter: brightness(.9)
+    }
+}
