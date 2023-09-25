@@ -9,7 +9,7 @@
         '--accent-color': getColor(props.toast.color || 'none').join(', '),
         '--min-width': props.minWidth,
         '--max-width': props.maxWidth,
-        '--delay': `${(props.toast.delay / 1000) + 1.5}s`,
+        '--delay': `${props.toast.delay / 1000}s`,
     }));
 </script>
 <template>
@@ -20,6 +20,4 @@
         </div>
     </div>
 </template>
-
-
 <style scoped lang="scss" src="./styles.scss" />

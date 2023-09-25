@@ -5,7 +5,12 @@
     },
     "rootDirs": ["src"],
     "outDir": "dist",
-    "lib": ["ES2022"],
+    "lib": [
+      "esnext",
+      "dom",
+      "dom.iterable",
+      "scripthost"
+    ],
     "target": "ES2022",
     "module": "ESNext",
     "composite": true,
@@ -14,14 +19,25 @@
     "declarationMap": true,
     "incremental": true,
     "esModuleInterop": true,
-    "types": ["jest", "node", "@types/jest"],
+    "types": ["jest", "node", "@types/jest", "jest-dom"],
     "sourceMap": true
   },
   "ts-node": {
     "esm": true,
     "experimentalSpecifierResolution": "node"
   },
-  "include": ["./src/**/*", "./tests/**/*", "src/**/*.vue" ],
+  "include": [
+    "./src/**/*",
+    "./tests/**/*",
+    "src/**/*.vue",
+    "./src/components/*.vue",
+    "./*.vue",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "tests/**/*.ts",
+    "tests/**/*.tsx"
+  ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
 

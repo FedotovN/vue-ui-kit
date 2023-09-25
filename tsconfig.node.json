@@ -6,7 +6,11 @@
     "composite": true,
     "skipLibCheck": true,
     "module": "ESNext",
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "lib": [
+      "es2016",
+      "dom"
+    ]
   },
-  "include": ["vite.config.ts"]
+  "include": ["vite.config.ts", "./*.vue"]
 }
