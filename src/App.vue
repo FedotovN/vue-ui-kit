@@ -6,7 +6,7 @@ import BaseTooltip from './components/Tooltip/BaseTooltip.vue';
 <template>
   <div class="flex">
     <base-button>
-    <base-tooltip>12345678900987654321</base-tooltip>Primary default</base-button>
+    <base-tooltip color='secondary'>12345678900987654321</base-tooltip>Primary default</base-button>
     <base-button color="alert" flat v-tooltip="'directive works'">Alert flat</base-button>
     <base-button outlined color="secondary">Secondary outlined</base-button>
   </div>
