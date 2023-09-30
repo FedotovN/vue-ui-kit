@@ -1,12 +1,15 @@
 .base-accordion-wrapper {
-  background-color: #f8f8f8;
-  border: 1px solid #dedede;
+  --accent-color: none;
+  --force-width: none;
+  background-color: white;
+  //border: 1px solid  rgba(var(--accent-color), .5);
   display: flex;
   flex-flow: column;
   gap: 5px;
   padding: 5px 10px;
   border-radius: 6px;
-  width: 400px;
-  min-height: 200px;
+  width: var(--force-width);
+  max-width: 100%;
+  min-height: 50px;
   height: auto;
 }

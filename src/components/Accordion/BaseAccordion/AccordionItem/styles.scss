@@ -1,9 +1,9 @@
 .accordion-item-wrapper {
+  --accent-color: none;
   .accordion-item-body {
     display: grid;
     transition: grid-template-rows 500ms;
     grid-template-rows: 0fr;
-    color: #4f4f4f;
     overflow: hidden;
     &>div {
       overflow: hidden;
@@ -13,39 +13,41 @@
   &.opened {
     .accordion-item-body {
       grid-template-rows: 1fr;
-      &>div {
-        padding: 5px 10px;
-      }
     }
   }
   .accordion-item-header {
     padding: 5px 10px;
-    background-color: #efefef;
-    border: 1px solid #d7d7d7;
-    border-radius: 4px;
+    background-color: white;
+    border: 1px solid rgba(var(--accent-color), .5);
+    border-radius: 2px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     overflow: hidden;
     user-select: none;
     cursor: pointer;
-
-    &.opened:hover {
-      svg {
-        fill: red;
+    color: #818181;
+    &:hover {
+      background-color: rgba(var(--accent-color), .05);
+    }
+    &.opened {
+      p {
+        color: rgba(var(--accent-color));
       }
     }
-
-    &.closed:hover {
+    &.closed:hover, &.opened:hover {
       svg {
-        fill: blue;
+        fill: rgba(var(--accent-color));
+      }
+      p {
+        color: rgba(var(--accent-color));
       }
     }
 
     svg {
       height: 16px;
       width: 16px;
-      fill: #8f8f8f;
+      fill: rgba(var(--accent-color), .5);
       transition: .15s all;
 
       &.opened {
@@ -58,6 +60,7 @@
       width: 100%;
       text-overflow: ellipsis;
       white-space: nowrap;
+      transition: .15s all;
     }
   }
 }
