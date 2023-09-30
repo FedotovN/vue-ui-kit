@@ -1,0 +1,63 @@
+.accordion-item-wrapper {
+  .accordion-item-body {
+    display: grid;
+    transition: grid-template-rows 500ms;
+    grid-template-rows: 0fr;
+    color: #4f4f4f;
+    overflow: hidden;
+    &>div {
+      overflow: hidden;
+      transition: .15s padding;
+    }
+  }
+  &.opened {
+    .accordion-item-body {
+      grid-template-rows: 1fr;
+      &>div {
+        padding: 5px 10px;
+      }
+    }
+  }
+  .accordion-item-header {
+    padding: 5px 10px;
+    background-color: #efefef;
+    border: 1px solid #d7d7d7;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+    user-select: none;
+    cursor: pointer;
+
+    &.opened:hover {
+      svg {
+        fill: red;
+      }
+    }
+
+    &.closed:hover {
+      svg {
+        fill: blue;
+      }
+    }
+
+    svg {
+      height: 16px;
+      width: 16px;
+      fill: #8f8f8f;
+      transition: .15s all;
+
+      &.opened {
+        transform: rotateZ(45deg);
+      }
+    }
+
+    p {
+      overflow: hidden;
+      width: 100%;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+}
