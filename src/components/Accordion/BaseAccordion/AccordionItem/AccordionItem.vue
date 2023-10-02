@@ -14,6 +14,9 @@
   const style = computed(() => ({
     '--accent-color': getColor(props.color).join(', '),
   }));
+  const emit = defineEmits<{
+    (event: 'toggle', value: string)
+    }>();
 </script>
 <template>
   <div class="accordion-item-wrapper" :class="isOpened ? 'opened' : 'closed'" :style="style">

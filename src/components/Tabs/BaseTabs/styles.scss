@@ -1,0 +1,95 @@
+.base-tabs-wrapper {
+    overflow: hidden;
+    position: relative;
+    .base-tabs-header {
+        position: relative;
+        display: flex;
+        overflow: hidden;
+        max-width: 600px;
+        gap: 5px;
+        padding-bottom: 5px;
+        overflow: hidden;
+        .base-tabs-tab {
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            user-select: none;
+            padding: 5px 12px;
+            border: 1px solid rgba(120, 120, 290, .2);
+            border-radius: 2px;
+            overflow: hidden;
+            transition: .15s border-color, background-color,;
+            small {
+                color: #545454;
+                text-align: center;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+            &:last-child {
+                border-bottom-right-radius: 0;
+            }
+            &:first-child {
+                border-bottom-left-radius: 0;
+            }
+        }
+        .base-tabs-tab.active {
+            position: relative;
+            background-color: rgba(120, 120, 290, .1);
+            small { color: rgb(120, 120, 290); }
+            border-color: rgba(120, 120, 290, .8);
+        }
+        .base-tabs-tab:hover {
+            border-color: rgb(120, 120, 290);
+            &:not(.active) {
+                background-color: rgba(120, 120, 290, .05);
+            }
+        }
+    }
+    .base-tabs-content {
+        position: relative;
+        border: 1px solid rgba(120, 120, 290, .5);
+        border-radius: 4px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        width: 600px;
+        min-height: 100px;
+        max-height: 500px;
+        padding: 5px 12px;
+        background-color: white;
+        overflow: hidden;
+        overflow-y: scroll;
+        &::-webkit-scrollbar {
+            width: 16px;
+            background-color: transparent;
+        }
+        &::-webkit-scrollbar-thumb {
+            background-color: #dadada;
+            border-radius: 9999px;
+            background-clip: padding-box;
+            border: 7px solid transparent;
+            cursor: pointer;
+            &:hover {
+                background-color: rgb(120, 120, 290);
+                border-width: 6px;
+            }
+        }
+    }
+}
+.start {
+    opacity: 0;
+    transform: translateX(-60px);
+}
+.active {
+    transition: .15s all;
+}
+.enter-end {
+    transform: translateX(0);
+    opacity: 1;
+    scale: 1;
+}
+.leave-to {
+    transform: translateX(60px);
+    opacity: 0;
+}

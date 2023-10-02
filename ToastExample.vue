@@ -1,6 +1,6 @@
 <template>
     <div style="padding-bottom: 10px;">
-        <OverlayToast></OverlayToast>
+        <OverlayToast vertical-side="bottom" horizontal-side="left" minWidth="600px"></OverlayToast>
         <base-button @click="show">Add toast</base-button>
         <BaseInputVue v-model="toastContent" @keydown.enter="show"></BaseInputVue>
         <input type="color" @input="onColorInput" />
@@ -8,13 +8,12 @@
 </template>
 
 <script setup lang="ts">
-    import OverlayToast from './components/Toast/OverlayToast/OverlayToast.vue';
-    import ModalExample from './ModalExample.vue';
-    import BaseButton from './components/Button/BaseButton/BaseButton.vue';
-    import BaseInputVue from './components/Input/BaseInput/BaseInput.vue';
-    import useToast from "./composables/useToast";
-    import useColor from './composables/useColor';
-    import hexToRGB from './utils/hexToRgba';
+    import OverlayToast from './src/components/Toast/OverlayToast/OverlayToast.vue';
+    import BaseButton from './src/components/Button/BaseButton/BaseButton.vue';
+    import BaseInputVue from './src/components/Input/BaseInput/BaseInput.vue';
+    import useToast from "./src/composables/useToast";
+    import useColor from './src/composables/useColor';
+    import hexToRGB from './src/utils/hexToRgba';
     import { ref } from "vue";
     const { add } = useToast();
     const { setColor } = useColor();
