@@ -10,4 +10,12 @@ function getFileFromInput(event: Event): FileDisplay{
     const name = element.name || 'File';
     return { mime, kbSize, name, format, toDownload: element };
 }
-export { getFileFromInput };
+function downloadLocalFile(blob, name) {
+    const a = document.createElement('a');
+    const url = URL.createObjectURL(blob);
+    a.href = url;
+    a.download = name || 'File';
+    a.click();
+    a.remove();
+};
+export { getFileFromInput, downloadLocalFile };

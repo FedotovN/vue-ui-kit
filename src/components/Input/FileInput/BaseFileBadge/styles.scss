@@ -14,6 +14,13 @@
         font-size: 10px;
     }
     overflow: hidden;
+    .base-file-badge-vertical-line {
+        height: 80%;
+        width: 5px;
+        border-radius: 9999px;
+        background-color: #bebebe;
+        margin: 0 2px;
+    }
     .base-file-badge- {
         &name, &size, &format {
             overflow: hidden;
@@ -45,12 +52,8 @@
             background-color: rgba(blue, .2);
             min-width: 50px;   
         }
-        &download {
-            &:hover {
-                svg {
-                    fill: blue;
-                }
-            }
+        &download, &delete {
+            height: 100%;
             cursor: pointer;
             padding-bottom: 1px;
             display: flex;
@@ -58,6 +61,23 @@
             svg {
                 fill: #717171;
                 width: 22.5px;
+            }
+        }
+        &download {
+            &:hover {
+                svg {
+                    fill: blue;
+                }
+            }
+        }
+        &delete {
+            svg {
+                width: 17px;
+            }
+            &:hover {
+                svg {
+                    fill: red;
+                }
             }
         }
     }

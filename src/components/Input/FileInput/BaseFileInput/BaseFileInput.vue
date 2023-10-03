@@ -1,7 +1,7 @@
 <script setup lang="ts">
     import { ref, Ref } from 'vue';
     import { FileDisplay } from "../../../../types/file";
-    import { getFileFromInput } from '../../../../utils/getFileInfo';
+    import { getFileFromInput } from '../../../../utils/FilesHelper';
     const fileInput: Ref<null | HTMLInputElement> = ref(null);
     const file: Ref<null | FileDisplay> = ref(null);
     const emits = defineEmits<{
