@@ -1,0 +1,65 @@
+.base-file-badge-wrapper {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    height: 40px;
+    width: 350px;
+    border: 1px solid #dadada;
+    padding: 5px 10px;
+    border-radius: 2px;
+    &.hide {
+        display: none;
+    }
+    small {
+        font-size: 10px;
+    }
+    overflow: hidden;
+    .base-file-badge- {
+        &name, &size, &format {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            height: 20px;
+            border-radius: 2px;
+            width: 100%;
+            padding: 0 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            small {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                font-size: 11px;
+            }
+        }
+        &name {
+            color: red;
+            background-color: rgba(red, .2);
+        }
+        &size {
+            color: green;
+            background-color: rgba(green, .2);
+        }
+        &format {
+            color: blue;
+            background-color: rgba(blue, .2);
+            min-width: 50px;   
+        }
+        &download {
+            &:hover {
+                svg {
+                    fill: blue;
+                }
+            }
+            cursor: pointer;
+            padding-bottom: 1px;
+            display: flex;
+            align-items: center;
+            svg {
+                fill: #717171;
+                width: 22.5px;
+            }
+        }
+    }
+    
+}

@@ -53,6 +53,7 @@
     }
     &.flat, &.outlined {
         color: rgba(var(--accent-color), 1);
+        background-color: transparent;
         &:hover {
             background-color: rgba(var(--accent-color), .2);
         }
