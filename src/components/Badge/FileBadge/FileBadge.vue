@@ -1,25 +1,32 @@
 <script setup lang="ts">
-    import BaseFileBadgeProps from '../../../../types/props/Input/FileInput/BaseFileBadgeProps';
-    import { downloadLocalFile } from '../../../../utils/FilesHelper';
+    import BaseFileBadgeProps from '../../../types/props/Input/FileInput/BaseFileBadgeProps';
+    import { downloadLocalFile } from '../../../utils/FilesHelper';
+    import { computed } from "vue";
+    import useColor from "../../../composables/useColor";
+    const { getColor } = useColor();
     const props = withDefaults(defineProps<BaseFileBadgeProps>(), {
         allowDownload: true,
+        color: 'primary'
     });
     const emit = defineEmits<{(e: 'download'), (e: 'delete')}>();
     const downloadFile = () => {
         downloadLocalFile(props.toDownload, props.value.name);
         emit('download');
     };
+    const style = computed(() => ({
+      '--accent-color': getColor(props.color).join(', '),
+    }))
 </script>
 <template>
-    <div class="base-file-badge-wrapper" :class="!value ? 'hide' : ''">
+    <div class="base-file-badge-wrapper" :style="style" :class="!value ? 'hide' : ''">
         <div class="base-file-badge-name" v-if="value?.name">
             <small>{{ value.name }}</small>
         </div>
-        <div class="base-file-badge-size" v-if="value?.kbSize">
-            <small>{{ value.kbSize }}</small>
-        </div>
-        <div class="base-file-badge-format" v-if="value?.format">
-            <small>{{ value.format }}</small>
+      <div class="base-file-badge-format" v-if="value?.format">
+        <small>{{ value.format }}</small>
+      </div>
+      <div class="base-file-badge-size" v-if="value?.kbSize">
+          <small>{{ value.kbSize }}</small>
         </div>
         <div class="base-file-badge-download" v-tooltip="`Download ${value.name || ''}`" v-if="toDownload && allowDownload" @click="downloadFile">
             <svg width="36px" height="36px" viewBox="0 0 36 36" version="1.1"  preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">

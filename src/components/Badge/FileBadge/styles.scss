@@ -1,12 +1,14 @@
 .base-file-badge-wrapper {
+    --accent-color: none;
     display: inline-flex;
     align-items: center;
+    justify-content: space-between;
     gap: 10px;
     height: 40px;
-    width: 350px;
+    width: 100%;
     border: 1px solid #dadada;
     padding: 5px 10px;
-    border-radius: 2px;
+    border-radius: 4px;
     &.hide {
         display: none;
     }
@@ -16,7 +18,7 @@
     overflow: hidden;
     .base-file-badge-vertical-line {
         height: 80%;
-        width: 5px;
+        width: 1px;
         border-radius: 9999px;
         background-color: #bebebe;
         margin: 0 2px;
@@ -28,11 +30,11 @@
             text-overflow: ellipsis;
             height: 20px;
             border-radius: 2px;
-            width: 100%;
             padding: 0 10px;
             display: flex;
             justify-content: center;
             align-items: center;
+            flex: 1;
             small {
                 overflow: hidden;
                 text-overflow: ellipsis;
@@ -40,22 +42,21 @@
             }
         }
         &name {
-            color: red;
-            background-color: rgba(red, .2);
+            width: 100%;
+            color: rgba(var(--accent-color), 1);
+            border: 1px solid rgba(var(--accent-color), .5);
         }
         &size {
-            color: green;
-            background-color: rgba(green, .2);
+            color: rgba(var(--accent-color), 1);
+            small { font-size: 12px; }
         }
         &format {
-            color: blue;
-            background-color: rgba(blue, .2);
-            min-width: 50px;   
+            color: rgba(var(--accent-color), 1);
+            background-color: rgba(var(--accent-color), .2);
         }
         &download, &delete {
             height: 100%;
             cursor: pointer;
-            padding-bottom: 1px;
             display: flex;
             align-items: center;
             svg {
@@ -64,19 +65,21 @@
             }
         }
         &download {
+            padding-bottom: 3px;
             &:hover {
                 svg {
-                    fill: blue;
+                    fill: rgb(var(--accent-color));
                 }
             }
         }
         &delete {
+            padding-bottom: 1px;
             svg {
                 width: 17px;
             }
             &:hover {
                 svg {
-                    fill: red;
+                    fill: rgba(red, .65);
                 }
             }
         }
