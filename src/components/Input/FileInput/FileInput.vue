@@ -4,8 +4,10 @@
     import { getFileFromInput } from '../../../utils/FilesHelper';
     import useColor from "../../../composables/useColor";
     import BaseFileInputProps from "@/types/props/Input/FileInput/BaseFileInputProps";
+
     const fileInput: Ref<null | HTMLInputElement> = ref(null);
     const file: Ref<null | FileDisplay | FileDisplay[]> = ref(null);
+        
     const { getColor } = useColor();
     const props = withDefaults(defineProps<BaseFileInputProps>(), {
       color: 'primary',

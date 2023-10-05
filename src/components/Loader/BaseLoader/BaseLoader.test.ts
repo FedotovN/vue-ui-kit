@@ -1,4 +1,4 @@
-import {render, screen, waitFor } from "@testing-library/vue";
+import { render, screen, waitFor } from "@testing-library/vue";
 import "@testing-library/jest-dom"
 import BaseLoader from "./BaseLoader.vue";
 import BaseLoaderProps from "@/types/props/Loader/BaseLoaderProps";
