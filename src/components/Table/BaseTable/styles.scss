@@ -1,15 +1,103 @@
 .base-table-wrapper {
     --cols-amount: 2;
     --min-col-size: 60px;
-    --force-width: 700px;
+    --force-width: none;
+    --accent-color: none;
     margin: 5px;
     display: flex;
     flex-flow: column nowrap;
     border: 1px solid #dadada;
     border-radius: 4px;
     height: auto;
+    max-height: 500px;
     overflow: hidden;
     width: var(--force-width);
+    transition: 1s height;
+    .base-table-fallback-content {
+        border-top: 1px solid #dadada;
+        height: 150px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #777777
+    }
+    .base-table-footer {
+        position: relative;
+        display: flex;
+        align-items: center;
+        padding: 5px 10px;
+        box-sizing: border-box;
+        height: 30px;
+        border-top: 1px solid #dadada;
+        align-items: center;
+        .base-table-pagination-bar {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            overflow: hidden;
+            .pagination-bar-count {
+                user-select: none;
+                min-width: 50px;
+                font-size: 11px;
+                color: #555555;
+            }
+            .pagination-bar-pages-wrapper {
+                flex: 1;
+                overflow: hidden;
+                margin: 0 10px;
+                height: 100%;
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                .pagination-bar-pages {
+                    transition: .3s all;
+                    left: 0;
+                    position: absolute;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 4.5px;
+                    overflow: hidden;
+                    .pagination-bar-page-button {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        cursor: pointer;
+                        font-size: 12px;
+                        width: 32px;
+                        overflow: hidden;
+                        padding: 0 10px;
+                        border: 1px solid #dadada;
+                        border-radius: 2px;
+                        user-select: none;
+                        transition: .15s all;
+                        &.current {
+                            border-color: rgb(var(--accent-color));
+                        }
+                        &:hover {
+                            background-color: rgba(var(--accent-color), .1);
+                            color: rgb(var(--accent-color));
+                        }
+                    }
+                }
+            }
+            .pagination-bar-buttons {
+                display: flex;
+                justify-content: end;
+                gap: 10px;
+                min-width: 160px;
+                overflow: hidden;
+                button {
+                    font-size: 11px;
+                    height: 100%;
+                    width: 100%;
+                }
+            }
+        }
+    }
     .base-table-header {
         overflow: hidden;
         display: grid;
@@ -32,10 +120,34 @@
         flex-flow: column nowrap;
         overflow: hidden;
         .base-table-content {
+            position: relative;
             overflow: hidden;
             display: grid;
             grid-auto-flow: column;
             grid-template-columns: repeat(auto-fit, minmax(var(--min-col-size), 1fr));
+            cursor: pointer;
+            .base-table-actions {
+                position: absolute;
+                display: flex;
+                justify-content: space-between;
+                background-color: rgba(white, .95);
+                box-shadow: 0 0 50px 50px white;
+                right: 0;
+                top: 0;
+                height: 100%;
+                min-width: 50px;
+                max-width: 200px;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                opacity: 0;
+            }
+            &:hover {
+                background-color: rgba(#dadada, .25);
+                .base-table-actions {
+                    opacity: 1;
+                }
+            }
             &:last-child {
                 border-bottom: none;
             }
