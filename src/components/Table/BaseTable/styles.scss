@@ -3,7 +3,6 @@
     --min-col-size: 60px;
     --force-width: none;
     --accent-color: none;
-    margin: 5px;
     display: flex;
     flex-flow: column nowrap;
     border: 1px solid #dadada;
@@ -125,7 +124,9 @@
             display: grid;
             grid-auto-flow: column;
             grid-template-columns: repeat(auto-fit, minmax(var(--min-col-size), 1fr));
-            cursor: pointer;
+            &.clickable {
+                cursor: pointer;
+            }
             .base-table-actions {
                 position: absolute;
                 display: flex;
