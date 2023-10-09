@@ -7,7 +7,8 @@ export default {
     mounted(el, { value }: ExpectedBinding) {
         callback = value;
         document.addEventListener('click', (event: PointerEvent) => {
-            if (!(el === event.target || el.contains(event.target))) callback();    
+            if (!(el === event.target || el.contains(event.target))) 
+            callback();
         });
     },
     unmounted() {

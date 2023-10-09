@@ -6,9 +6,7 @@ interface IIntersection {
 }
 export default function getScreenIntersectionDifference(element: HTMLElement) {
     let inter: IIntersection = {};
-    console.log(element);
     const { bottom, top, left, right } = element.getBoundingClientRect();
-    console.log({ bottom, top, left, right });
     if (left < 0) inter.left = left;
     if (right > innerWidth) inter.right = innerWidth - right;
     if (top < 0) inter.top = top;

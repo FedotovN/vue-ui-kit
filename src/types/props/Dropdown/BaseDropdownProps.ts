@@ -4,6 +4,7 @@ type DropdownItem = {
     id: number | string,
     label?: string,
     value?: any,
+    disabled?: boolean,
 }
 type Alignment = 'top' | 'bottom' | 'left' | 'right';
 export default interface BaseDropdownProps {
@@ -11,5 +12,6 @@ export default interface BaseDropdownProps {
     color?: keyof IColors,
     modelValue?: DropdownItem,
     alignment?: Alignment,
+    width?: string,
 }
 export { type DropdownItem };
