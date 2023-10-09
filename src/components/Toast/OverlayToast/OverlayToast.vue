@@ -1,7 +1,7 @@
 <script setup lang="ts">
     import useModal from "../../../composables/useToast";
     import OverlayToastProps from "../../../types/props/Toast/OverlayToastProps";
-    import ToastNotification from "../ToastNotification/ToastNotification.vue";
+    import ToastNotification from "./ToastNotification/ToastNotification.vue";
     withDefaults(defineProps<OverlayToastProps>(), {
         horizontalSide: 'right',
         verticalSide: 'top',

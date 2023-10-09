@@ -1,4 +1,4 @@
-import { IColors } from "@/types/colors";
+import { IColors } from "../../../types/colors";
 
 export default interface BaseLoaderProps {
     color?: keyof IColors,
