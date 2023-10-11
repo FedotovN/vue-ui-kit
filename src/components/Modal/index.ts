@@ -1,3 +1,3 @@
-import OverlayModal from "./OverlayModal/OverlayModal.vue";
+import OverlayModal from "./OverlayModal";
 
 export default { OverlayModal };

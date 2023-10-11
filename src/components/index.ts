@@ -12,7 +12,7 @@ import Toast from "./Toast";
 import Toggle from "./Toggle";
 import Tooltip from "./Tooltip";
 
-export default { 
+export { 
     Accordion, Badge, Button,
     Checkbox, Dropdown, Input,
     Loader, Modal, Table,

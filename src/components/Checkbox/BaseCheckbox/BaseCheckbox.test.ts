@@ -1,5 +1,25 @@
+import { queryByTestId } from "@testing-library/vue";
+import "@testing-library/jest-dom";
+import BaseCheckbox from "./BaseCheckbox.vue";
+import BaseCheckboxProps from "@/types/props/Checkbox/BaseCheckboxProps";
+import testColor from "../../../tests/utils/testColor";
+import create from "../../../tests/utils/create";
+
 describe('Checkbox: Base Checkbox', () => {
-    it.todo('Renders proper state');
-    it.todo('Accepts enum and number as a value');
-    it.todo('Changes color');
+    it('Renders proper state', async () => {
+        const props = { modelValue: false };
+        const { mounted, rerender } = create(BaseCheckbox, { props });
+        expect(queryByTestId(mounted, "active-svg")).toBeFalsy();
+        props.modelValue = true;
+        await rerender(props);
+        expect(queryByTestId(mounted, "active-svg")).toBeTruthy();
+    });
+    it('Changes color', async () => {
+        let props: BaseCheckboxProps = { color: 'primary' };
+        const { mounted, rerender } = create(BaseCheckbox, { props });
+        testColor(mounted, props.color);
+        props.color = 'alert'
+        await rerender(props);
+        testColor(mounted, props.color);
+    });
 });
