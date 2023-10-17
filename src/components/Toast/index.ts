@@ -1,3 +1,3 @@
 import OverlayToast from "./OverlayToast";
 
-export default { OverlayToast };
+export default { ...OverlayToast };

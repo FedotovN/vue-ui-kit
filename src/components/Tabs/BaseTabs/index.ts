@@ -1,4 +1,4 @@
 import BaseTabs from "./BaseTabs.vue";
-import BaseTabsItem from "./BaseTabItem/BaseTabItem.vue";
+import BaseTabItem from "./BaseTabItem/BaseTabItem.vue";
 
-export default { BaseTabs, BaseTabsItem };
+export default { BaseTabs, BaseTabItem };

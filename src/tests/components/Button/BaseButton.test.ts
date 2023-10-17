@@ -20,14 +20,14 @@ describe('Button: Base Button', () => {
   test('Renders div nodes', () => {
     const { container } = render(BaseButton, { slots: { default: DOMElement } });
     const component = container.firstChild;
-    const childNode = component.querySelector('[data-test]');
+    const childNode = (component as HTMLElement).querySelector('[data-test]');
     expect(childNode).not.toBeNull();
     expect(childNode).toHaveTextContent(elementTextContent);
   })
   test('Emits click event', async () => {
     const { container, emitted } = render(BaseButton, { slots: { default: phrase } }) as RenderResult;
     const button = container.firstChild;
-    await fireEvent.click(button);
+    await fireEvent.click(button as HTMLElement);
     expect(Object.keys(emitted())).toContainEqual('click');
   })
   test('Changes color by prop', async () => {

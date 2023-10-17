@@ -8,6 +8,7 @@
     const props = withDefaults(defineProps<BaseTabsProps>(), {
         color: 'primary',
         width: '400px',
+        height: 'auto',
     });
     const retrievedVNodes = computed(() => {
         return useSlots().default({ toggleItem });
@@ -23,6 +24,7 @@
     const style = computed(() => ({
         '--accent-color': getColor(props.color).join(', '),
         '--force-width': props.width,
+        '--force-height': props.height
     }));
     function toggleItem(id: string | number) {
         const target = (items.value.find(item => item?.props.id === id));

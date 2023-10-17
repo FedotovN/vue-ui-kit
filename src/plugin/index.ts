@@ -1,9 +1,19 @@
 import { App } from "vue";
-import components from "@/components";
+import UIModules from "../components";
+import directives from "../directives";
 export default {
     install(app: App) {
-        for (let name in components) {
-            app.component(name, components[name]);
+        for (let title in UIModules) {
+            const components = UIModules[title]
+            for (let name in components) {
+                app.component(name, components[name]);
+                console.log(name);
+            }
+        }
+        for (let name in directives) {
+            app.directive(name, directives[name]);
+
         }
     }
 }
+export * from "../composables";

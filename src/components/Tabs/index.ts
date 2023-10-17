@@ -1,3 +1,3 @@
 import BaseTabs from "./BaseTabs";
 
-export default { BaseTabs };
+export default { ...BaseTabs };

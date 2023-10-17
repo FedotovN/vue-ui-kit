@@ -5,6 +5,7 @@
     --width: 225px;
     position: relative;
     width: var(--width);
+    max-width: var(--width);
     &.opened {
         .base-dropdown-field {
             background-color: rgba(var(--accent-color), .05);
@@ -18,6 +19,11 @@
         }    
     }
     .base-dropdown-field {
+        box-sizing: border-box;
+        width: var(--width);
+        max-width: var(--width);
+        overflow: hidden;
+        height: 30px;
         display: flex;
         justify-content: space-between;
         align-items: center;

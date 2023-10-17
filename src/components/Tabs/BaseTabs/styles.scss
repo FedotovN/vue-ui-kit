@@ -1,6 +1,7 @@
 .base-tabs-wrapper {
     --accent-color: none;
     --force-width: none;
+    --force-height: none;
     overflow: hidden;
     position: relative;
     .base-tabs-header {
@@ -62,6 +63,7 @@
         border-top-left-radius: 0;
         border-top-right-radius: 0;
         width: var(--force-width);
+        height: var(--force-height);
         min-height: 100px;
         max-height: 500px;
         padding: 5px 12px;

@@ -1,4 +1,9 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+</script>
 <template>
-    app
 </template>
+<style lang="scss">
+.main {
+    padding: 5px;
+}
+</style>

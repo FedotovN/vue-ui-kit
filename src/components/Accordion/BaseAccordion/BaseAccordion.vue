@@ -19,7 +19,7 @@
     if (!props.multiple) {
       items.value.forEach(item => item.id !== id ? item.opened = false : null);
     }
-    const value = items.value.find(item => item.id === id).opened;
+    const value = items.value.find(item => item.id === id)?.opened;
     items.value.find(item => item.id === id).opened = !value;
   }
   const style = computed(() => ({

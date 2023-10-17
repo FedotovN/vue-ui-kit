@@ -2,8 +2,8 @@ import { queryByTestId } from "@testing-library/vue";
 import "@testing-library/jest-dom";
 import BaseCheckbox from "./BaseCheckbox.vue";
 import BaseCheckboxProps from "@/types/props/Checkbox/BaseCheckboxProps";
-import testColor from "../../../tests/utils/testColor";
-import create from "../../../tests/utils/create";
+import testColor from "../../utils/testColor";
+import create from "../../utils/create";
 
 describe('Checkbox: Base Checkbox', () => {
     it('Renders proper state', async () => {

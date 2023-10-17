@@ -1,3 +1,3 @@
 import BaseTable from "./BaseTable";
 
-export default { BaseTable };
+export default { ...BaseTable };
