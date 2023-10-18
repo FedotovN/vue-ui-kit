@@ -10,5 +10,10 @@ export default {
         "^.+\\.js$": "babel-jest",
         "^.+\\.vue$": "./vue3JestHack.cjs",
         "^.+\\.(ts|tsx)$": ["ts-jest", { tsconfig: `./tsconfig.node.json` }],
-    }
+    },
+    "globals": {
+        "vue-jest": {
+          "hideStyleWarn": true
+        }
+      }
 } as import("ts-jest").JestConfigWithTsJest

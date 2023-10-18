@@ -20,6 +20,7 @@
       items.value.forEach(item => item.id !== id ? item.opened = false : null);
     }
     const value = items.value.find(item => item.id === id)?.opened;
+    console.log(items.value, id);
     items.value.find(item => item.id === id).opened = !value;
   }
   const style = computed(() => ({
