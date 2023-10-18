@@ -8,7 +8,7 @@
   });
   const accordionState: AccordionItem[] = inject('accordion-items')
   const isOpened = computed(() => {
-    return accordionState.find(item => item.id === props.id)?.opened;
+    return accordionState?.find(item => item.id === props.id)?.opened;
   })
   const { getColor } = useColor();
   const style = computed(() => ({

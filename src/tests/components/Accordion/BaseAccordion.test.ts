@@ -2,8 +2,10 @@ import BaseAccordion from "../../../components/Accordion/BaseAccordion/BaseAccor
 import AccordionItem from "../../../components/Accordion/BaseAccordion/AccordionItem/AccordionItem.vue";
 import create from "../../../tests/utils/create";
 import "@testing-library/jest-dom";
-import { fireEvent, getAllByTestId, getAllByText, screen } from "@testing-library/vue";
+import { fireEvent, getAllByTestId, getAllByText } from "@testing-library/vue";
 import { h } from "vue";
+import testColor from "../../../tests/utils/testColor";
+import testWidth from "../../../tests/utils/testWidth";
 function renderWithChildNodes(props?) {
     const getChildProps = id => ({ opened: false, id, title: 'Accordion Item' }) ;
     const getItem = (func, id) => {
@@ -17,8 +19,8 @@ function renderWithChildNodes(props?) {
     return { mounted, getChildProps, slots, rerender }
 }
 describe('Dynamic styles', () => {
-    it.todo('Changes item color');
-    it.todo('Changes width');
+    it('Changes item color', () => testColor(AccordionItem));
+    it('Changes width', () => testWidth(BaseAccordion));
 });
 describe("Default behaviour", () => {
     it('Renders proper labels', () => {
@@ -36,7 +38,7 @@ describe("Default behaviour", () => {
 })
 describe("Closing and opening", () => {
     it('Opening and autoclose items', async () => {
-        const { mounted, rerender } = renderWithChildNodes({ multiple: false });
+        const { mounted } = renderWithChildNodes({ multiple: false });
         const items = getAllByTestId(mounted, 'base-accordion-item');
         for (let i = 0; i < items.length; i++) {
             await fireEvent.click(items[i]);
@@ -48,7 +50,7 @@ describe("Closing and opening", () => {
         }
     });
     it('Closing and opening items', async () => {
-        const { mounted, rerender } = renderWithChildNodes();
+        const { mounted } = renderWithChildNodes();
         const items = getAllByTestId(mounted, 'base-accordion-item');
         for (let i = 0; i < items.length; i++) {
             await fireEvent.click(items[i]);

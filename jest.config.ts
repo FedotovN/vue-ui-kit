@@ -8,7 +8,7 @@ export default {
     transform: {
         "^.+\\.ts$": "babel-jest",
         "^.+\\.js$": "babel-jest",
-        "^.+\\.vue$": "./vue3JestHack.cjs",
+        "^.+\\.vue$": "./vue-jest-prerun.cjs",
         "^.+\\.(ts|tsx)$": ["ts-jest", { tsconfig: `./tsconfig.node.json` }],
     },
     "globals": {
