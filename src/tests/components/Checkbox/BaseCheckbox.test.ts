@@ -1,7 +1,6 @@
 import { queryByTestId } from "@testing-library/vue";
 import "@testing-library/jest-dom";
-import BaseCheckbox from "./BaseCheckbox.vue";
-import BaseCheckboxProps from "@/types/props/Checkbox/BaseCheckboxProps";
+import BaseCheckbox from "../../../components/Checkbox/BaseCheckbox/BaseCheckbox.vue";
 import testColor from "../../utils/testColor";
 import create from "../../utils/create";
 
@@ -12,14 +11,7 @@ describe('Checkbox: Base Checkbox', () => {
         expect(queryByTestId(mounted, "active-svg")).toBeFalsy();
         props.modelValue = true;
         await rerender(props);
-        expect(queryByTestId(mounted, "active-svg")).toBeTruthy();
+        expect(queryByTestId(mounted, "active-svg")).toBeTruthy(); 
     });
-    it('Changes color', async () => {
-        let props: BaseCheckboxProps = { color: 'primary' };
-        const { mounted, rerender } = create(BaseCheckbox, { props });
-        testColor(mounted, props.color);
-        props.color = 'alert'
-        await rerender(props);
-        testColor(mounted, props.color);
-    });
+    it('Changes color', () => testColor(BaseCheckbox));
 });

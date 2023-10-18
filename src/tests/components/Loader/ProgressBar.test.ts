@@ -1,6 +1,6 @@
 import { render, screen, waitFor } from "@testing-library/vue"
 import { colors } from "../../../types/colors";
-import ProgressBar from "./ProgressBar.vue"
+import ProgressBar from "../../../components/Loader/ProgressBar/ProgressBar.vue"
 import "@testing-library/jest-dom";
 import ProgressBarProps from "@/types/props/Loader/ProgressBarProps";
 let loader;

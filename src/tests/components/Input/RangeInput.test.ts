@@ -1,5 +1,5 @@
 import RangeInputProps from "@/types/props/Input/RangeInputProps";
-import RangeInputVue from "./RangeInput.vue";
+import RangeInputVue from "../../../components/Input/RangeInput/RangeInput.vue";
 import { render } from "@testing-library/vue";
 import { colors, IColors } from "../../../types/colors";
 import "@testing-library/jest-dom";

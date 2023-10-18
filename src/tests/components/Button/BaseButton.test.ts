@@ -1,7 +1,7 @@
 import { fireEvent, render, screen, RenderResult, waitFor } from '@testing-library/vue';
 import { colors } from '../../../types/colors';
 import "@testing-library/jest-dom";
-import BaseButton from './BaseButton.vue';
+import BaseButton from '../../../components/Button/BaseButton/BaseButton.vue';
 import BaseButtonProps from '@/types/props/Button/BaseButtonProps';
 
 describe('Button: Base Button', () => {

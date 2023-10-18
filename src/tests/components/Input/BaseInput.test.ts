@@ -1,7 +1,7 @@
 import BaseInputProps from "@/types/props/Input/BaseInputProps";
 import { getByTestId, render, screen, waitFor } from "@testing-library/vue";
 import "@testing-library/jest-dom";
-import BaseInput from "./BaseInput.vue";
+import BaseInput from "../../../components/Input/BaseInput/BaseInput.vue";
 import { IColors, colors } from "../../../types/colors";
 import { InputHTMLAttributes } from "vue";
 function renderInput(props?: BaseInputProps, attributes?: InputHTMLAttributes) {

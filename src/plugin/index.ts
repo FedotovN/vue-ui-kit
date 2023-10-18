@@ -7,12 +7,10 @@ export default {
             const components = UIModules[title]
             for (let name in components) {
                 app.component(name, components[name]);
-                console.log(name);
             }
         }
         for (let name in directives) {
             app.directive(name, directives[name]);
-
         }
     }
 }

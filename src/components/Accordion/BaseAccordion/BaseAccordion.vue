@@ -2,7 +2,7 @@
   import {ref, Ref, useSlots, provide, computed} from "vue";
   import useColor from "../../../composables/useColor";
   import { getAccordionItemsFromSlot } from "./script";
-  import BaseAccordionProps from "../../../types/props/Accordion/BaseAccordion/BaseAccordionProps";
+  import BaseAccordionProps from "@/types/props/Accordion/BaseAccordion/BaseAccordionProps";
   import AccordionItem from "../../../types/props/Accordion/AccordionItem";
   const { getColor } = useColor();
   const props = withDefaults(defineProps<BaseAccordionProps>(), {

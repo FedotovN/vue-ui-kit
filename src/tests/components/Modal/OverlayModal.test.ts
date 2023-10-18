@@ -1,6 +1,6 @@
 import OverlayModal from "@/types/props/Modal/OverlayModal";
 import OverlayModalProps from "@/types/props/Modal/OverlayModalProps";
-import OverlayModalVue from "./OverlayModal.vue";
+import OverlayModalVue from "../../../components/Modal/OverlayModal/OverlayModal.vue";
 import BaseButton from "../../../components/Button/BaseButton/BaseButton.vue";
 import { fireEvent, render } from "@testing-library/vue";
 import '@testing-library/jest-dom';

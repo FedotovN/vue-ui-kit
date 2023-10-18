@@ -1,5 +1,5 @@
 import { colors } from "../../../types/colors";
-import CircularProgressLoader from "./CircularProgressLoader.vue";
+import CircularProgressLoader from "../../../components/Loader/CircularProgressLoader/CircularProgressLoader.vue";
 import CircularProgressLoaderProps from "@/types/props/Loader/CircularProgressLoaderProps"
 import "@testing-library/jest-dom";
 import { render, waitFor } from "@testing-library/vue";
