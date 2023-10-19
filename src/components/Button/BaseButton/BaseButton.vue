@@ -24,7 +24,7 @@
         ${fill ? 'w-full': ''}
         ${large ? 'large' : ''}
         ${outlined ? `outlined` : 'border-transparent'}
-        ${rounded ? `round` : ''}
+        ${rounded ? `rounded` : ''}
         ${raised ? 'raised' : ''}
         ${flat ? `flat bg-transparent` : ''}
         ${!flat && !outlined ? 'default' : ''}

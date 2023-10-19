@@ -7,7 +7,6 @@ export default async function testWidth(component: any, propName = 'width', styl
     const props = {};
     for (let width of widths) {
         props[propName] = width;
-        console.log(props);
         await rerender(props);
         expect(el).toHaveStyle({
             [styleName]: width,
