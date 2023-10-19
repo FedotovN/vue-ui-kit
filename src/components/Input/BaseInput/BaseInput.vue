@@ -10,7 +10,7 @@
         successColor: 'success',
         width: '100%'
     })
-    const localValue = ref(props.value || '');
+    const localValue = ref(props.value || props.modelValue || '');
     const emit = defineEmits<{
         (event: 'update:modelValue', value: String): void,
     }>();
@@ -41,5 +41,4 @@
         </div> 
     </div>
 </template>
-
 <style scoped lang="scss" src="./styles.scss" />

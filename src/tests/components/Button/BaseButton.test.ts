@@ -48,7 +48,7 @@ describe('Default behaviour', () => {
   it("Accepts outer attributes", () => {
     const attrs = {
       role: "Show text",
-      title: "Button"   
+      title: "Title"   
     }
     const { mounted } = create(BaseButton, { attrs });
     Object.keys(attrs).forEach(key => {

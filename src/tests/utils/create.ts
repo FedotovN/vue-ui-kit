@@ -1,5 +1,8 @@
 import { RenderOptions, render } from "@testing-library/vue";
-export default function create(component, opt?: RenderOptions){
+interface Options<T> extends RenderOptions {
+    props?: T,
+}
+export default function create<T>(component, opt?: Options<T>){
     const { container, rerender, emitted } = render(component, opt);
     const mounted = container.firstChild as HTMLElement;
     return { mounted, container, rerender, emitted };

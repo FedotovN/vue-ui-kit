@@ -1,7 +1,12 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-
-const r = ref('');
+const r = ref('1');
+setTimeout(() => {
+    r.value = '2';
+}, 0);
+setTimeout(() => {
+    r.value = '3';
+}, 0)
 </script>
 <template>
     <div class="main">
