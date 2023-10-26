@@ -1,6 +1,6 @@
 <script setup lang="ts">
-    import useModal from "../../../composables/useToast";
-    import OverlayToastProps from "../../../types/props/Toast/OverlayToastProps";
+    import useToast from "../../../composables/useToast";
+    import OverlayToastProps from "@/types/props/Toast/OverlayToastProps";
     import ToastNotification from "./ToastNotification/ToastNotification.vue";
     withDefaults(defineProps<OverlayToastProps>(), {
         horizontalSide: 'right',
@@ -8,7 +8,7 @@
         minWidth: '100px',
         maxWidth: '100%',
     });
-    const { toasts, remove } = useModal();
+    const { toasts, remove } = useToast();
 </script>
 <template>
     <Teleport to="body">

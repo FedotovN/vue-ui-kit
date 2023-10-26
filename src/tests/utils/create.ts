@@ -5,5 +5,6 @@ interface Options<T> extends RenderOptions {
 export default function create<T>(component, opt?: Options<T>){
     const { container, rerender, emitted } = render(component, opt);
     const mounted = container.firstChild as HTMLElement;
-    return { mounted, container, rerender, emitted };
+    const body = container.parentElement
+    return { mounted, container, body, rerender, emitted };
 }

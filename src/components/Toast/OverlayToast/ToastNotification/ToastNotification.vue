@@ -1,5 +1,5 @@
 <script setup lang="ts">
-    import ToastNotificationProps from "../../../../types/props/Toast/ToastNotificationProps";
+    import ToastNotificationProps from "@/types/props/Toast/ToastNotificationProps";
     import useColor from "../../../../composables/useColor";
     import { computed } from "vue";
     import { ToastData } from "@/types/toast";
