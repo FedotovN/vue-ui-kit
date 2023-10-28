@@ -1,6 +1,6 @@
 {
   "name": "kneekeetah-vue-ui-kit",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "files": ["dist"],
   "main": "./dist/ui-kit.es.ts",
   "types": "./dist/plugin/index.d.ts",
