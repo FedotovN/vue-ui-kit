@@ -29,10 +29,8 @@ Using Nuxt:
 export default defineNuxtConfig({
   css: ['kneekeetah-vue-ui-kit/dist/style.css],
 })
-
 ```
 - Import components in your *.vue* files:
-
 ```
 import { BaseDropdown, BaseInput, BaseButton } from "kneekeetah-vue-ui-kit";
 ```
