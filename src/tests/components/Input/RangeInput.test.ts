@@ -29,7 +29,7 @@ describe('Input: Range Input', () => {
             const { input } = renderInput({ 
                 color: (key as keyof IColors)
             });        
-            expect(input.style.getPropertyValue('--accent-color')).toBe(colors[key].join(', '));
+            expect((input as HTMLElement).style.getPropertyValue('--accent-color')).toBe(colors[key].join(', '));
         });
     });
     test('Corner case: min or max value is too high', () => {

@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
     },
     "rootDirs": ["src"],
     "outDir": "dist",
@@ -12,13 +12,13 @@
       "scripthost"
     ],
     "target": "ES2022",
-    "module": "ESNext",
+    "module": "ES6",
     "composite": true,
-    "moduleResolution": "node",
+    "moduleResolution": "Bundler",
     "declarationMap": true,
     "incremental": true,
     "esModuleInterop": true,
-    "types": ["jest", "node", "@types/jest", "jest-dom"],
+    "types": ["jest", "node", "@types/jest"],
     "sourceMap": true
   },
   "ts-node": {
@@ -36,7 +36,7 @@
     "src/**/*.tsx",
     "src/**/*.vue",
     "tests/**/*.ts",
-    "tests/**/*.tsx"
+    "vite.config.js"
   ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

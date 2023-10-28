@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@": ["../node_modules/"]
     },
     "composite": true,
     "skipLibCheck": true,
@@ -12,5 +13,5 @@
       "dom"
     ]
   },
-  "include": ["vite.config.ts", "./*.vue"]
+  "include": ["vite.config.js", "./*.vue"]
 }
