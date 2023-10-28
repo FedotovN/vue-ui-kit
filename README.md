@@ -24,6 +24,13 @@ Unit testing using Jest and Vue Testing Library.
 ```
 import "kneekeetah-vue-ui-kit/dist/style.css";
 ```
+Using Nuxt:
+```
+export default defineNuxtConfig({
+  css: ['kneekeetah-vue-ui-kit/dist/style.css],
+})
+
+```
 - Import components in your *.vue* files:
 
 ```
