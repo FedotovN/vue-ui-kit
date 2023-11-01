@@ -31,9 +31,7 @@
         ${bold ? 'bold' : ''}
         ${caps ? 'caps': ''}
         `">
-        <p>
-            <slot />
-        </p>
+        <slot />
     </button>
 </template>
 <style scoped lang="scss" src="./style.scss" />

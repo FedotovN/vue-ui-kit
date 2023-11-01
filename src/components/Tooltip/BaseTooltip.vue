@@ -15,8 +15,8 @@
     let arrow: HTMLDivElement;
     onMounted(() => {
         const parent = root.value.parentElement;
-        inst = tippy(parent, {
-            content: root.value,
+        inst = tippy(parent as Element, {
+            content: root.value as unknown as string,
             allowHTML: true,
             ...useAttrs(),
         });
