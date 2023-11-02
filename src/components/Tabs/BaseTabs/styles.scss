@@ -70,6 +70,10 @@
         background-color: white;
         overflow: hidden;
         overflow-y: scroll;
+        &.noWrapper {
+            padding: 0;
+            border: none;
+        }
         &::-webkit-scrollbar {
             width: 16px;
             background-color: transparent;

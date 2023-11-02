@@ -47,7 +47,7 @@
                 <small>{{ item.props.title || '*' }}</small>
             </div>
         </div>
-        <div class="base-tabs-content" v-if="currItem">
+        <div class="base-tabs-content" :class="{ noWrapper }" v-if="currItem">
             <Transition enter-from-class="start" enter-active-class="active" enter-to-class="enter-end" leave-to-class="leave-to" leave-active-class="active" mode='out-in'>
                 <div :key="currItem.props.id">
                     <component :is="currItem" />
