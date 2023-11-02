@@ -18,6 +18,12 @@
     text-align: center;
     user-select: none;
     font-size: 14px;
+    &.disabled {
+        filter: grayscale(1);
+        cursor: default;
+        pointer-events: none;
+        user-select: none;
+    }
     &.default {
         color: white;
         background-color: rgba(var(--accent-color), 1);

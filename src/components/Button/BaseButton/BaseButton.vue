@@ -30,6 +30,7 @@
         ${!flat && !outlined ? 'default' : ''}
         ${bold ? 'bold' : ''}
         ${caps ? 'caps': ''}
+        ${$attrs.disabled ? 'disabled' : ''}
         `">
         <slot />
     </button>
