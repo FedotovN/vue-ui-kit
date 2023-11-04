@@ -6,6 +6,7 @@
     position: relative;
     width: var(--width);
     max-width: var(--width);
+    background-color: white;
     &.opened {
         .base-dropdown-field {
             background-color: rgba(var(--accent-color), .05);
