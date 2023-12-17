@@ -22,7 +22,7 @@ function checkTextContentEquality(container, selector: string, text: string) {
 }
 async function addAndOpen(info: OverlayModal) {
     add(info);
-    open(info.id);
+    open({ id: info.id });
     return nextTick();
 }
 const getWrapper = body => body.querySelector('.overlay-modal-wrapper');
