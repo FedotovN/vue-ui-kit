@@ -1,4 +1,4 @@
-import { Component, ComponentCustomProps, ComponentObjectPropsOptions } from "vue";
+import { Component } from "vue";
 export default interface OverlayModal {
     header?: string,
     content?: string,
@@ -6,5 +6,6 @@ export default interface OverlayModal {
     component?: Component,
     props?: object,
     emits?: { [key in string]: (object) => {}}
+    onClose?: () => void,
     id: string,
 }
