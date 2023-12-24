@@ -5,7 +5,7 @@ export default interface OverlayModal {
     width?: string,
     component?: Component,
     props?: object,
-    emits?: { [key in string]: (object) => {}}
+    emits?: { [key in string]: (object) => void}
     onClose?: () => void,
     id: string,
 }
