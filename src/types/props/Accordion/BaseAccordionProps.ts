@@ -1,3 +1,3 @@
 export default interface BaseAccordionProps {
-    multiple?: boolean,
+  multiple?: boolean;
 }

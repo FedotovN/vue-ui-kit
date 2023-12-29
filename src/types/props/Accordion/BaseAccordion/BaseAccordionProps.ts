@@ -1,7 +1,7 @@
-import {IColors} from "@/types/colors";
+import { IColors } from "@/types/colors";
 
 export default interface BaseAccordionProps {
-    multiple?: boolean,
-    color?: keyof IColors,
-    width?: string,
+  multiple?: boolean;
+  color?: keyof IColors;
+  width?: string;
 }

@@ -1,109 +1,113 @@
 .base-tabs-wrapper {
-    --accent-color: none;
-    --force-width: none;
-    --force-height: none;
-    overflow: hidden;
+  --accent-color: none;
+  --force-width: none;
+  --force-height: none;
+  overflow: hidden;
+  position: relative;
+  .base-tabs-header {
     position: relative;
-    .base-tabs-header {
+    display: flex;
+    overflow: hidden;
+    max-width: var(--force-width);
+    gap: 5px;
+    padding-bottom: 5px;
+    overflow: hidden;
+    .base-tabs-tab {
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      user-select: none;
+      padding: 5px 12px;
+      border: 1px solid rgba(var(--accent-color), 0.2);
+      border-radius: 2px;
+      overflow: hidden;
+      transition:
+        0.15s border-color,
+        background-color;
+      small {
+        color: #545454;
+        text-align: center;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      &:last-child {
+        border-bottom-right-radius: 0;
+      }
+      &:first-child {
+        border-bottom-left-radius: 0;
+      }
+      &.active {
         position: relative;
-        display: flex;
-        overflow: hidden;
-        max-width: var(--force-width);
-        gap: 5px;
-        padding-bottom: 5px;
-        overflow: hidden;
-        .base-tabs-tab {
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            user-select: none;
-            padding: 5px 12px;
-            border: 1px solid rgba(var(--accent-color), .2);
-            border-radius: 2px;
-            overflow: hidden;
-            transition: .15s border-color, background-color,;
-            small {
-                color: #545454;
-                text-align: center;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                white-space: nowrap;
-            }
-            &:last-child {
-                border-bottom-right-radius: 0;
-            }
-            &:first-child {
-                border-bottom-left-radius: 0;
-            }
-            &.active {
-                position: relative;
-                background-color: rgba(var(--accent-color), .1);
-                small { color: rgb(var(--accent-color)); }
-                border-color: rgba(var(--accent-color), .8);
-            }
-            &.disabled {
-                opacity: .8;
-                cursor: default;
-            }
-            &:hover {
-                &:not(.disabled) {
-                    border-color: rgb(var(--accent-color));
-                    &:not(.active) {
-                        background-color: rgba(var(--accent-color), .05);
-                    }
-                }
-            }
+        background-color: rgba(var(--accent-color), 0.1);
+        small {
+          color: rgb(var(--accent-color));
         }
+        border-color: rgba(var(--accent-color), 0.8);
+      }
+      &.disabled {
+        opacity: 0.8;
+        cursor: default;
+      }
+      &:hover {
+        &:not(.disabled) {
+          border-color: rgb(var(--accent-color));
+          &:not(.active) {
+            background-color: rgba(var(--accent-color), 0.05);
+          }
+        }
+      }
     }
-    .base-tabs-content {
-        position: relative;
-        border: 1px solid rgba(var(--accent-color), .5);
-        border-radius: 4px;
-        border-top-left-radius: 0;
-        border-top-right-radius: 0;
-        width: var(--force-width);
-        height: var(--force-height);
-        min-height: 100px;
-        max-height: 500px;
-        padding: 5px 12px;
-        background-color: white;
-        overflow: hidden;
-        overflow-y: scroll;
-        &.noWrapper {
-            padding: 0;
-            border: none;
-        }
-        &::-webkit-scrollbar {
-            width: 16px;
-            background-color: transparent;
-        }
-        &::-webkit-scrollbar-thumb {
-            background-color: #dadada;
-            border-radius: 9999px;
-            background-clip: padding-box;
-            border: 7px solid transparent;
-            cursor: pointer;
-            &:hover {
-                background-color: rgba(var(--accent-color), .5);
-                border-width: 6px;
-            }
-        }
+  }
+  .base-tabs-content {
+    position: relative;
+    border: 1px solid rgba(var(--accent-color), 0.5);
+    border-radius: 4px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    width: var(--force-width);
+    height: var(--force-height);
+    min-height: 100px;
+    max-height: 500px;
+    padding: 5px 12px;
+    background-color: white;
+    overflow: hidden;
+    overflow-y: scroll;
+    &.noWrapper {
+      padding: 0;
+      border: none;
     }
+    &::-webkit-scrollbar {
+      width: 16px;
+      background-color: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: #dadada;
+      border-radius: 9999px;
+      background-clip: padding-box;
+      border: 7px solid transparent;
+      cursor: pointer;
+      &:hover {
+        background-color: rgba(var(--accent-color), 0.5);
+        border-width: 6px;
+      }
+    }
+  }
 }
 .start {
-    opacity: 0;
-    transform: scale(.998);
+  opacity: 0;
+  transform: scale(0.998);
 }
 .active {
-    transition: .15s all;
+  transition: 0.15s all;
 }
 .enter-end {
-    transform: translateX(0);
-    opacity: 1;
-    scale: 1;
+  transform: translateX(0);
+  opacity: 1;
+  scale: 1;
 }
 .leave-to {
-    transform: scale(1);
-    opacity: 0;
+  transform: scale(1);
+  opacity: 0;
 }

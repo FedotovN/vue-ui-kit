@@ -1,48 +1,48 @@
 .base-checkbox-wrapper {
-    --accent-color: none;
-    --size: none;
-    height: var(--size);
-    width: var(--size);
-    border: 1px solid #bebebe;
-    border-radius: 2px;
-    cursor: pointer;
-    transition: .15s border-color;
+  --accent-color: none;
+  --size: none;
+  height: var(--size);
+  width: var(--size);
+  border: 1px solid #bebebe;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: 0.15s border-color;
+  svg {
+    transition: 0.15s fill;
+  }
+  &.rounded {
+    border-radius: 9999px;
+    & .base-checkbox-svg-container {
+      border-radius: 9999px;
+      svg {
+        width: 80%;
+      }
+    }
+  }
+  &.outlined {
+    &.checked {
+      border-color: rgb(var(--accent-color));
+      .base-checkbox-svg-container {
+        background-color: transparent;
+      }
+      svg {
+        fill: rgb(var(--accent-color));
+      }
+    }
+  }
+  .base-checkbox-svg-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.15s background-color;
     svg {
-        transition: .15s fill;
+      width: 90%;
     }
-    &.rounded {
-        border-radius: 9999px;
-        & .base-checkbox-svg-container {
-            border-radius: 9999px;
-            svg {
-                width: 80%;
-            }
-        }
+    &.checked {
+      background-color: rgba(var(--accent-color), 1);
+      fill: white;
     }
-    &.outlined {
-        &.checked {
-            border-color: rgb(var(--accent-color));
-            .base-checkbox-svg-container {
-                background-color: transparent;
-            }
-            svg {
-                fill: rgb(var(--accent-color));
-            }
-        }
-    }
-    .base-checkbox-svg-container {
-        height: 100%;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        transition: .15s background-color;
-        svg {
-            width: 90%;
-        }
-        &.checked {
-            background-color: rgba(var(--accent-color), 1);
-            fill: white;
-        }
-    }
+  }
 }

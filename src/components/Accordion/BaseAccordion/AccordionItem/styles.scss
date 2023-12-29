@@ -5,9 +5,9 @@
     transition: grid-template-rows 500ms;
     grid-template-rows: 0fr;
     overflow: hidden;
-    &>div {
+    & > div {
       overflow: hidden;
-      transition: .15s padding;
+      transition: 0.15s padding;
     }
   }
   &.opened {
@@ -18,7 +18,7 @@
   .accordion-item-header {
     padding: 5px 10px;
     background-color: white;
-    border: 1px solid rgba(var(--accent-color), .5);
+    border: 1px solid rgba(var(--accent-color), 0.5);
     border-radius: 2px;
     display: flex;
     justify-content: space-between;
@@ -28,14 +28,15 @@
     cursor: pointer;
     color: #818181;
     &:hover {
-      background-color: rgba(var(--accent-color), .05);
+      background-color: rgba(var(--accent-color), 0.05);
     }
     &.opened {
       p {
         color: rgba(var(--accent-color));
       }
     }
-    &.closed:hover, &.opened:hover {
+    &.closed:hover,
+    &.opened:hover {
       svg {
         fill: rgba(var(--accent-color));
       }
@@ -47,8 +48,8 @@
     svg {
       height: 16px;
       width: 16px;
-      fill: rgba(var(--accent-color), .5);
-      transition: .15s all;
+      fill: rgba(var(--accent-color), 0.5);
+      transition: 0.15s all;
 
       &.opened {
         transform: rotateZ(45deg);
@@ -60,7 +61,7 @@
       width: 100%;
       text-overflow: ellipsis;
       white-space: nowrap;
-      transition: .15s all;
+      transition: 0.15s all;
     }
   }
 }

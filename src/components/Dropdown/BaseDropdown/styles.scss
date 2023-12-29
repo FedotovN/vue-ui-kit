@@ -1,137 +1,141 @@
 .base-dropdown-wrapper {
-    --accent-color: none;
-    --vertical-offset: 0px;
-    --horizontal-offset: 0px;
-    --width: 225px;
-    position: relative;
+  --accent-color: none;
+  --vertical-offset: 0px;
+  --horizontal-offset: 0px;
+  --width: 225px;
+  position: relative;
+  width: var(--width);
+  max-width: var(--width);
+  background-color: white;
+  &.opened {
+    .base-dropdown-field {
+      background-color: rgba(var(--accent-color), 0.05);
+      border-color: rgba(var(--accent-color), 0.5);
+      small {
+        color: rgb(var(--accent-color));
+      }
+      svg {
+        fill: rgb(var(--accent-color));
+      }
+    }
+  }
+  .base-dropdown-field {
+    box-sizing: border-box;
     width: var(--width);
     max-width: var(--width);
+    overflow: hidden;
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 10px;
+    border: 1px solid #dadada;
+    border-radius: 3px;
+    cursor: pointer;
+    &:hover {
+      small {
+        color: rgb(var(--accent-color));
+      }
+      svg {
+        fill: rgb(var(--accent-color));
+      }
+    }
+    small {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      color: #464646;
+      user-select: none;
+      transition: 0.15s color;
+    }
+    svg {
+      min-height: 10px;
+      height: 10px;
+      min-width: 12px;
+      width: 12px;
+      margin-left: 2px;
+      fill: #464646;
+      transition:
+        0.15s transform,
+        fill;
+      &.opened {
+        transform: rotateZ(180deg);
+      }
+    }
+  }
+  .base-dropdown-body {
+    position: absolute;
+    z-index: 1;
     background-color: white;
-    &.opened {
-        .base-dropdown-field {
-            background-color: rgba(var(--accent-color), .05);
-            border-color: rgba(var(--accent-color), .5);
-            small {
-                color: rgb(var(--accent-color));
-            }
-            svg {
-                fill:  rgb(var(--accent-color));
-            }
-        }    
+    width: 100%;
+    transform: translateX(-50%);
+    border: 1px solid #dadada;
+    border-radius: 2px;
+    box-shadow: 0 0 15px 1px rgba(80, 80, 80, 0.1);
+    &.top {
+      bottom: calc((100% + 5px) - var(--vertical-offset));
+      left: 50%;
     }
-    .base-dropdown-field {
-        box-sizing: border-box;
-        width: var(--width);
-        max-width: var(--width);
+    &.bottom {
+      top: calc((100% + 5px) + var(--vertical-offset));
+      left: 50%;
+    }
+    &.left {
+      left: calc((-50% - 5px) - var(--horizontal-offset));
+      top: 0;
+    }
+    &.right {
+      right: calc((-150% - 5px) + var(--horizontal-offset));
+      top: 0;
+    }
+    .base-dropdown-item {
+      cursor: pointer;
+      user-select: none;
+      padding: 5px 10px;
+      border-bottom: 1px solid #dadada;
+      transition: 0.15s background-color;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      small {
+        text-overflow: ellipsis;
         overflow: hidden;
-        height: 30px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 5px 10px;
-        border: 1px solid #dadada;
-        border-radius: 3px;
-        cursor: pointer;
-        &:hover {
-            small {
-                color: rgb(var(--accent-color));
-            }
-            svg {
-                fill:  rgb(var(--accent-color));
-            }
-        }
-        small {
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            color: #464646;
-            user-select: none;
-            transition: .15s color;
-        }
-        svg {
-            min-height: 10px;
-            height: 10px;
-            min-width: 12px;
-            width: 12px;
-            margin-left: 2px;
-            fill: #464646;
-            transition: .15s transform, fill;
-            &.opened {
-                transform: rotateZ(180deg);
-            }
-        }
-    }
-    .base-dropdown-body {
-        position: absolute;
-        z-index: 1;
-        background-color: white;
         width: 100%;
-        transform: translateX(-50%);
-        border: 1px solid #dadada;
-        border-radius: 2px;
-        box-shadow: 0 0 15px 1px rgba(80, 80, 80, .1);
-        &.top {
-            bottom: calc((100% + 5px) - var(--vertical-offset));
-            left: 50%;
-        }
-        &.bottom {
-            top: calc((100% + 5px) + var(--vertical-offset));
-            left: 50%;
-        }
-        &.left {
-            left: calc((-50% - 5px) - var(--horizontal-offset));
-            top: 0;
-        }
-        &.right {
-            right: calc((-150% - 5px) + var(--horizontal-offset));
-            top: 0;
-        }
-        .base-dropdown-item {
-            cursor: pointer;
-            user-select: none;
-            padding: 5px 10px;
-            border-bottom: 1px solid #dadada;
-            transition: .15s background-color;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            small {
-                text-overflow: ellipsis;
-                overflow: hidden;
-                width: 100%;
-            }
-            &.disabled {
-                cursor: default;
-                pointer-events: none;
-                user-select: none;
-                filter: opacity(.7);
-            }
-            &:last-child {
-                border-bottom: none;
-            }
-            &:hover {
-                background-color: rgba(80, 80, 80, .05);
-            }
-            &:active {
-                background-color: rgba(var(--accent-color), .05);
-                color: rgb(var(--accent-color));
-                border-color: rgba(var(--accent-color), .25);
-            }
-        }
+      }
+      &.disabled {
+        cursor: default;
+        pointer-events: none;
+        user-select: none;
+        filter: opacity(0.7);
+      }
+      &:last-child {
+        border-bottom: none;
+      }
+      &:hover {
+        background-color: rgba(80, 80, 80, 0.05);
+      }
+      &:active {
+        background-color: rgba(var(--accent-color), 0.05);
+        color: rgb(var(--accent-color));
+        border-color: rgba(var(--accent-color), 0.25);
+      }
     }
+  }
 }
 .start {
-    opacity: 0;
-    transform: scale(.998);
+  opacity: 0;
+  transform: scale(0.998);
 }
 .active {
-    transition: .15s opacity, scale;
+  transition:
+    0.15s opacity,
+    scale;
 }
 .enter-end {
-    opacity: 1;
-    scale: 1;
+  opacity: 1;
+  scale: 1;
 }
 .leave-to {
-    transform: scale(1);
-    opacity: 0;
+  transform: scale(1);
+  opacity: 0;
 }

@@ -1,5 +1,5 @@
 import BaseAccordion from "./BaseAccordion";
 
-export default { 
-    ...BaseAccordion
- }
+export default {
+  ...BaseAccordion,
+};

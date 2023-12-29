@@ -1,6 +1,6 @@
 enum CheckboxState {
-    'ACTIVE',
-    'NEUTRAL',
-    'INACTIVE',
+  "ACTIVE",
+  "NEUTRAL",
+  "INACTIVE",
 }
 export default CheckboxState;

@@ -1,31 +1,34 @@
-import { defineConfig } from 'vite';
-import vue from '@vitejs/plugin-vue';
+import { defineConfig } from "vite";
+import vue from "@vitejs/plugin-vue";
 import dts from "vite-plugin-dts";
 import path from "path";
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue(), dts({
-    insertTypesEntry: true,
-  })],
+  plugins: [
+    vue(),
+    dts({
+      insertTypesEntry: true,
+    }),
+  ],
   build: {
-    exclude: ['vue'],
+    exclude: ["vue"],
     lib: {
       entry: "./src/plugin/index.ts",
       name: "kneekeetah-ui-kit",
-      fileName: format => `ui-kit.${format}.ts`
+      fileName: (format) => `ui-kit.${format}.ts`,
     },
     rollupOptions: {
-      external: ['vue'], 
+      external: ["vue"],
       output: {
         globals: {
-          vue: 'Vue',
+          vue: "Vue",
         },
-      }
+      },
     },
   },
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, 'src'),
+      "@": path.resolve(__dirname, "src"),
     },
   },
-})
+});

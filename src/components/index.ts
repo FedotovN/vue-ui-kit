@@ -11,9 +11,17 @@ import Tabs from "./Tabs";
 import Toast from "./Toast";
 import Toggle from "./Toggle";
 
-export default { 
-    Accordion, Badge, Button,
-    Checkbox, Dropdown, Input,
-    Loader, Modal, Table,
-    Tabs, Toast, Toggle,
-}
+export default {
+  Accordion,
+  Badge,
+  Button,
+  Checkbox,
+  Dropdown,
+  Input,
+  Loader,
+  Modal,
+  Table,
+  Tabs,
+  Toast,
+  Toggle,
+};

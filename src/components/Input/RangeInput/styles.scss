@@ -1,79 +1,78 @@
 .range-input-wrapper {
-    --accent-color: none;
-    --left-intend-progress: none;
-    --right-intend-progress: none;
-    --force-width: none;
-    display: flex;
-    width: var(--force-width);
-    gap: .75rem;
-    align-items: center;
-    .range-input-body {
-        position: relative;
-        width: 100%;
-        min-width: 16rem;
-        .range-input-path {
-            display: flex;
-            box-sizing: border-box;
-            width: 100%;
-            height: 6px;
-            border: 1px solid #bebebe;
-            border-radius: 9999px;
-            position: relative;
-            overflow: hidden;
-            background-color: rgba(var(--accent-color), .1);
-            .range-input-progress {
-                left: var(--left-intend-progress);
-                right: var(--right-intend-progress); 
-                pointer-events: none;
-                position: absolute;
-                top: 50%;
-                transform: translateY(-50%);
-                background-color: rgba(var(--accent-color), .8);
-                height: calc(100% + 2px);
-            }
-        }
-        .range-input {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 100%;
-            background: none;
-            pointer-events: none;
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            outline: none;
-            &::-webkit-slider-thumb {
-                pointer-events: auto;
-                appearance: none;
-                background-color: rgb(var(--accent-color));
-                cursor: pointer;
-                &:active {
-                    cursor: grabbing;
-                }
-                &:hover {
-                    box-shadow: 0 0 0 10px rgba(var(--accent-color), .3);
-                }
-                width: 16px;
-                height: 16px;
-                border-radius: 9999px;
-                transition: .15s all;
-            }
-            &::-moz-range-thumb {
-                pointer-events: auto;
-                appearance: none;
-                cursor: pointer;
-                &:hover {
-                    box-shadow: 0 0 0 10px rgba(var(--accent-color), .3);
-                }
-                &:active {
-                    cursor: grabbing;
-                }
-                width: 16px;
-                height: 16px;
-                border-radius: 9999px;
-                transition: .15s all;
-        
-            }
-        }
+  --accent-color: none;
+  --left-intend-progress: none;
+  --right-intend-progress: none;
+  --force-width: none;
+  display: flex;
+  width: var(--force-width);
+  gap: 0.75rem;
+  align-items: center;
+  .range-input-body {
+    position: relative;
+    width: 100%;
+    min-width: 16rem;
+    .range-input-path {
+      display: flex;
+      box-sizing: border-box;
+      width: 100%;
+      height: 6px;
+      border: 1px solid #bebebe;
+      border-radius: 9999px;
+      position: relative;
+      overflow: hidden;
+      background-color: rgba(var(--accent-color), 0.1);
+      .range-input-progress {
+        left: var(--left-intend-progress);
+        right: var(--right-intend-progress);
+        pointer-events: none;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(var(--accent-color), 0.8);
+        height: calc(100% + 2px);
+      }
     }
+    .range-input {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 100%;
+      background: none;
+      pointer-events: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      outline: none;
+      &::-webkit-slider-thumb {
+        pointer-events: auto;
+        appearance: none;
+        background-color: rgb(var(--accent-color));
+        cursor: pointer;
+        &:active {
+          cursor: grabbing;
+        }
+        &:hover {
+          box-shadow: 0 0 0 10px rgba(var(--accent-color), 0.3);
+        }
+        width: 16px;
+        height: 16px;
+        border-radius: 9999px;
+        transition: 0.15s all;
+      }
+      &::-moz-range-thumb {
+        pointer-events: auto;
+        appearance: none;
+        cursor: pointer;
+        &:hover {
+          box-shadow: 0 0 0 10px rgba(var(--accent-color), 0.3);
+        }
+        &:active {
+          cursor: grabbing;
+        }
+        width: 16px;
+        height: 16px;
+        border-radius: 9999px;
+        transition: 0.15s all;
+      }
+    }
+  }
 }

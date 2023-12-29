@@ -1,8 +1,8 @@
-import {IColors} from "@/types/colors";
+import { IColors } from "@/types/colors";
 
 export default interface BaseFileInputProps {
-    acceptMime?: string,
-    disabled?: boolean,
-    multiple?: boolean,
-    color?: keyof IColors
+  acceptMime?: string;
+  disabled?: boolean;
+  multiple?: boolean;
+  color?: keyof IColors;
 }

@@ -1,7 +1,7 @@
-import {IColors} from "@/types/colors";
+import { IColors } from "@/types/colors";
 
 export default interface AccordionItemProps {
-    color?: keyof IColors,
-    title?: string,
-    disabled?: boolean
+  color?: keyof IColors;
+  title?: string;
+  disabled?: boolean;
 }

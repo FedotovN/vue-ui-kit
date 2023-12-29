@@ -1,4 +1,4 @@
-import "../style.css"
+import "../style.css";
 export * from "../directives";
 export * from "../composables";
 import BaseAccordion from "@/components/Accordion/BaseAccordion/BaseAccordion.vue";
@@ -22,4 +22,25 @@ import OverlayToast from "@/components/Toast/OverlayToast/OverlayToast.vue";
 import BaseToggle from "@/components/Toggle/BaseToggle/BaseToggle.vue";
 import BaseTooltip from "@/components/Tooltip/BaseTooltip.vue";
 
-export { BaseAccordion, AccordionItem, BaseButton, FileBadge, BaseCheckbox, BaseDropdown, BaseInput, RangeInput, FileInput, BaseLoader, CircularProgressLoader, ProgressBar, OverlayModal, BaseTable, BaseTableColumn, BaseTabs, BaseTab, OverlayToast, BaseToggle, BaseTooltip}
+export {
+  BaseAccordion,
+  AccordionItem,
+  BaseButton,
+  FileBadge,
+  BaseCheckbox,
+  BaseDropdown,
+  BaseInput,
+  RangeInput,
+  FileInput,
+  BaseLoader,
+  CircularProgressLoader,
+  ProgressBar,
+  OverlayModal,
+  BaseTable,
+  BaseTableColumn,
+  BaseTabs,
+  BaseTab,
+  OverlayToast,
+  BaseToggle,
+  BaseTooltip,
+};

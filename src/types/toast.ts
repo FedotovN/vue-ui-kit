@@ -1,13 +1,13 @@
 import { IColors } from "./colors";
 
 interface ToastData {
-    content?: string,
-    color?: keyof IColors,
-    parseHtml?: boolean,
-    centerText?: boolean,
-    delay?: number,
+  content?: string;
+  color?: keyof IColors;
+  parseHtml?: boolean;
+  centerText?: boolean;
+  delay?: number;
 }
 interface Toast extends ToastData {
-    id: number,
+  id: number;
 }
-export { ToastData, Toast }
+export { ToastData, Toast };

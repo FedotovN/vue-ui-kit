@@ -1,16 +1,11 @@
 {
   "compilerOptions": {
     "paths": {
-      "@/*": ["./src/*"],
+      "@/*": ["./src/*"]
     },
     "rootDirs": ["src"],
     "outDir": "dist",
-    "lib": [
-      "esnext",
-      "dom",
-      "dom.iterable",
-      "scripthost"
-    ],
+    "lib": ["esnext", "dom", "dom.iterable", "scripthost"],
     "target": "ES2022",
     "module": "ES6",
     "composite": true,
@@ -40,4 +35,3 @@
   ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
-

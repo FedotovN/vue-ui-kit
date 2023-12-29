@@ -1,8 +1,8 @@
 export default interface AccordionItemProps {
-    title?: string,
-    opened?: boolean,
+  title?: string;
+  opened?: boolean;
 }
 function isAccordionItemProps(value): value is AccordionItemProps {
-    return !!(value?.opened != undefined);
+  return !!(value?.opened != undefined);
 }
 export { isAccordionItemProps };
