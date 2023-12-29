@@ -13,7 +13,6 @@
     "declarationMap": true,
     "incremental": true,
     "esModuleInterop": true,
-    "types": ["jest", "node", "@types/jest"],
     "sourceMap": true
   },
   "ts-node": {
@@ -32,6 +31,5 @@
     "src/**/*.vue",
     "tests/**/*.ts",
     "vite.config.js"
-  ],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  ]
 }

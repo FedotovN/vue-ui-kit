@@ -1,76 +1,58 @@
-.button {
+.base-button {
   --accent-color: #ddd;
-  --force-width: auto, outline: none;
-  border-width: 1px;
-  border-color: transparent;
-  border-radius: 9999px;
-  box-sizing: border-box;
-  height: 30px;
-  padding: 6px 15px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: 0.15s all;
+  --force-width: auto;
+  height: 28px;
   width: var(--force-width);
-  text-align: center;
-  user-select: none;
-  font-size: 14px;
-  &.disabled {
-    filter: grayscale(1);
-    cursor: default;
-    pointer-events: none;
-    user-select: none;
+  padding: 2px 15px;
+  box-sizing: border-box;
+  border: 1px solid rgba(var(--accent-color), .8);
+  border-radius: 2px;
+  overflow: hidden;
+  transition: .15s all;
+  color: white;
+  background-color: rgba(var(--accent-color), .7);
+  cursor: pointer;
+  &:hover {
+    background-color: rgba(var(--accent-color), .8);
   }
-  &.default {
-    color: white;
-    background-color: rgba(var(--accent-color), 1);
+  &:active {
+    background-color: rgba(var(--accent-color));
+  }
+  &.raised {
+    box-shadow: 0 5px 10px 1px rgba(0, 0, 0, .2);
     &:hover {
-      filter: brightness(0.8);
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px 1px rgba(0, 0, 0, .3);
     }
     &:active {
-      filter: brightness(1.1);
+        transform: none;
+        box-shadow: 0 5px 10px 1px rgba(0, 0, 0, .2);
     }
-  }
-  &.large {
-    padding: 0.75rem 0px;
-  }
-  &.caps {
-    text-transform: uppercase;
-    font-size: larger;
-  }
-  &.outlined {
-    color: rgba(var(--accent-color), 1);
-    border: 1px solid rgba(var(--accent-color), 1);
   }
   &.rounded {
     border-radius: 9999px;
   }
-  &.raised {
-    box-shadow: 0 5px 10px 1px rgba(0, 0, 0, 0.2);
-    &:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px 1px rgba(0, 0, 0, 0.3);
-    }
-    &:active {
-      transform: none;
-      box-shadow: 0 5px 10px 1px rgba(0, 0, 0, 0.2);
-    }
-  }
-  &.flat,
   &.outlined {
-    color: rgba(var(--accent-color), 1);
     background-color: transparent;
+    color: rgba(var(--accent-color));
     &:hover {
-      background-color: rgba(var(--accent-color), 0.2);
-    }
+      background-color: rgba(var(--accent-color), .2);
+    } 
     &:active {
       background-color: rgba(var(--accent-color), 1);
       color: white;
     }
   }
-  &.bold {
-    font-weight: bold;
+  &.flat {
+    border: none;
+    background-color: transparent;
+    color: rgba(var(--accent-color), .9);
+    &:hover {
+      background-color: rgba(var(--accent-color), .3);
+    } 
+    &:active {
+      background-color: rgba(var(--accent-color), 1);
+      color: white;
+    }
   }
 }

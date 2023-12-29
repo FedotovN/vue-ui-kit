@@ -3,13 +3,13 @@ import { computed } from "vue";
 import useColor from "../../../composables/useColor";
 import { IColors } from "../../../types/colors";
 import BaseButtonProps from "@/types/props/Button/BaseButtonProps";
-const { getColor } = useColor();
+const { get } = useColor();
 const props = withDefaults(defineProps<BaseButtonProps>(), {
-  color: "primary",
+  color: "none",
   width: "auto",
 });
 const styles = computed(() => {
-  const [red, green, blue] = getColor(props.color as keyof IColors);
+  const [red, green, blue] = get(props.color as keyof IColors);
   return {
     "--accent-color": `${red}, ${green}, ${blue}`,
     "--force-width": props.width,
@@ -17,22 +17,9 @@ const styles = computed(() => {
 });
 </script>
 <template>
-  <button
-    v-bind="$attrs"
-    :style="styles"
-    :class="`button
-        ${fill ? 'w-full' : ''}
-          ${large ? 'large' : ''}
-          ${outlined ? `outlined` : 'border-transparent'}
-          ${rounded ? `rounded` : ''}
-          ${raised ? 'raised' : ''}
-          ${flat ? `flat bg-transparent` : ''}
-          ${!flat && !outlined ? 'default' : ''}
-          ${bold ? 'bold' : ''}
-          ${caps ? 'caps' : ''}
-          ${$attrs.disabled ? 'disabled' : ''}
-        `"
-  >
+  <button v-bind="$attrs" :style="styles" class="base-button" :class="{
+    raised, flat, outlined, rounded
+  }">
     <slot />
   </button>
 </template>

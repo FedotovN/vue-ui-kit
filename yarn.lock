@@ -1371,6 +1371,19 @@
     "@histoire/shared" "^0.17.6"
     "@histoire/vendors" "^0.17.6"
 
+"@histoire/plugin-vue@^0.17.6":
+  version "0.17.6"
+  resolved "https://registry.yarnpkg.com/@histoire/plugin-vue/-/plugin-vue-0.17.6.tgz#a7ef4fbd75724185eaa5e928f788de8a6f77a61f"
+  integrity sha512-DVGoYXPDcoJ55crD4cAXA0OGAS8fWHvKjvOApY1NLLN4DgRjxqHBVE6xCX/9Ai1VTM3izG6FJgXiXAbRVgv5KQ==
+  dependencies:
+    "@histoire/controls" "^0.17.6"
+    "@histoire/shared" "^0.17.6"
+    "@histoire/vendors" "^0.17.6"
+    change-case "^4.1.2"
+    globby "^13.2.2"
+    launch-editor "^2.6.1"
+    pathe "^1.1.1"
+
 "@histoire/shared@^0.17.6":
   version "0.17.6"
   resolved "https://registry.yarnpkg.com/@histoire/shared/-/shared-0.17.6.tgz#13b0d10dfb7df0a7bb7873b6b94eae1d4a62b9ea"
@@ -4330,6 +4343,14 @@ launch-editor@^2.2.1:
     picocolors "^1.0.0"
     shell-quote "^1.7.3"
 
+launch-editor@^2.6.1:
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/launch-editor/-/launch-editor-2.6.1.tgz#f259c9ef95cbc9425620bbbd14b468fcdb4ffe3c"
+  integrity sha512-eB/uXmFVpY4zezmGp5XtU21kwo7GBbKB+EQ+UZeWtGb9yAM5xt/Evk+lYH3eRNAtId+ej4u7TYPFZ07w4s7rRw==
+  dependencies:
+    picocolors "^1.0.0"
+    shell-quote "^1.8.1"
+
 levn@^0.4.1:
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/levn/-/levn-0.4.1.tgz#ae4562c007473b932a6200d403268dd2fffc6ade"
@@ -5370,7 +5391,7 @@ shebang-regex@^3.0.0:
   resolved "https://registry.yarnpkg.com/shebang-regex/-/shebang-regex-3.0.0.tgz#ae16f1644d873ecad843b0307b143362d4c42172"
   integrity sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==
 
-shell-quote@^1.7.3:
+shell-quote@^1.7.3, shell-quote@^1.8.1:
   version "1.8.1"
   resolved "https://registry.yarnpkg.com/shell-quote/-/shell-quote-1.8.1.tgz#6dbf4db75515ad5bac63b4f1894c3a154c766680"
   integrity sha512-6j1W9l1iAs/4xYBI1SYOVZyFcCis9b4KCLQ8fgAGG07QvzaRLVVRQvAy85yNmmZSjYjg4MWh4gNvlPujU/5LpA==

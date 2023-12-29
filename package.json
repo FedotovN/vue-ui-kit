@@ -16,7 +16,9 @@
     "story:build": "histoire build",
     "story:preview": "histoire preview"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@histoire/plugin-vue": "^0.17.6"
+  },
   "peerDependencies": {},
   "devDependencies": {
     "@babel/core": "^7.22.19",
