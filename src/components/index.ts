@@ -10,11 +10,10 @@ import Table from "./Table";
 import Tabs from "./Tabs";
 import Toast from "./Toast";
 import Toggle from "./Toggle";
-import Tooltip from "./Tooltip";
 
 export default { 
     Accordion, Badge, Button,
     Checkbox, Dropdown, Input,
     Loader, Modal, Table,
-    Tabs, Toast, Toggle, Tooltip,
+    Tabs, Toast, Toggle,
 }
