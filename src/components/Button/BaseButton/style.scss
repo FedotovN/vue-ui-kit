@@ -3,6 +3,9 @@
   --force-width: auto;
   height: 28px;
   width: var(--force-width);
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 2px 15px;
   box-sizing: border-box;
   border: none;

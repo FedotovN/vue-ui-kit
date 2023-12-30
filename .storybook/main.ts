@@ -12,18 +12,21 @@ const config: StorybookConfig = {
     name: "@storybook/vue3-vite",
     options: {},
   },
+  core: {
+    disableTelemetry: true,
+  },
   docs: {
     autodocs: "tag",
   },
-  async viteFinal(config) {
-    config.plugins = [
-      ...[config.plugins].flat().filter((p) => !Array.isArray(p)),
-      plugin() as any,
-      {
-        exclude: [/\.stories\.(t|j)sx?$/, /node_modules/],
-      },
-    ];
-    return config;
-  },
+  // async viteFinal(config) {
+  //   config.plugins = [
+  //     ...[config.plugins].flat().filter((p) => !Array.isArray(p)),
+  //     plugin() as any,
+  //     {
+  //       exclude: [/\.stories\.(t|j)sx?$/, /node_modules/],
+  //     },
+  //   ];
+  //   return config;
+  // },
 };
 export default config;
