@@ -14,8 +14,8 @@ const colors: IColors = {
   secondary: [77, 69, 241],
   success: [34, 197, 94],
   warning: [249, 115, 22],
-  white: [255, 255, 255],
   none: [120, 120, 120],
+  white: [255, 255, 255],
 };
 export { type IColors, type Color };
 export { colors };

@@ -9,7 +9,9 @@ const props = withDefaults(defineProps<BaseButtonProps>(), {
   width: "auto",
 });
 const styles = computed(() => {
-  const [red, green, blue] = get(props.color as keyof IColors);
+  const colors = get(props.color as keyof IColors);
+  if (!colors) return {};
+  const [red, green, blue] = colors;
   return {
     "--accent-color": `${red}, ${green}, ${blue}`,
     "--force-width": props.width,
@@ -18,7 +20,7 @@ const styles = computed(() => {
 </script>
 <template>
   <button v-bind="$attrs" :style="styles" class="base-button" :class="{
-    raised, flat, outlined, rounded
+    raised, flat, outlined, rounded, disabled: $attrs.disabled,
   }">
     <slot />
   </button>
