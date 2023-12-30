@@ -9,6 +9,7 @@
     filter: opacity(.8);
   }
   &__label {
+    display: block;
     font-size: 12px;
     user-select: none;
     cursor: pointer;
@@ -22,7 +23,7 @@
       padding-top: 2.5px;
       position: absolute;
       &.lifted {
-        top: -9.5px;
+        top: -10px;
       }
     }
     &.focused {

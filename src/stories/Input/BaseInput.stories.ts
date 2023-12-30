@@ -16,7 +16,7 @@ const Template: StoryFn = (args) => ({
     <div v-if="args.default">
       ${args.default}
     </div>
-      <div style="display: flex; gap: 5px; padding: 10px;" v-else>
+      <div style="display: flex; flex-flow: column; gap: 20px; padding: 10px;" v-else>
         <div v-for="color in Object.keys(colors)" style="display: flex; align-items: center;">
           <BaseInput v-bind="{...args}" :label="'Color '+color" :color="color" placeholder="Base Input" />
         </div>
