@@ -13,7 +13,7 @@
     "declarationMap": true,
     "incremental": true,
     "esModuleInterop": true,
-    "sourceMap": true
+    "sourceMap": true,
   },
   "ts-node": {
     "esm": true,
