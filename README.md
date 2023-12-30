@@ -1,8 +1,7 @@
-# Vue UI Kit
-
+# Vue UI Kit 
 UI components created with Vue 3 and Typescript.
 
-Unit testing using Jest and Vue Testing Library.
+Unit testing using Vitest.
 
 ## Quick start
 
