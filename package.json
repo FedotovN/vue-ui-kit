@@ -6,6 +6,9 @@
   ],
   "main": "./dist/ui-kit.es.ts",
   "types": "./dist/plugin/index.d.ts",
+  "resolutions": {
+    "jackspeak": "2.1.1"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
