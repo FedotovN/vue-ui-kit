@@ -4,7 +4,7 @@ import { colors } from "@/types/colors";
 import { Meta, StoryFn } from "@storybook/vue3";
 export default {
   component: BaseInput,
-  title: "Input/BaseInput",
+  title: "Input/Base Input",
 } as Meta;
 const Template: StoryFn = (args) => ({
   components: { BaseInput, BaseButton },

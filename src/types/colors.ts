@@ -5,7 +5,6 @@ interface IColors {
   secondary: Color;
   success: Color;
   warning: Color;
-  white: Color;
   none: Color;
 }
 const colors: IColors = {
@@ -15,7 +14,6 @@ const colors: IColors = {
   success: [34, 197, 94],
   warning: [249, 115, 22],
   none: [120, 120, 120],
-  white: [255, 255, 255],
 };
 export { type IColors, type Color };
 export { colors };

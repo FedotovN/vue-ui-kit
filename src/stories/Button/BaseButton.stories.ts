@@ -1,9 +1,8 @@
 import BaseButton from "@/components/Button/BaseButton/BaseButton.vue";
 import BaseButtonProps from "@/types/props/Button/BaseButtonProps";
-import { colors } from "@/types/colors";
 import { Meta, StoryFn } from "@storybook/vue3";
 export default {
-  title: "Button/BaseButton",
+  title: "Button/Base Button",
   component: BaseButton,
 } as Meta;
 const Template: StoryFn = (args: BaseButtonProps) => ({
@@ -19,7 +18,6 @@ const Template: StoryFn = (args: BaseButtonProps) => ({
       <BaseButton color="warning" v-bind={...args} >Button</BaseButton>
       <BaseButton color="success" v-bind={...args} >Button</BaseButton>
       <BaseButton color="none" v-bind={...args} >Button</BaseButton>
-      <BaseButton color="white" v-bind={...args} >Button</BaseButton>
     </div>
   `,
 });
