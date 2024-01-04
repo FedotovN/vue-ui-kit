@@ -27,7 +27,7 @@
     top: 50%;
     transform: translateY(-50%);
     left: var(--left-fill-padding);
-    right: calc(var(--right-fill-padding) + 1%);
+    right: calc(var(--right-fill-padding) + 2px);
     height: 6px;
     border-radius: 4px;
     background-color: rgba(var(--accent-color));
