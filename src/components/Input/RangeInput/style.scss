@@ -1,12 +1,14 @@
-.slider-input {
+.range-input {
   --accent-color: #dadada;
-  --fill-percentage: 0;
+  --left-fill-padding: 0;
+  --right-fill-padding: 0;
   --force-width: auto;
   background: inherit;
   width: var(--force-width);
   height: 28px;
   position: relative;
   box-sizing: border-box;
+  pointer-events: none;
   &__path {
     position: absolute;
     top: 50%;
@@ -21,16 +23,18 @@
   }
   &__fill, &__slow-fill {
     position: absolute;
+    box-sizing: border-box;
     top: 50%;
     transform: translateY(-50%);
-    width: calc(var(--fill-percentage) + 2px);
+    left: var(--left-fill-padding);
+    right: calc(var(--right-fill-padding) + 1%);
     height: 6px;
     border-radius: 4px;
-    background-color: rgba(var(--accent-color), .5);
+    background-color: rgba(var(--accent-color));
   }
   &__slow-fill {
-    transition: 1.5s width cubic-bezier(0,0,0,1);
-    background-color: rgba(var(--accent-color));
+    transition: 1.5s all cubic-bezier(0,0,0,1);
+    background-color: rgba(var(--accent-color), .5);
   }
   &__input {
     -webkit-appearance: none;
@@ -50,12 +54,14 @@
       border-color: rgba(var(--accent-color));
     }
     &::-webkit-slider-runnable-track, -moz-range-track {
+      pointer-events: none;
       height: 6px;
       background-color: transparent;
       border-radius: 4px;
     }
     &::-webkit-slider-thumb, -moz-range-thumb {
       cursor: pointer;
+      pointer-events: all;
       appearance: none;
       transform: translateY(-35%);
       height: 16px;

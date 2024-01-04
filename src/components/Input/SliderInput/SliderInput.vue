@@ -42,12 +42,12 @@ const style = computed(() => {
 })
 </script>
 <template>
-  <div class="range-input" :style="style">
+  <div class="slider-input" :style="style">
     <input :step="step" :max="max" :min="min" :value="localValue" @input="onUpdate" type="range"
-      class="range-input__input">
-    <div class="range-input__path">
-      <div class="range-input__fill"></div>
-      <div class="range-input__slow-fill"></div>
+      class="slider-input__input">
+    <div class="slider-input__path">
+      <div class="slider-input__fill"></div>
+      <div class="slider-input__slow-fill"></div>
     </div>
   </div>
 </template>
