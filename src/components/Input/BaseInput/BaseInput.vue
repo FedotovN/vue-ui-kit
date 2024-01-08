@@ -2,7 +2,6 @@
 import BaseInputProps from "@/types/props/Input/BaseInputProps";
 import { useColor } from "@/composables";
 import { computed, ref, watch } from "vue";
-const { get } = useColor();
 const inputId = `base-input-id-${Math.random()}`
 const emit = defineEmits<{
   (e: 'input', value: string | number);
@@ -34,12 +33,8 @@ const toShowPlaceholder = computed(() => {
   return !props.dynamicLabel || !props.label ? propped : toLiftLabel.value ? propped : '';
 });
 const style = computed(() => {
-  let color = props.color;
-  if (typeof props.color === 'string')
-    color = get(props.color);
-  const [red, green, blue] = color;
   return {
-    '--accent-color': `${red}, ${green}, ${blue}`,
+    '--color': useColor().get(props.color),
     '--force-width': props.width,
   }
 })

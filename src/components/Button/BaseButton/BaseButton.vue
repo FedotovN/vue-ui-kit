@@ -9,11 +9,8 @@ const props = withDefaults(defineProps<BaseButtonProps>(), {
   width: "auto",
 });
 const styles = computed(() => {
-  const colors = get(props.color as keyof IColors);
-  if (!colors) return {};
-  const [red, green, blue] = colors;
   return {
-    "--accent-color": `${red}, ${green}, ${blue}`,
+    "--color": useColor().get(props.color),
     "--force-width": props.width,
   };
 });

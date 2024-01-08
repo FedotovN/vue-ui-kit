@@ -11,7 +11,7 @@ const Template: StoryFn = (args: BaseButtonProps) => ({
     return { args };
   },
   template: `
-    <div style="display: flex; gap: 5px;">
+    <div style="display: flex; flex-flow: column; gap: 5px; max-width: 225px;">
       <BaseButton color="primary" v-bind={...args} >Button</BaseButton>
       <BaseButton color="secondary" v-bind={...args} >Button</BaseButton>
       <BaseButton color="alert" v-bind={...args} >Button</BaseButton>

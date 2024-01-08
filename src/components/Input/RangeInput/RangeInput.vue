@@ -23,17 +23,8 @@ const propped = computed(() => props.modelValue || props.value);
 watch(propped, v => localValue.value = v);
 const localValue = ref(props.value || props.modelValue || { from: props.min, to: props.max }) as Ref<RangeInputValue>;
 const style = computed(() => {
-  let color;
-  if (typeof props.color === 'string') {
-    color = useColor().get(props.color);
-    if (!color) color = useColor().get('primary');
-  }
-  else color = props.color;
-  const [red, green, blue] = color;
-  console.log('triggered');
-
   return {
-    '--accent-color': `${red}, ${green}, ${blue}`,
+    '--color': useColor().get(props.color),
     '--left-fill-padding': `${getFillPercentage(localValue.value.from)}%`,
     '--right-fill-padding': `${getFillPercentage(getFillPercentage(localValue.value.to, true))}%`,
   }
@@ -61,8 +52,6 @@ function validateBoundaries(value: number): number {
   return value;
 };
 function onInput(event: InputEvent, isSecondInput?: boolean) {
-  console.log('here');
-
   const target = event.target as HTMLInputElement;
   target.value = validateRange(+target.value, isSecondInput).toString();
   target.value = validateBoundaries(+target.value).toString();

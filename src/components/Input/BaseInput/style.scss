@@ -1,5 +1,5 @@
 .base-input {
-  --accent-color: #dadada;
+  --color: primary;
   --force-width: auto;
   position: relative;
   height: 28px;
@@ -27,7 +27,7 @@
       }
     }
     &.focused {
-      color: rgba(var(--accent-color));
+      color: rgba(var(--color));
     }
   }
   &__placeholder {
@@ -52,7 +52,7 @@
     border-radius: 2px;
     color: #555555;
     &:focus {
-      border-color: rgba(var(--accent-color));
+      border-color: rgba(var(--color));
     }
     &::-webkit-input-placeholder {
       user-select: none;

@@ -1,5 +1,5 @@
 .base-button {
-  --accent-color: #ddd;
+  --color: primary;
   --force-width: auto;
   height: 28px;
   width: var(--force-width);
@@ -13,7 +13,7 @@
   overflow: hidden;
   transition: .15s all;
   color: white;
-  background-color: rgba(var(--accent-color), .9);
+  background-color: rgba(var(--color), .9);
   white-space: nowrap;
   cursor: pointer;
   &:hover {
@@ -43,25 +43,25 @@
   }
   &.outlined {
     background-color: transparent;
-    color: rgba(var(--accent-color));
-    border: 1px solid rgba(var(--accent-color), .8);
+    color: rgba(var(--color));
+    border: 1px solid rgba(var(--color), .8);
     &:hover {
-      background-color: rgba(var(--accent-color), .2);
+      background-color: rgba(var(--color), .2);
     } 
     &:active {
-      background-color: rgba(var(--accent-color), 1);
+      background-color: rgba(var(--color), 1);
       color: white;
     }
   }
   &.flat {
     border: none;
     background-color: transparent;
-    color: rgba(var(--accent-color), .9);
+    color: rgba(var(--color), .9);
     &:hover {
-      background-color: rgba(var(--accent-color), .3);
+      background-color: rgba(var(--color), .3);
     } 
     &:active {
-      background-color: rgba(var(--accent-color), 1);
+      background-color: rgba(var(--color), 1);
       color: white;
     }
   }

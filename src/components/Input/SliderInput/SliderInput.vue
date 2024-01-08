@@ -30,12 +30,8 @@ function onUpdate(event: InputEvent) {
   emit('update:modelValue', +localValue.value);
 }
 const style = computed(() => {
-  let color;
-  if (typeof props.color === 'string')
-    color = useColor().get(props.color);
-  const [red, green, blue] = color;
   return {
-    '--accent-color': `${red}, ${green}, ${blue}`,
+    '--color': useColor().get(props.color),
     '--force-width': props.width,
     '--fill-percentage': `${(+localValue.value / +props.max) * 100}%`
   };
