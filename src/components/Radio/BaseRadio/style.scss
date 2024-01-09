@@ -1,0 +1,48 @@
+.base-radio {
+  --color: 0, 0, 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  gap: 5px;
+  &.disabled {
+    pointer-events: none;
+    filter: brightness(.9) opacity(.9);
+  }
+  label {
+    user-select: none;
+    cursor: pointer;
+    font-size: 12px;
+    color: #777777;
+  }
+  input {
+    cursor: pointer;
+    position: relative;
+    border: 1px solid #dadada;
+    height: 16px;
+    margin-bottom: 2px;
+    aspect-ratio: 1;
+    border-radius: 9999px;
+    appearance: none;
+    transition: .15s all;
+    &:after {
+      content: '';
+      transition: .15s all;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%);
+      border-radius: 9999px;
+      position: absolute;
+      height: 100%;
+      aspect-ratio: 1;
+
+    }
+    &:checked {
+      border-color: rgba(var(--color));
+    }
+    &:checked:after {
+      height: 50%;
+      background-color: rgba(var(--color));
+    }
+  }
+}

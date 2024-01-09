@@ -1,5 +1,6 @@
 import BaseButton from "@/components/Button/BaseButton/BaseButton.vue";
 import BaseButtonProps from "@/types/props/Button/BaseButtonProps";
+import { colors } from "@/types/colors";
 import { Meta, StoryFn } from "@storybook/vue3";
 export default {
   title: "Button/Base Button",
@@ -8,16 +9,14 @@ export default {
 const Template: StoryFn = (args: BaseButtonProps) => ({
   components: { BaseButton },
   setup() {
-    return { args };
+    return { args, colors };
   },
   template: `
-    <div style="display: flex; flex-flow: column; gap: 5px; max-width: 225px;">
-      <BaseButton color="primary" v-bind={...args} >Button</BaseButton>
-      <BaseButton color="secondary" v-bind={...args} >Button</BaseButton>
-      <BaseButton color="alert" v-bind={...args} >Button</BaseButton>
-      <BaseButton color="warning" v-bind={...args} >Button</BaseButton>
-      <BaseButton color="success" v-bind={...args} >Button</BaseButton>
-      <BaseButton color="none" v-bind={...args} >Button</BaseButton>
+    <div style="display: flex; flex-flow: column; gap: 5px;">
+      <div v-for="color in Object.keys(colors)" style="display: flex; flex-wrap: wrap; gap: 5px;">
+        <BaseButton :color="color" v-bind="{...args}">Button {{ color }}</BaseButton> 
+        <BaseButton :color="color" v-bind="{...args}" disabled>Disabled button {{ color }}</BaseButton> 
+      </div>
     </div>
   `,
 });

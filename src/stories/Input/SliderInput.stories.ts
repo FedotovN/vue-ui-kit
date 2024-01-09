@@ -12,25 +12,36 @@ const Template: StoryFn = (args) => ({
     return { args, colors };
   },
   template: `
-  <div v-if="!args.default">
+  <div>
     <div v-for="color in Object.keys(colors)">
-      <SliderInput :color="color" />
+      <SliderInput :color="color" v-bind="{...args}">
+        ${args.default}
+      </SliderInput>
     </div>
-  </div>
-  <div v-else>
-    ${args.default}
   </div>
   `,
 });
 export const Default = Template.bind({});
-export const WithButtons = Template.bind({});
-WithButtons.args = {
+export const WithLabel = Template.bind({});
+WithLabel.args = {
+  label: "Min. price, USD",
+};
+export const SlotValue = Template.bind({});
+SlotValue.args = {
+  label: "Min. price, USD",
   default: `
-    <div style="display: flex; flex-flow: column; gap: 10px;">
-      <div v-for="color in Object.keys(colors)" style="display: flex; gap: 10px;">
-        <SliderInput :color="color" double />
-        <BaseButton :color="color">{{color}}</BaseButton>
-      </div>
-    </div>
+    <template #value={value}>
+      <small style="padding-left: 10px;">{{value}}</small>
+    </template>
   `,
+};
+export const Disabled = Template.bind({});
+Disabled.args = {
+  label: "Min. price, USD",
+  default: `
+    <template #value={value}>
+      <small style="padding-left: 10px;">{{value}}</small>
+    </template>
+  `,
+  disabled: true,
 };

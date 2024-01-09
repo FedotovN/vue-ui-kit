@@ -2,6 +2,7 @@
 import { useColor } from '@/composables';
 import SliderInputProps from '@/types/props/Input/SliderInputProps';
 import { computed, onMounted, ref, watch } from 'vue';
+const inputId = `slider-input-id-${Math.random()}`
 const emit = defineEmits<{
   (e: 'update:modelValue', value: number);
 }>();
@@ -38,12 +39,18 @@ const style = computed(() => {
 })
 </script>
 <template>
-  <div class="slider-input" :style="style">
-    <input :step="step" :max="max" :min="min" :value="localValue" @input="onUpdate" type="range"
-      class="slider-input__input">
-    <div class="slider-input__path">
-      <div class="slider-input__fill"></div>
-      <div class="slider-input__slow-fill"></div>
+  <div class="slider-input__wrapper">
+    <label :for="inputId">{{ label }}</label>
+    <div class="slider-input">
+      <div class="slider-input__body" :class="{ disabled }" :style="style">
+        <input :disabled="disabled" :id="inputId" :step="step" :max="max" :min="min" :value="localValue" @input="onUpdate"
+          type="range" class="slider-input__input">
+        <div class="slider-input__path">
+          <div class="slider-input__fill"></div>
+          <div class="slider-input__slow-fill"></div>
+        </div>
+      </div>
+      <slot name="value" v-bind="{ value: localValue }" />
     </div>
   </div>
 </template>

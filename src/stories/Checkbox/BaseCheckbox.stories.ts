@@ -13,10 +13,19 @@ const Template: StoryFn = (args) => ({
   },
   template: `
     <div v-if="!args.default" style="display: flex; flex-flow: column; gap: 5px;">
-      <BaseCheckbox v-for="color in colors" label="Checkbox Label" :color="color" />
+      <BaseCheckbox v-for="color in colors" v-bind="{...args}" :color="color" />
     </div>
     <div v-else></div>
   `,
 });
 
 export const Default = Template.bind({});
+export const WithLabel = Template.bind({});
+WithLabel.args = {
+  label: "Checkbox Label",
+};
+export const Disabled = Template.bind({});
+Disabled.args = {
+  label: "Disabled checkbox",
+  disabled: true,
+};

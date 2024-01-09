@@ -9,4 +9,6 @@ export default interface SliderInputProps {
   value?: number | string;
   color?: keyof IColors | Color;
   width?: string;
+  label?: string;
+  disabled?: boolean;
 }

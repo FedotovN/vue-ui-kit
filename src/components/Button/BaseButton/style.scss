@@ -24,8 +24,7 @@
   }
   &.disabled {
     pointer-events: none;
-    opacity: .9;
-    filter: brightness(.8);
+    filter: brightness(.9) opacity(.9);
   }
   &.raised {
     box-shadow: 0 5px 10px 1px rgba(0, 0, 0, .2);

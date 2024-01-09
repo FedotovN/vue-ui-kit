@@ -23,13 +23,13 @@ function onInput(event: InputEvent) {
 }
 </script>
 <template>
-  <div class="base-checkbox" :style="style">
+  <div class="base-checkbox" :class="{ disabled }" :style="style">
     <label :for="inputId" v-if="label">{{ label }}</label>
-    <div class="checkbox-body">
+    <div class="checkbox-body" :class="{ checked: localValue }">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
         <path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z" />
       </svg>
-      <input :id="inputId" type="checkbox" :checked="localValue" @change="onInput" />
+      <input :id="inputId" type="checkbox" :disabled="disabled" :checked="localValue" @change="onInput" />
     </div>
   </div>
 </template>

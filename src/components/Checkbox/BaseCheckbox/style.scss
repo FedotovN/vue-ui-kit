@@ -5,11 +5,15 @@
   height: 100%;
   width: 100%;
   gap: 5px;
+  &.disabled { 
+    filter: brightness(.9) opacity(.9);
+    pointer-events: none;
+  }
   label {
     cursor: pointer;
     user-select: none;
     font-size: 12px;
-    color: #333333;
+    color: #777777;
   }
   .checkbox-body {
     position: relative;
@@ -20,6 +24,7 @@
     height: 16px;
     svg {
       position: absolute;
+      transition: .15s all;
       height: 70%;
       top: 50%;
       left: 50%;
@@ -27,6 +32,10 @@
       pointer-events: none;
       z-index: 1;
       fill: white;
+      opacity: 0;
+    }
+    &.checked svg {
+      opacity: 1;
     }
     input {
       cursor: pointer;

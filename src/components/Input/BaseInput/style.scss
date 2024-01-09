@@ -6,7 +6,7 @@
   width: var(--force-width);
   &.disabled {
     pointer-events: none;
-    filter: opacity(.8);
+    filter: opacity(.9) brightness(.9);
   }
   &__label {
     display: block;
@@ -15,9 +15,11 @@
     cursor: pointer;
     white-space: nowrap;
     padding-left: 5px;
+    padding-bottom: 2px;
     color: #707070;
     transition: .15s all;
     &.dynamic {
+      pointer-events: none;
       top: 50%;
       transform: translateY(-50%);
       padding-top: 2.5px;

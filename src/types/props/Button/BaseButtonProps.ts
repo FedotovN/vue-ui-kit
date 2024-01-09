@@ -5,5 +5,6 @@ export default interface BaseButtonProps {
   raised?: boolean;
   flat?: boolean;
   width?: string;
+  disabled?: boolean;
   color?: keyof IColors | Color;
 }
