@@ -1,0 +1,53 @@
+.base-radio-group {
+    --selected-color: 0 0 0,
+    display: flex;
+    flex-flow: column;
+    align-items: start;
+    border: 1px solid #dadada;
+    padding: 5px 10px;
+    border-radius: 4px;
+    &__header {
+        height: 36px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        label {
+            display: inline-block;
+            font-size: 16px;
+            padding: 0 10px 0 0;
+            color: #777777;
+        }
+    }
+    &__main {
+       display: flex;
+       justify-content: space-between; 
+    }
+    &__radios {
+        width: auto;
+        display: flex;
+        gap: 10px;
+        &.column {
+            flex-flow: column;
+        }
+        &:deep() .base-radio {
+            overflow: visible;
+            label {
+                white-space: nowrap;
+                width: 100%;
+            }
+        }
+    }
+    &__selected {
+        display: flex;
+        font-size: 14px;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        color: #777777;
+        &-value {
+            color: rgba(var(--selected-color));
+            font-weight: bold;
+        }
+    }
+}

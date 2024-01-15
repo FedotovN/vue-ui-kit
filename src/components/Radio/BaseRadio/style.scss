@@ -4,6 +4,7 @@
   display: flex;
   align-items: center;
   height: 100%;
+  width: 100%;
   gap: 5px;
   &.disabled {
     pointer-events: none;

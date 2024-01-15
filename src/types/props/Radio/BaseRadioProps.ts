@@ -2,10 +2,10 @@ import { Color, IColors } from "@/types/colors";
 
 export default interface BaseRadioProps {
   color: keyof IColors | Color;
-  value?: boolean;
-  modelValue?: boolean;
   name?: string;
+  id?: string,
   label?: string;
-  uniqueName?: string;
+  value?: string;
   disabled?: boolean;
+  checked?: boolean;
 }
