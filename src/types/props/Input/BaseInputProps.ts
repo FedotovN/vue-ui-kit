@@ -9,4 +9,5 @@ export default interface BaseInputProps {
   disabled?: boolean;
   width?: string;
   dynamicLabel?: boolean;
+  autocomplete?: string;
 }

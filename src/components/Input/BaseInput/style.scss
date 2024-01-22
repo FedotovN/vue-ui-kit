@@ -2,7 +2,7 @@
   --color: primary;
   --force-width: auto;
   position: relative;
-  height: 28px;
+  min-height: 28px;
   width: var(--force-width);
   &.disabled {
     pointer-events: none;
@@ -46,7 +46,7 @@
     transition: .15s border-color;
     display: block;
     box-sizing: border-box;
-    height: 100%;
+    height: 28px;
     width: 100%;
     padding: 0 5px;
     outline: none;

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue';
+import { computed, ref, watch } from 'vue';
 import BaseCheckboxProps from "@/types/props/Checkbox/BaseCheckboxProps";
 import { useColor } from '@/composables';
 const emit = defineEmits<{
@@ -9,6 +9,10 @@ const props = withDefaults(defineProps<BaseCheckboxProps>(), {
   color: 'primary',
 });
 const localValue = ref(props.value || props.modelValue || false);
+const propped = computed(() => props.value || props.modelValue);
+watch(propped, v => {
+  localValue.value = v;
+});
 const inputId = `base-checkbox-${Math.random()}`;
 const style = computed(() => {
   return {

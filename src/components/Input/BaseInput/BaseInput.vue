@@ -13,7 +13,9 @@ const props = withDefaults(defineProps<BaseInputProps>(), {
   color: 'none',
   dynamicLabel: false,
 });
+const propped = computed(() => props.value || props.modelValue);
 const localValue = ref(props.value || props.modelValue || '');
+watch(propped, v => localValue.value = propped.value);
 watch(localValue, value => emit('input', value));
 const onFocusIn = (e: HTMLInputElement) => {
   isFocused.value = true
@@ -45,7 +47,7 @@ const style = computed(() => {
       class="base-input__label">{{ label }}</label>
     <input :disabled="disabled" @blur="emit('blur', localValue)" @focusin="onFocusIn($event.target as HTMLInputElement)"
       @focusout="onFocusOut($event.target as HTMLInputElement)" v-model="localValue" class="base-input__input"
-      :id="inputId" :placeholder="toShowPlaceholder.toString()">
+      :id="inputId" :placeholder="toShowPlaceholder.toString()" :autocomplete="autocomplete">
   </div>
 </template>
 <style scoped lang="scss" src="./style.scss" />

@@ -7,7 +7,7 @@ const emit = defineEmits<{
   (e: 'update:modelValue', value: number);
 }>();
 const props = withDefaults(defineProps<SliderInputProps>(), {
-  color: 'warning',
+  color: 'none',
   width: '100%',
   min: 0,
   max: 100,

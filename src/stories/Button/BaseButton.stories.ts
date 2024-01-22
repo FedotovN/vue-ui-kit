@@ -49,7 +49,7 @@ export default {
     flat: {
       value: false,
       type: 'boolean',
-      description: "Style variant.",
+      description: "Style variant without background.",
       control: {
         type: 'boolean'
       }
@@ -57,7 +57,7 @@ export default {
     outlined: {
       value: false,
       type: 'boolean',
-      description: "Style variant.",
+      description: "Style variant without background and with border.",
       control: {
         type: 'boolean'
       }
@@ -65,7 +65,7 @@ export default {
     raised: {
       value: false,
       type: 'boolean',
-      description: "Style variant.",
+      description: "Style variant with flying effect.",
       control: {
         type: 'boolean'
       }

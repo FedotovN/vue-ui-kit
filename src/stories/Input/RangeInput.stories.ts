@@ -1,9 +1,14 @@
-import { Meta, StoryFn } from "@storybook/vue3";
+import { ArgTypes, Meta, StoryFn } from "@storybook/vue3";
 import { colors } from "@/types/colors";
 import RangeInput from "@/components/Input/RangeInput/RangeInput.vue";
+import RangeInputProps from "@/types/props/Input/RangeInputProps";
 export default {
   title: "Input/Range Input",
   component: RangeInput,
+  argTypes: {
+    
+  } as ArgTypes<RangeInputProps>,
+  tags: ['autodocs'],
 } as Meta;
 const Template: StoryFn = (args) => ({
   components: {
@@ -13,14 +18,7 @@ const Template: StoryFn = (args) => ({
     return { args, colors };
   },
   template: `
-    <div v-if="!args.default">
-      <div v-for="color in colors">
-        <RangeInput :color="color" />
-      </div>
-    </div>
-    <div v-else>
-      ${args.default}
-    </div>
+    <RangeInput v-bind="{...args}" />
   `,
 });
 

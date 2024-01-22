@@ -6,7 +6,7 @@ const emit = defineEmits<{
   (e: 'update:modelValue', value: RangeInputValue);
 }>();
 const props = withDefaults(defineProps<RangeInputProps>(), {
-  color: 'primary',
+  color: 'none',
   min: 0,
   max: 100,
   step: 1,
