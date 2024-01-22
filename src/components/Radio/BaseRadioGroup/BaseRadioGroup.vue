@@ -15,6 +15,7 @@ const propped = computed(() => props.value || props.modelValue);
 const localValue = ref(propped.value || null);
 watch(propped, v => localValue.value = v);
 function onCheck(radio: BaseRadioProps) {
+    if(props.disabled) return;
     localValue.value = radio;
     emit('update:modelValue', localValue.value);
 }
@@ -25,20 +26,17 @@ const style = computed(() => {
 });
 </script>
 <template>
-    <div class="base-radio-group" :style="style">
+    <div class="base-radio-group" :class="{ disabled }" :style="style">
         <div class="base-radio-group__header" v-if="label">
             <label>{{ label }}</label>
-            <BaseButton color='alert' :disabled="!localValue" flat @click="localValue = null">Unselect</BaseButton>
         </div>
         <div class="base-radio-group__main">
             <div class="base-radio-group__radios" :class="{ column: asColumn }">
                 <BaseRadio @checked="onCheck(radio)" v-for="radio in items" :name="name" :checked="localValue?.value === radio.value" v-bind="{...radio}" />
             </div>
-            <BaseButton color='alert' :disabled="!localValue" flat @click="localValue = null" v-if="!showValue && !label">Unselect</BaseButton>
         </div>
         <div class="base-radio-group__selected" v-if="localValue && showValue">
             <p>Selected: <span class="base-radio-group__selected-value">{{ localValue?.value }}</span></p>
-            <BaseButton color='alert' :disabled="!localValue" flat @click="localValue = null">Unselect</BaseButton>
         </div>
     </div>
 </template>

@@ -24,11 +24,12 @@
     height: 16px;
     svg {
       position: absolute;
-      transition: .15s all;
-      height: 70%;
-      top: 50%;
       left: 50%;
-      transform: translateY(-50%) translateX(-50%);
+      top: 50%;
+      padding-left: 2px;
+      height: 70%;
+      transform: translateX(-50%) translateY(-50%);
+      transition: .15s all;
       pointer-events: none;
       z-index: 1;
       fill: white;

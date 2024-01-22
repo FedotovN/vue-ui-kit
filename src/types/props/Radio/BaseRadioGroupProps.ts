@@ -8,4 +8,5 @@ export default interface BaseRadioGroupProps {
     modelValue?: BaseRadioProps;
     showValue?: boolean;
     asColumn?: boolean;
+    disabled?: boolean;
 };

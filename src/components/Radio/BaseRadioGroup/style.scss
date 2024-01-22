@@ -3,9 +3,12 @@
     display: flex;
     flex-flow: column;
     align-items: start;
-    border: 1px solid #dadada;
     padding: 5px 10px;
     border-radius: 4px;
+    &.disabled {
+        pointer-events: none;
+        opacity: .9;
+    }
     &__header {
         height: 36px;
         width: 100%;
@@ -14,7 +17,8 @@
         align-items: center;
         label {
             display: inline-block;
-            font-size: 16px;
+            font-weight: 500;
+            font-size: 14px;
             padding: 0 10px 0 0;
             color: #777777;
         }

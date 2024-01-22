@@ -1,33 +1,91 @@
 import BaseButton from "@/components/Button/BaseButton/BaseButton.vue";
 import BaseButtonProps from "@/types/props/Button/BaseButtonProps";
 import { colors } from "@/types/colors";
-import { Meta, StoryFn } from "@storybook/vue3";
+import { Meta, StoryFn, ArgTypes } from "@storybook/vue3";
 export default {
   title: "Button/Base Button",
   component: BaseButton,
+  decorators: [
+    () => ({ 
+      template: `
+          <div style="margin: 1em;">
+            <story/>  
+          </div>
+        `
+    }),
+  ],
+  tags: ['autodocs'],
+  parameters: {
+    slots: {
+      default: 'Button content',
+    },
+  },
+  argTypes: {
+    color: {
+      value: 'primary',
+      type: "string",
+      control: { 
+        type: 'inline-radio'
+      },
+      options: Object.keys(colors),
+      description: "Represented either using default color variants or in [Red, Green, Blue] tuple format.",
+    },
+    width: {
+      value: 'auto',
+      type: 'string',
+      description: "Raw CSS property value.",
+      control: { 
+        type: 'text'
+      },
+    },
+    disabled: {
+      value: false,
+      type: 'boolean',
+      description: "Prop to disable the button.",
+      control: {
+        type: 'boolean'
+      }
+    },
+    flat: {
+      value: false,
+      type: 'boolean',
+      description: "Style variant.",
+      control: {
+        type: 'boolean'
+      }
+    },
+    outlined: {
+      value: false,
+      type: 'boolean',
+      description: "Style variant.",
+      control: {
+        type: 'boolean'
+      }
+    },
+    raised: {
+      value: false,
+      type: 'boolean',
+      description: "Style variant.",
+      control: {
+        type: 'boolean'
+      }
+    },
+    rounded: {
+      value: false,
+      type: 'boolean',
+      description: "Style variant.",
+      control: {
+        type: 'boolean'
+      }
+    },
+  } as ArgTypes<BaseButtonProps>,
 } as Meta;
-const Template: StoryFn = (args: BaseButtonProps) => ({
+export const Default: StoryFn = (args) => ({
   components: { BaseButton },
   setup() {
-    return { args, colors };
+    return { args };
   },
   template: `
-    <div style="display: flex; flex-flow: column; gap: 5px;">
-      <div v-for="color in Object.keys(colors)" style="display: flex; flex-wrap: wrap; gap: 5px;">
-        <BaseButton :color="color" v-bind="{...args}">Button {{ color }}</BaseButton> 
-        <BaseButton :color="color" v-bind="{...args}" disabled>Disabled button {{ color }}</BaseButton> 
-      </div>
-    </div>
+    <BaseButton v-bind="{...args}">{{ args.default || "Base Button" }}</BaseButton>
   `,
 });
-
-export const Default = Template.bind({});
-Default.args = {};
-export const Raised = Template.bind({});
-Raised.args = { raised: true };
-export const Rounded = Template.bind({});
-Rounded.args = { rounded: true };
-export const Outlined = Template.bind({});
-Outlined.args = { outlined: true };
-export const Flat = Template.bind({});
-Flat.args = { flat: true };

@@ -24,13 +24,13 @@
     "@babel/preset-typescript": "^7.22.15",
     "@storybook/addon-essentials": "7.6.6",
     "@storybook/addon-interactions": "7.6.6",
+    "@storybook/addon-knobs": "^7.0.2",
     "@storybook/addon-links": "7.6.6",
     "@storybook/blocks": "7.6.6",
     "@storybook/test": "7.6.6",
     "@storybook/vue3": "7.6.6",
     "@storybook/vue3-vite": "7.6.6",
     "@vitejs/plugin-vue": "^4.2.3",
-    "@vue/babel-plugin-jsx": "^1.1.5",
     "@vue/cli-plugin-typescript": "~5.0.0",
     "@vue/compiler-sfc": "^3.3.7",
     "autoprefixer": "^10.4.15",
@@ -40,8 +40,8 @@
     "eslint-plugin-storybook": "^0.6.15",
     "eslint-plugin-vue": "^9.19.2",
     "prettier": "^3.1.1",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "sass": "^1.66.1",
     "storybook": "7.6.6",
     "ts-node": "^10.9.1",
@@ -54,6 +54,7 @@
   },
   "dependencies": {
     "@vitejs/plugin-vue-jsx": "^3.1.0",
+    "storybook-addon-vue-slots": "^0.9.29",
     "yarn": "^1.22.21"
   }
 }
