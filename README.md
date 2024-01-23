@@ -3,7 +3,7 @@ UI components created with Vue 3 and Typescript.
 
 Unit testing using Vitest.
 
-## Quick start
+## Quick start (Version 0)
 
 _npm_:
 
