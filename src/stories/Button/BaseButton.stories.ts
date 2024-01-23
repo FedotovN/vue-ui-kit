@@ -78,7 +78,7 @@ export default {
         type: 'boolean'
       }
     },
-  } as ArgTypes<BaseButtonProps>,
+  },
 } as Meta;
 export const Default: StoryFn = (args) => ({
   components: { BaseButton },

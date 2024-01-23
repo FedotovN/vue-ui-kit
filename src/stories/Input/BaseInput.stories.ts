@@ -7,7 +7,6 @@ export default {
   component: BaseInput,
   title: "Input/Base Input",
   tags: ['autodocs'],
-  subcomponents: { BaseButton },
   decorators: [
     () => ({
       template: `
@@ -109,7 +108,45 @@ export const NextToTheButton: StoryFn = (args) => ({
   template: `
     <div style="display: flex; gap: 1em; align-items: end;">
       <BaseInput v-bind="{...args}" />
-      <BaseButton :color="args.color">Base Button</BaseButton>
+      <BaseButton v-bind="{...args}" width="auto">Base Button</BaseButton>
     </div>
   `
 })
+NextToTheButton.argTypes = {
+  flat: {
+    value: false,
+    type: 'boolean',
+    name: "Button: flat",
+    description: "Style variant without background.",
+    control: {
+      type: 'boolean'
+    }
+  },
+  outlined: {
+    value: false,
+    type: 'boolean',
+    name: "Button: outlined",
+    description: "Style variant without background and with border.",
+    control: {
+      type: 'boolean'
+    }
+  },
+  raised: {
+    value: false,
+    type: 'boolean',
+    name: "Button: raised",
+    description: "Style variant with flying effect.",
+    control: {
+      type: 'boolean'
+    }
+  },
+  rounded: {
+    value: false,
+    type: 'boolean',
+    name: "Button: rounded",
+    description: "Style variant.",
+    control: {
+      type: 'boolean'
+    }
+  },
+};

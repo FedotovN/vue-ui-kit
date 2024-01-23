@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { computed, ref, watch, Ref, onMounted, guardReactiveProps } from 'vue';
+import { computed, ref, watch, Ref, onMounted } from 'vue';
 import { useColor } from '@/composables';
 import RangeInputProps, { type RangeInputValue } from '@/types/props/Input/RangeInputProps';
+const inputId = `slider-input-id-${Math.random()}`
 const emit = defineEmits<{
   (e: 'update:modelValue', value: RangeInputValue);
 }>();
@@ -25,6 +26,7 @@ const localValue = ref(props.value || props.modelValue || { from: props.min, to:
 const style = computed(() => {
   return {
     '--color': useColor().get(props.color),
+    '--force-width': props.width,
     '--left-fill-padding': `${getFillPercentage(localValue.value.from)}%`,
     '--right-fill-padding': `${getFillPercentage(getFillPercentage(localValue.value.to, true))}%`,
   }
@@ -64,14 +66,18 @@ function onInput(event: InputEvent, isSecondInput?: boolean) {
 }
 </script>
 <template>
-  <div class="range-input" :style="style">
-    <input type="range" class="range-input__input" :value="localValue.from" @input="onInput" :max="max" :min="min"
-      :step="step">
-    <input type="range" class="range-input__input second" :value="localValue.to" :max="max" :min="min" :step="step"
-      @input="onInput($event as InputEvent, true)">
-    <div class="range-input__path">
-      <div class="range-input__fill"></div>
-      <div class="range-input__slow-fill"></div>
+  <div class="range-input__wrapper" :style="style">
+    <label v-if="label" :for="inputId">{{ label }}</label>
+    <div class="range-input">
+      <input type="range" class="range-input__input" :value="localValue.from" @input="onInput" :max="max" :min="min"
+        :id="inputId"
+        :step="step">
+      <input type="range" class="range-input__input second" :value="localValue.to" :max="max" :min="min" :step="step"
+        @input="onInput($event as InputEvent, true)">
+      <div class="range-input__path">
+        <div class="range-input__fill"></div>
+        <div class="range-input__slow-fill"></div>
+      </div>
     </div>
   </div>
 </template>

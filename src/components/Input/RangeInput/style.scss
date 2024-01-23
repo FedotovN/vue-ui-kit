@@ -1,86 +1,92 @@
-.range-input {
+.range-input__wrapper {
   --color: #dadada;
   --left-fill-padding: 0;
   --right-fill-padding: 0;
   --force-width: auto;
-  background: inherit;
-  width: var(--force-width);
-  height: 28px;
-  position: relative;
-  box-sizing: border-box;
-  pointer-events: none;
-  &__path {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translateY(-50%) translateX(-50%);
-    height: 4px;
-    width: calc(100% - 4px);
-    border: 1px solid #dadada;
-    border-radius: 9999px;
-    overflow: clip;
-    overflow-clip-margin: 1px;
+  label {
+    font-size: 12px;
+    color: #777777;
   }
-  &__fill, &__slow-fill {
-    position: absolute;
+  .range-input {
+    background: inherit;
+    width: var(--force-width);
+    height: 28px;
+    position: relative;
     box-sizing: border-box;
-    top: 50%;
-    transform: translateY(-50%);
-    left: var(--left-fill-padding);
-    right: calc(var(--right-fill-padding) + 2px);
-    height: 6px;
-    border-radius: 4px;
-    background-color: rgba(var(--color));
-  }
-  &__slow-fill {
-    transition: 1.5s all cubic-bezier(0,0,0,1);
-    background-color: rgba(var(--color), .5);
-  }
-  &__input {
-    -webkit-appearance: none;
-    box-sizing: border-box;
-    appearance: none;
-    position: absolute;
-    z-index: 2;
-    width: 100%;
-    top: 50%;
-    transform: translateY(-50%);
-    padding: 0;
-    margin: 0;
-    background-color: transparent;
-    border-radius: 4px;
-    transition: .15s border-color;
-    &:active {
-      border-color: rgba(var(--color));
+    pointer-events: none;
+    &__path {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translateY(-50%) translateX(-50%);
+      height: 4px;
+      width: calc(100% - 4px);
+      border: 1px solid #dadada;
+      border-radius: 9999px;
+      overflow: clip;
+      overflow-clip-margin: 1px;
     }
-    &::-webkit-slider-runnable-track, -moz-range-track {
-      pointer-events: none;
+    &__fill, &__slow-fill {
+      position: absolute;
+      box-sizing: border-box;
+      top: 50%;
+      transform: translateY(-50%);
+      left: var(--left-fill-padding);
+      right: calc(var(--right-fill-padding) + 2px);
       height: 6px;
+      border-radius: 4px;
+      background-color: rgba(var(--color));
+    }
+    &__slow-fill {
+      transition: 1.5s all cubic-bezier(0,0,0,1);
+      background-color: rgba(var(--color), .5);
+    }
+    &__input {
+      -webkit-appearance: none;
+      box-sizing: border-box;
+      appearance: none;
+      position: absolute;
+      z-index: 2;
+      width: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 0;
+      margin: 0;
       background-color: transparent;
       border-radius: 4px;
-    }
-    &::-webkit-slider-thumb, -moz-range-thumb {
-      cursor: pointer;
-      pointer-events: all;
-      appearance: none;
-      transform: translateY(-35%);
-      height: 16px;
-      width: 16px;
-      background-color: white;
-      border: 2px solid rgba(var(--color));
-      border-radius: 50%;
-      transition: .15s all;
-      &:hover {
-        box-shadow: 0 0 0px 10px rgba(var(--color), .5);
-      }
+      transition: .15s border-color;
       &:active {
-        cursor: grabbing;
-        box-shadow: 0 0 0px 6px rgba(var(--color), .8);
+        border-color: rgba(var(--color));
       }
-    }
-    &:-moz-focusring{
-      outline: 1px solid white;
-      outline-offset: -1px;
+      &::-webkit-slider-runnable-track, -moz-range-track {
+        pointer-events: none;
+        height: 6px;
+        background-color: transparent;
+        border-radius: 4px;
+      }
+      &::-webkit-slider-thumb, -moz-range-thumb {
+        cursor: pointer;
+        pointer-events: all;
+        appearance: none;
+        transform: translateY(-32.5%);
+        height: 16px;
+        width: 16px;
+        background-color: white;
+        border: 2px solid rgba(var(--color));
+        border-radius: 50%;
+        transition: .15s all;
+        &:hover {
+          box-shadow: 0 0 0px 10px rgba(var(--color), .5);
+        }
+        &:active {
+          cursor: grabbing;
+          box-shadow: 0 0 0px 6px rgba(var(--color), .8);
+        }
+      }
+      &:-moz-focusring{
+        outline: 1px solid white;
+        outline-offset: -1px;
+      }
     }
   }
 }
