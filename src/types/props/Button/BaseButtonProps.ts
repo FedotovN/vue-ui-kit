@@ -1,3 +1,4 @@
+import size from '@/types/size';
 import { Color, IColors } from '../../colors';
 export default interface BaseButtonProps {
   outlined?: boolean;
@@ -6,5 +7,6 @@ export default interface BaseButtonProps {
   flat?: boolean;
   width?: string;
   disabled?: boolean;
+  size?: size;
   color?: keyof IColors | Color;
 }

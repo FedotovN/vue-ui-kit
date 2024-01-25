@@ -5,6 +5,7 @@ import BaseButtonProps from '@/types/props/Button/BaseButtonProps';
 const props = withDefaults(defineProps<BaseButtonProps>(), {
   color: 'none',
   width: 'auto',
+  size: 'medium'
 });
 const styles = computed(() => {
   return {
@@ -14,18 +15,14 @@ const styles = computed(() => {
 });
 </script>
 <template>
-  <button
-    v-bind="$attrs"
-    :style="styles"
-    class="base-button"
-    :class="{
-      raised,
-      flat,
-      outlined,
-      rounded,
-      disabled,
-    }"
-  >
+  <button v-bind="$attrs" :style="styles" class="base-button" :class="{
+    raised,
+    flat,
+    outlined,
+    rounded,
+    disabled,
+    [size]: true,
+  }">
     <slot />
   </button>
 </template>

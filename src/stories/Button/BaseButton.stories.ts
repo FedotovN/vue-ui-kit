@@ -79,6 +79,16 @@ export default {
         type: 'boolean',
       },
     },
+    size: {
+      value: 'medium',
+      type: 'string',
+      control: {
+        type: 'inline-radio',
+      },
+      options: [
+        'small', 'medium', 'large',
+      ]
+    }
   },
 } as Meta;
 export const Default: StoryFn = (args) => ({

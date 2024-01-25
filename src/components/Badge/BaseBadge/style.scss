@@ -1,0 +1,53 @@
+//box-sizing: border-box;
+.base-badge {
+    --color: primary;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid transparent;
+    background-color: rgba(var(--color), .2);
+    color: rgb(var(--color));
+    border-radius: 2px;
+
+    &.rounded {
+        border-radius: 9999px;
+    }
+
+    &.bold {
+        font-weight: bold;
+    }
+
+    &.filled {
+        background-color: rgb(var(--color));
+        color: white;
+    }
+
+    &.outlined {
+        border: 1px solid rgb(var(--color));
+    }
+
+    &.caps {
+        text-transform: uppercase;
+    }
+
+    &.small {
+        font-size: 12px;
+        min-width: 8px;
+        padding: 0 4px;
+        min-height: 16px;
+    }
+
+    &.medium {
+        font-size: 14px;
+        min-width: 10px;
+        padding: 0 4px;
+        min-height: 18px;
+    }
+
+    &.large {
+        font-size: 16px;
+        min-width: 8px;
+        padding: 0 6px;
+        min-height: 20px;
+    }
+}

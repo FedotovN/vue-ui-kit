@@ -8,12 +8,12 @@ interface IColors {
   none: Color;
 }
 const colors: IColors = {
-  alert: [245, 101, 101],
+  alert: [239, 103, 98],
+  warning: [209, 132, 44],
+  success: [80, 178, 108],
   primary: [66, 153, 225],
-  secondary: [77, 69, 241],
-  success: [34, 197, 94],
-  warning: [249, 115, 22],
-  none: [120, 120, 120],
+  secondary: [134, 74, 240],
+  none: [80, 80, 80],
 };
 export { type IColors, type Color };
 export { colors };
