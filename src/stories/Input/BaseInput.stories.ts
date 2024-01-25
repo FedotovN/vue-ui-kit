@@ -1,59 +1,59 @@
-import BaseInput from "@/components/Input/BaseInput/BaseInput.vue";
-import BaseButton from "@/components/Button/BaseButton/BaseButton.vue";
-import BaseInputProps from "@/types/props/Input/BaseInputProps";
-import { colors } from "@/types/colors";
-import { ArgTypes, Meta, StoryFn } from "@storybook/vue3";
+import BaseInput from '@/components/Input/BaseInput/BaseInput.vue';
+import BaseButton from '@/components/Button/BaseButton/BaseButton.vue';
+import BaseInputProps from '@/types/props/Input/BaseInputProps';
+import { colors } from '@/types/colors';
+import { ArgTypes, Meta, StoryFn } from '@storybook/vue3';
 export default {
   component: BaseInput,
-  title: "Input/Base Input",
+  title: 'Input/Base Input',
   tags: ['autodocs'],
   decorators: [
     () => ({
       template: `
         <div style="margin: 1em;"><story/></div>
-      `
-    })
+      `,
+    }),
   ],
   argTypes: {
     color: {
       value: 'primary',
-      type: "string",
-      control: { 
-        type: 'inline-radio'
+      type: 'string',
+      control: {
+        type: 'inline-radio',
       },
       options: Object.keys(colors),
-      description: "Default color variants.",
+      description: 'Default color variants.',
     },
     label: {
-      value: "",
+      value: '',
       type: 'string',
-      description: "Text to display on top of the input.",
+      description: 'Text to display on top of the input.',
       control: {
-        type: 'text'
-      }
+        type: 'text',
+      },
     },
     disabled: {
       value: false,
       type: 'boolean',
-      description: "Prop to disable the input.",
+      description: 'Prop to disable the input.',
       control: {
-        type: 'boolean'
-      }
+        type: 'boolean',
+      },
     },
     value: {
       value: '',
       type: 'string',
-      description: "Input value.",
+      description: 'Input value.',
       control: {
-        type: 'text'
-      }
+        type: 'text',
+      },
     },
     modelValue: {
       value: false,
       type: 'string',
-      description: "Input value for two-way binding",
+      description: 'Input value for two-way binding',
       control: {
-        type: 'text'
+        type: 'text',
       },
     },
     dynamicLabel: {
@@ -62,7 +62,7 @@ export default {
       description: 'Behaviour that moves label on input focus.',
       control: {
         type: 'boolean',
-      }
+      },
     },
     placeholder: {
       value: false,
@@ -75,20 +75,44 @@ export default {
     width: {
       value: 'auto',
       type: 'string',
-      description: "Raw CSS property value.",
-      control: { 
-        type: 'text'
-      },
-    },
-    autocomplete: {
-      value: "off",
-      type: 'string',
-      description: "Native autocomplere attribute.",
+      description: 'Raw CSS property value.',
       control: {
         type: 'text',
       },
-    }
-  } as ArgTypes<BaseInputProps>,  
+    },
+    autocomplete: {
+      value: 'off',
+      type: 'string',
+      description: 'Native autocomplere attribute.',
+      control: {
+        type: 'text',
+      },
+    },
+    errorMessage: {
+      value: '',
+      type: 'string',
+      description: 'Error message to display at the bottom of the input.',
+      control: {
+        type: 'text',
+      },
+    },
+    errorWrap: {
+      value: false,
+      type: 'boolean',
+      description: 'Wrap long error message',
+      control: {
+        type: 'boolean',
+      },
+    },
+    required: {
+      value: false,
+      type: 'boolean',
+      description: 'Native autocomplete attribute',
+      control: {
+        type: 'boolean',
+      },
+    },
+  } as ArgTypes<BaseInputProps>,
 } as Meta;
 const Template: StoryFn = (args) => ({
   components: { BaseInput },
@@ -100,53 +124,53 @@ const Template: StoryFn = (args) => ({
   `,
 });
 export const Default = Template.bind({});
-export const NextToTheButton: StoryFn = (args) => ({
+export const Form: StoryFn = (args) => ({
   components: { BaseInput, BaseButton },
   setup() {
-    return { args }
+    return { args };
   },
   template: `
-    <div style="display: flex; gap: 1em; align-items: end;">
-      <BaseInput v-bind="{...args}" />
+    <form @submit.prevent style="display: flex; gap: 1em; align-items: end;">
+      <BaseInput v-bind="{...args}" required />
       <BaseButton v-bind="{...args}" width="auto">Base Button</BaseButton>
-    </div>
-  `
-})
-NextToTheButton.argTypes = {
+    </form>
+  `,
+});
+Form.argTypes = {
   flat: {
     value: false,
     type: 'boolean',
-    name: "Button: flat",
-    description: "Style variant without background.",
+    name: 'Button: flat',
+    description: 'Style variant without background.',
     control: {
-      type: 'boolean'
-    }
+      type: 'boolean',
+    },
   },
   outlined: {
     value: false,
     type: 'boolean',
-    name: "Button: outlined",
-    description: "Style variant without background and with border.",
+    name: 'Button: outlined',
+    description: 'Style variant without background and with border.',
     control: {
-      type: 'boolean'
-    }
+      type: 'boolean',
+    },
   },
   raised: {
     value: false,
     type: 'boolean',
-    name: "Button: raised",
-    description: "Style variant with flying effect.",
+    name: 'Button: raised',
+    description: 'Style variant with flying effect.',
     control: {
-      type: 'boolean'
-    }
+      type: 'boolean',
+    },
   },
   rounded: {
     value: false,
     type: 'boolean',
-    name: "Button: rounded",
-    description: "Style variant.",
+    name: 'Button: rounded',
+    description: 'Style variant.',
     control: {
-      type: 'boolean'
-    }
+      type: 'boolean',
+    },
   },
 };

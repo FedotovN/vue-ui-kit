@@ -1,4 +1,4 @@
-import { Color, IColors } from "../../colors";
+import { Color, IColors } from '../../colors';
 export default interface BaseButtonProps {
   outlined?: boolean;
   rounded?: boolean;

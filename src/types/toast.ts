@@ -1,4 +1,4 @@
-import { IColors } from "./colors";
+import { IColors } from './colors';
 
 interface ToastData {
   content?: string;

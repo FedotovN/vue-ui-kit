@@ -5,8 +5,8 @@
   height: 100%;
   width: 100%;
   gap: 5px;
-  &.disabled { 
-    filter: brightness(.9) opacity(.9);
+  &.disabled {
+    filter: brightness(0.9) opacity(0.9);
     pointer-events: none;
   }
   label {
@@ -32,7 +32,7 @@
       height: 70%;
       width: 70%;
       transform: translateX(-50%) translateY(-50%);
-      transition: .15s all;
+      transition: 0.15s all;
       pointer-events: none;
       z-index: 1;
       fill: white;
@@ -49,7 +49,7 @@
       height: 100%;
       border: 1px solid #dadada;
       appearance: none;
-      transition: .05s background-color;
+      transition: 0.05s background-color;
       &:checked {
         background-color: rgba(var(--color));
         border-color: rgba(var(--color));

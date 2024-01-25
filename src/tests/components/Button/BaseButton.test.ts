@@ -1,4 +1,4 @@
-import { describe, it } from "vitest";
-describe("Default behavior", () => {
-  it("Renders", () => {});
+import { describe, it } from 'vitest';
+describe('Default behavior', () => {
+  it('Renders', () => {});
 });

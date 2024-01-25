@@ -1,3 +1,3 @@
-import useColor from "./useColor";
+import useColor from './useColor';
 
 export { useColor };

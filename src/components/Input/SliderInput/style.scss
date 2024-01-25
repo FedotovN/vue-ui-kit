@@ -19,7 +19,7 @@
       box-sizing: border-box;
       &.disabled {
         pointer-events: none;
-        filter: brightness(.9) opacity(.9);
+        filter: brightness(0.9) opacity(0.9);
       }
     }
     &__path {
@@ -34,17 +34,18 @@
       overflow: clip;
       overflow-clip-margin: 1px;
     }
-    &__fill, &__slow-fill {
+    &__fill,
+    &__slow-fill {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
       width: calc(var(--fill-percentage) + 2px);
       height: 6px;
       border-radius: 4px;
-      background-color: rgba(var(--color), .5);
+      background-color: rgba(var(--color), 0.5);
     }
     &__slow-fill {
-      transition: 1.5s width cubic-bezier(0,0,0,1);
+      transition: 1.5s width cubic-bezier(0, 0, 0, 1);
       background-color: rgba(var(--color));
     }
     &__input {
@@ -60,16 +61,18 @@
       margin: 0;
       background-color: transparent;
       border-radius: 4px;
-      transition: .15s border-color;
+      transition: 0.15s border-color;
       &:active {
         border-color: rgba(var(--color));
       }
-      &::-webkit-slider-runnable-track, -moz-range-track {
+      &::-webkit-slider-runnable-track,
+      -moz-range-track {
         height: 6px;
         background-color: transparent;
         border-radius: 4px;
       }
-      &::-webkit-slider-thumb, -moz-range-thumb {
+      &::-webkit-slider-thumb,
+      -moz-range-thumb {
         cursor: pointer;
         appearance: none;
         transform: translateY(-35%);
@@ -78,16 +81,16 @@
         background-color: white;
         border: 2px solid rgba(var(--color));
         border-radius: 50%;
-        transition: .15s all;
+        transition: 0.15s all;
         &:hover {
-          box-shadow: 0 0 0px 10px rgba(var(--color), .5);
+          box-shadow: 0 0 0px 10px rgba(var(--color), 0.5);
         }
         &:active {
           cursor: grabbing;
-          box-shadow: 0 0 0px 6px rgba(var(--color), .8);
+          box-shadow: 0 0 0px 6px rgba(var(--color), 0.8);
         }
       }
-      &:-moz-focusring{
+      &:-moz-focusring {
         outline: 1px solid white;
         outline-offset: -1px;
       }

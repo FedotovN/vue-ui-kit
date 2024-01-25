@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
     },
     "rootDirs": ["src"],
     "outDir": "dist",
@@ -15,11 +15,11 @@
     "esModuleInterop": true,
     "sourceMap": true,
     "jsx": "preserve",
-    "jsxImportSource": "vue"
+    "jsxImportSource": "vue",
   },
   "ts-node": {
     "esm": true,
-    "experimentalSpecifierResolution": "node"
+    "experimentalSpecifierResolution": "node",
   },
   "include": [
     "./src/**/*",
@@ -32,6 +32,6 @@
     "src/**/*.tsx",
     "src/**/*.vue",
     "tests/**/*.ts",
-    "vite.config.js"
-  ]
+    "vite.config.js",
+  ],
 }

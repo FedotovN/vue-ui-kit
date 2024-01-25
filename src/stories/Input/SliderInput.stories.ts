@@ -1,9 +1,9 @@
-import SliderInput from "@/components/Input/SliderInput/SliderInput.vue";
-import BaseButton from "@/components/Button/BaseButton/BaseButton.vue";
-import { colors } from "@/types/colors";
-import { Meta, StoryFn } from "@storybook/vue3";
+import SliderInput from '@/components/Input/SliderInput/SliderInput.vue';
+import BaseButton from '@/components/Button/BaseButton/BaseButton.vue';
+import { colors } from '@/types/colors';
+import { Meta, StoryFn } from '@storybook/vue3';
 export default {
-  title: "Input/Slider Input",
+  title: 'Input/Slider Input',
   component: { SliderInput },
 } as Meta;
 const Template: StoryFn = (args) => ({
@@ -24,11 +24,11 @@ const Template: StoryFn = (args) => ({
 export const Default = Template.bind({});
 export const WithLabel = Template.bind({});
 WithLabel.args = {
-  label: "Min. price, USD",
+  label: 'Min. price, USD',
 };
 export const SlotValue = Template.bind({});
 SlotValue.args = {
-  label: "Min. price, USD",
+  label: 'Min. price, USD',
   default: `
     <template #value={value}>
       <small style="padding-left: 10px;">{{value}}</small>
@@ -37,7 +37,7 @@ SlotValue.args = {
 };
 export const Disabled = Template.bind({});
 Disabled.args = {
-  label: "Min. price, USD",
+  label: 'Min. price, USD',
   default: `
     <template #value={value}>
       <small style="padding-left: 10px;">{{value}}</small>

@@ -1,52 +1,53 @@
-import BaseCheckbox from "@/components/Checkbox/BaseCheckbox/BaseCheckbox.vue";
-import { ArgTypes, Meta, StoryFn } from "@storybook/vue3";
-import { colors } from "@/types/colors";
-import BaseCheckboxProps from "@/types/props/Checkbox/BaseCheckboxProps";
+import BaseCheckbox from '@/components/Checkbox/BaseCheckbox/BaseCheckbox.vue';
+import { ArgTypes, Meta, StoryFn } from '@storybook/vue3';
+import { colors } from '@/types/colors';
+import BaseCheckboxProps from '@/types/props/Checkbox/BaseCheckboxProps';
 export default {
-  title: "Checkbox/Base Checkbox",
+  title: 'Checkbox/Base Checkbox',
   component: BaseCheckbox,
   tags: ['autodocs'],
   argTypes: {
     color: {
       value: 'primary',
-      type: "string",
-      control: { 
-        type: 'inline-radio'
+      type: 'string',
+      control: {
+        type: 'inline-radio',
       },
       options: Object.keys(colors),
-      description: "Represented either using default color variants or in [Red, Green, Blue] tuple format.",
+      description:
+        'Represented either using default color variants or in [Red, Green, Blue] tuple format.',
     },
     label: {
-      value: "",
+      value: '',
       type: 'string',
-      description: "Text to display next to the checkbox.",
+      description: 'Text to display next to the checkbox.',
       control: {
-        type: 'text'
-      }
+        type: 'text',
+      },
     },
     disabled: {
       value: false,
       type: 'boolean',
-      description: "Prop to disable the checkbox.",
+      description: 'Prop to disable the checkbox.',
       control: {
-        type: 'boolean'
-      }
+        type: 'boolean',
+      },
     },
     value: {
       value: false,
       type: 'boolean',
-      description: "Checkbox value.",
+      description: 'Checkbox value.',
       control: {
-        type: 'boolean'
-      }
+        type: 'boolean',
+      },
     },
     modelValue: {
       value: false,
       type: 'boolean',
-      description: "Checkbox value for two-way binding",
+      description: 'Checkbox value for two-way binding',
       control: {
-        type: 'boolean'
-      }
+        type: 'boolean',
+      },
     },
   } as ArgTypes<BaseCheckboxProps>,
 } as Meta;
@@ -64,11 +65,11 @@ export const Default = Template.bind({});
 export const LotOfCheckboxes: StoryFn = (args) => ({
   components: { BaseCheckbox },
   setup() {
-    return { args, colors }
+    return { args, colors };
   },
   template: `
     <div style="display: flex; flex-flow: column; gap: 5px;">
       <BaseCheckbox v-for="(color, ind) in colors" :key="ind" v-bind="{...args}" :color="color" />
     </div>
-  `
+  `,
 });

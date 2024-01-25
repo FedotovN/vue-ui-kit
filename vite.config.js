@@ -1,7 +1,7 @@
-import { defineConfig } from "vite";
-import vue from "@vitejs/plugin-vue";
-import dts from "vite-plugin-dts";
-import path from "path";
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+import dts from 'vite-plugin-dts';
+import path from 'path';
 // https://vitejs.dev/config/
 /// <reference types="vitest" />
 export default defineConfig({
@@ -12,28 +12,28 @@ export default defineConfig({
     }),
   ],
   build: {
-    exclude: ["vue"],
+    exclude: ['vue'],
     lib: {
-      entry: "./src/plugin/index.ts",
-      name: "kneekeetah-ui-kit",
+      entry: './src/plugin/index.ts',
+      name: 'kneekeetah-ui-kit',
       fileName: (format) => `ui-kit.${format}.ts`,
     },
     rollupOptions: {
-      external: ["vue"],
+      external: ['vue'],
       output: {
         globals: {
-          vue: "Vue",
+          vue: 'Vue',
         },
       },
     },
   },
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "src"),
+      '@': path.resolve(__dirname, 'src'),
     },
   },
   esbuild: {
     jsxFactory: 'h',
-    jsxFragment: 'Fragment'
-  }
+    jsxFragment: 'Fragment',
+  },
 });

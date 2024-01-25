@@ -1,8 +1,8 @@
-import { Meta, StoryFn } from "@storybook/vue3";
-import { colors } from "@/types/colors";
-import BaseRadio from "@/components/Radio/BaseRadio/BaseRadio.vue";
+import { Meta, StoryFn } from '@storybook/vue3';
+import { colors } from '@/types/colors';
+import BaseRadio from '@/components/Radio/BaseRadio/BaseRadio.vue';
 export default {
-  title: "Radio/Base Radio",
+  title: 'Radio/Base Radio',
   component: BaseRadio,
 } as Meta;
 const Template: StoryFn = (args) => ({
@@ -23,10 +23,10 @@ const Template: StoryFn = (args) => ({
 export const Default = Template.bind({});
 export const WithLabel = Template.bind({});
 WithLabel.args = {
-  label: "Checkbox label",
+  label: 'Checkbox label',
 };
 export const Disabled = Template.bind({});
 Disabled.args = {
-  label: "Disabled Radio",
+  label: 'Disabled Radio',
   disabled: true,
 };

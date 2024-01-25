@@ -1,4 +1,4 @@
-import { Color, IColors } from "@/types/colors";
+import { Color, IColors } from '@/types/colors';
 export default interface SliderInputProps {
   min?: number | string;
   max?: number | string;

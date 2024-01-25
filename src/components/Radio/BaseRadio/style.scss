@@ -8,7 +8,7 @@
   gap: 5px;
   &.disabled {
     pointer-events: none;
-    filter: brightness(.9) opacity(.9);
+    filter: brightness(0.9) opacity(0.9);
   }
   label {
     user-select: none;
@@ -25,10 +25,10 @@
     aspect-ratio: 1;
     border-radius: 9999px;
     appearance: none;
-    transition: .15s all;
+    transition: 0.15s all;
     &:after {
       content: '';
-      transition: .15s all;
+      transition: 0.15s all;
       top: 50%;
       left: 50%;
       transform: translateX(-50%) translateY(-50%);
@@ -36,7 +36,6 @@
       position: absolute;
       height: 100%;
       aspect-ratio: 1;
-
     }
     &:checked {
       border-color: rgba(var(--color));

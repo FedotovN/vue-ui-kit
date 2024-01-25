@@ -2,7 +2,7 @@
 import { useColor } from '@/composables';
 import SliderInputProps from '@/types/props/Input/SliderInputProps';
 import { computed, onMounted, ref, watch } from 'vue';
-const inputId = `slider-input-id-${Math.random()}`
+const inputId = `slider-input-id-${Math.random()}`;
 const emit = defineEmits<{
   (e: 'update:modelValue', value: number);
 }>();
@@ -14,7 +14,7 @@ const props = withDefaults(defineProps<SliderInputProps>(), {
   step: 1,
 });
 const propped = computed(() => props.modelValue || props.value);
-watch(propped, v => localValue.value = v);
+watch(propped, (v) => (localValue.value = v));
 const localValue = ref(props.modelValue || props.value || 0);
 onMounted(() => {
   localValue.value = validateValue(+localValue.value);
@@ -34,17 +34,26 @@ const style = computed(() => {
   return {
     '--color': useColor().get(props.color),
     '--force-width': props.width,
-    '--fill-percentage': `${(+localValue.value / +props.max) * 100}%`
+    '--fill-percentage': `${(+localValue.value / +props.max) * 100}%`,
   };
-})
+});
 </script>
 <template>
   <div class="slider-input__wrapper">
     <label :for="inputId">{{ label }}</label>
     <div class="slider-input">
       <div class="slider-input__body" :class="{ disabled }" :style="style">
-        <input :disabled="disabled" :id="inputId" :step="step" :max="max" :min="min" :value="localValue" @input="onUpdate"
-          type="range" class="slider-input__input">
+        <input
+          :disabled="disabled"
+          :id="inputId"
+          :step="step"
+          :max="max"
+          :min="min"
+          :value="localValue"
+          @input="onUpdate"
+          type="range"
+          class="slider-input__input"
+        />
         <div class="slider-input__path">
           <div class="slider-input__fill"></div>
           <div class="slider-input__slow-fill"></div>
