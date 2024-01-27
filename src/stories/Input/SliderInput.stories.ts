@@ -4,7 +4,7 @@ import { colors } from '@/types/colors';
 import { Meta, StoryFn } from '@storybook/vue3';
 export default {
   title: 'Input/Slider Input',
-  component: { SliderInput },
+  component: SliderInput,
 } as Meta;
 const Template: StoryFn = (args) => ({
   components: { SliderInput, BaseButton },

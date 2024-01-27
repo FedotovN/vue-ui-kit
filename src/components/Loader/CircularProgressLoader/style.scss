@@ -1,0 +1,50 @@
+.circular-progress-loader-wrapper {
+  --accent-color: none;
+  --percentage: 0%;
+  --force-height: none;
+  --force-width: none;
+  --stroke-width: none;
+  --stroke-dasharray: none;
+  --stroke-dashoffset: none;
+  --offset: calc(var(--circumference) * ((100 - var(--percentage) / 100)));
+  position: relative;
+
+  .circular-progress-loader-label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+
+    .circular-progress-loader-label-default {
+      font-size: 10px;
+      letter-spacing: 1px;
+    }
+  }
+
+  .circular-progress-loader {
+    transform: rotate(-90deg);
+    height: var(--force-height);
+    width: var(--force-width);
+
+    .circular-progress-loader-fill,
+    .circular-progress-loader-path {
+      fill: transparent;
+      stroke-width: var(--stroke-width);
+    }
+
+    .circular-progress-loader-fill {
+      transition: 0.15s all;
+      stroke: rgba(var(--accent-color), 1);
+      stroke-dasharray: var(--stroke-dasharray);
+      stroke-dashoffset: var(--stroke-dashoffset);
+
+      &.rounded {
+        stroke-linecap: round;
+      }
+    }
+
+    .circular-progress-loader-path {
+      stroke: rgba(var(--accent-color), 0.2);
+    }
+  }
+}

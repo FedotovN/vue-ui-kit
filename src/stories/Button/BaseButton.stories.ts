@@ -85,13 +85,11 @@ export default {
       control: {
         type: 'inline-radio',
       },
-      options: [
-        'small', 'medium', 'large',
-      ]
-    }
+      options: ['small', 'medium', 'large'],
+    },
   },
 } as Meta;
-export const Default: StoryFn = (args) => ({
+const Template: StoryFn = (args) => ({
   components: { BaseButton },
   setup() {
     return { args };
@@ -100,3 +98,18 @@ export const Default: StoryFn = (args) => ({
     <BaseButton v-bind="{...args}">{{ args.default || "Base Button" }}</BaseButton>
   `,
 });
+export const Default = Template.bind({});
+export const Disabled = Template.bind({});
+Disabled.args = { disabled: true };
+export const Raised = Template.bind({});
+Raised.args = { raised: true };
+export const Rounded = Template.bind({});
+Rounded.args = { rounded: true };
+export const Flat = Template.bind({});
+Flat.args = { flat: true };
+export const Small = Template.bind({});
+Small.args = { size: 'small' };
+export const Medium = Template.bind({});
+Medium.args = { size: 'medium' };
+export const Large = Template.bind({});
+Large.args = { size: 'large' };
