@@ -1,6 +1,6 @@
 import TextInput from "@/components/Forms/TextInput/TextInput.vue";
 import BaseButton from "@/components/Forms/BaseButton/BaseButton.vue";
-import BaseInputProps from '@/types/props/Forms/BaseInputProps';
+import BaseInputProps from '@/types/props/Forms/TextInputProps';
 import { colors } from '@/types/colors';
 import { ArgTypes, Meta, StoryFn } from '@storybook/vue3';
 export default {
@@ -55,6 +55,14 @@ export default {
       control: {
         type: 'text',
       },
+    },
+    unstyled: {
+      value: false,
+      type: 'boolean',
+      description: 'Input without border and padding',
+      control: {
+        type: "boolean",
+      }
     },
     dynamicLabel: {
       value: '',

@@ -1,0 +1,56 @@
+.base-file-input-wrapper {
+    --accent-color: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #dadada;
+    border-radius: 2px;
+    padding: 0 8px;
+    height: 28px;
+    cursor: pointer;
+    transition: .15s border-color;
+
+    &.disabled {
+        cursor: default;
+        opacity: .7;
+        pointer-events: none;
+        user-select: none;
+    }
+
+    small {
+        padding-left: 4px;
+        color: #777777;
+        transition: .15s color;
+    }
+
+    &:hover {
+        border-color: rgb(var(--accent-color));
+
+        small {
+            color: rgb(var(--accent-color));
+        }
+
+        .base-file-input {
+            svg {
+                fill: rgb(var(--accent-color));
+            }
+        }
+    }
+
+    .base-file-input {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 30px;
+        border-radius: 2px;
+
+        svg {
+            margin-right: -2px;
+            transition: .15s fill;
+            width: 100%;
+            height: 100%;
+            scale: .7;
+            fill: #a0a0a0;
+        }
+    }
+}

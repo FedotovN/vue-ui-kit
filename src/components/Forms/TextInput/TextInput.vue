@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import BaseInputProps from '@/types/props/Forms/BaseInputProps';
+import BaseInputProps from '@/types/props/Forms/TextInputProps';
 import { useColor } from '@/composables';
 import { computed, ref, watch } from 'vue';
 import { colors } from '@/types/colors';
@@ -48,7 +48,7 @@ const style = computed(() => {
 });
 </script>
 <template>
-  <div :style="style" class="base-input" :class="{ disabled, error: !!errorMessage }">
+  <div :style="style" class="base-input" :class="{ disabled, error: errorMessage, unstyled }">
     <label v-if="label" :for="inputId" :class="{
       dynamic: dynamicLabel,
       lifted: toLiftLabel,

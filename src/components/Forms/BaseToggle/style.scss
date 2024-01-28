@@ -1,0 +1,71 @@
+.base-toggle-wrapper {
+    --accent-color: none;
+    --force-width: 35px;
+    --thumb-diameter: 18px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    height: 28px;
+
+    .base-toggle-label {
+        pointer-events: none;
+        user-select: none;
+        padding: 0;
+        margin: 0;
+
+        &.colored {
+            color: rgb(var(--accent-color));
+        }
+    }
+
+    .base-toggle-body {
+        width: var(--force-width);
+        position: relative;
+        height: 16px;
+        cursor: pointer;
+
+        .base-toggle-path {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            border-radius: 9999px;
+            height: calc(100% - 6px);
+            transition: .15s background-color;
+            background-color: #dfdfdf;
+
+            &.toggled {
+                background-color: rgba(var(--accent-color), .4);
+            }
+        }
+
+        .base-toggle-thumb {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: #979797;
+            border-radius: 9999px;
+            height: var(--thumb-diameter);
+            width: var(--thumb-diameter);
+            transition: .15s all;
+
+            &.toggled {
+                background-color: rgb(var(--accent-color));
+                transform: translateY(-50%) translateX(calc(var(--force-width) - var(--thumb-diameter) + 2px));
+            }
+        }
+
+        &:hover {
+            .base-toggle-path {
+                &:not(.toggled) {
+                    background-color: rgba(var(--accent-color), .2);
+                }
+            }
+
+            .base-toggle-thumb {
+                background-color: rgb(var(--accent-color));
+                box-shadow: 0 0 0 10px rgba(var(--accent-color), .5);
+            }
+        }
+    }
+}
