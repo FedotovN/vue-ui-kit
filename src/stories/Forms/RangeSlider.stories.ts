@@ -1,8 +1,8 @@
 import { ArgTypes, Meta, StoryFn } from '@storybook/vue3';
 import { ControlType } from '@storybook/blocks';
 import { colors } from '@/types/colors';
-import RangeSlider from "@/components/Forms/RangeSlider/RangeSlider.vue";
-import RangeInputProps from '@/types/props/Input/RangeSliderProps';
+import RangeSlider from '@/components/Forms/RangeSlider/RangeSlider.vue';
+import RangeInputProps from '@/types/props/Forms/RangeSliderProps';
 export default {
   title: 'Forms/Range Input',
   component: RangeSlider,
@@ -58,7 +58,7 @@ export default {
     minimum: {
       value: 0,
       type: 'number',
-      description: 'Base Input bottom boundary.',
+      description: 'Range slider bottom boundary.',
       control: {
         type: 'range' as ControlType,
       },
@@ -66,7 +66,7 @@ export default {
     limit: {
       value: 0,
       type: 'number',
-      description: 'Base Input top boundary.',
+      description: 'Range slider top boundary.',
       control: {
         type: 'range' as ControlType,
       },
@@ -85,22 +85,6 @@ export default {
       description: 'Native input step attribute.',
       control: {
         type: 'range' as ControlType,
-      },
-    },
-    modelValue: {
-      value: { from: 0, to: 100 },
-      description:
-        'Base Input value for two-way binding. Takes object of type { from: number, to: number }',
-      control: {
-        type: 'object' as ControlType,
-      },
-    },
-    value: {
-      value: { from: 0, to: 100 },
-      description:
-        'Base Input value. Takes object of type { from: number, to: number }',
-      control: {
-        type: 'object' as ControlType,
       },
     },
   } as ArgTypes<RangeInputProps>,
