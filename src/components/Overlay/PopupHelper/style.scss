@@ -1,0 +1,26 @@
+.popup-helper {
+  .v-enter-active,
+  .v-leave-active {
+    transition: opacity 0.5s ease;
+  }
+
+  .v-enter-from,
+  .v-leave-to {
+    opacity: 0;
+  }
+  &__popup {
+    --popup-z-index: 0;
+    --pos-x: 0;
+    --pos-y: 0;
+    position: absolute;
+    z-index: var(--popup-z-index);
+    left: 0;
+    top: 0;
+    transform: translateX(var(--pos-x)) translateY(var(--pos-y));
+    background-color: blue;
+    cursor: pointer;
+  }
+  &__target {
+    background-color: red;
+  }
+}
