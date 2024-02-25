@@ -5,7 +5,7 @@ import {
   ListenerFunction,
 } from "@/types/listeners";
 
-function addHoverListener(target: HTMLElement, callback: ListenerCallbackFunction): Unsubscribe {
+function addHoverListener(target: HTMLElement, callback: ListenerCallbackFunction, delay?: number): Unsubscribe {
   const handleMouseIn = (e: Event) => {
     callback(true)
   };
@@ -13,7 +13,7 @@ function addHoverListener(target: HTMLElement, callback: ListenerCallbackFunctio
     setTimeout(() => {
       if (!target.matches(':hover'))
         callback(false);
-    }, 500)
+    }, delay)
   };
   target.addEventListener('mouseover', handleMouseIn);
   target.addEventListener('mouseleave', handleMouseLeave);
@@ -22,7 +22,7 @@ function addHoverListener(target: HTMLElement, callback: ListenerCallbackFunctio
     target.removeEventListener('mouseleave', handleMouseLeave);
   };
 }
-function addClickListener(target: HTMLElement, callback: ListenerCallbackFunction, popup?: HTMLElement): Unsubscribe {
+function addClickListener(target: HTMLElement, callback: ListenerCallbackFunction): Unsubscribe {
   const handleClick = (e: Event) => { 
     if (target.contains(e.target as HTMLElement) || e.target === target)
       callback(true)
@@ -33,7 +33,7 @@ function addClickListener(target: HTMLElement, callback: ListenerCallbackFunctio
     document.removeEventListener('click', handleClick);
   };
 }
-function addHoldListener(target: HTMLElement, callback: ListenerCallbackFunction, popup?: HTMLElement): Unsubscribe {
+function addHoldListener(target: HTMLElement, callback: ListenerCallbackFunction): Unsubscribe {
   const handleMouseDown = (e: Event) => { callback(true) };
   const handleMouseUp = (e: Event) => { callback(false) };
   target.addEventListener('mousedown', handleMouseDown);

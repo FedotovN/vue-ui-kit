@@ -5,13 +5,14 @@ import { Unsubscribe } from "@/types/listeners";
 import getPopupPosition from "./position";
 import listeners from "./listeners";
 const props = withDefaults(defineProps<PopupHelperProps>(), {
-  listenerType: 'hold',
+  listenerType: 'hover',
   alignX: 'center',
   alignY: 'center',
   offsetX: 0,
   offsetY: 0,
-  screenBoundaryOffset: 25,
+  screenBoundaryOffset: 0,
   zIndex: 9999,
+  delay: 100,
 });
 const showPopup = ref(false);
 const propped = computed(() => props.show);
@@ -19,7 +20,7 @@ watch(propped, (v) => { showPopup.value = v; });
 const target: Ref<HTMLElement> = ref(null);
 const popup: Ref<HTMLElement> = ref(null);
 const listenToEvents = listeners[props.listenerType];
-const unsubsribeFromListener: Ref<null | Unsubscribe> = ref(null);
+const unsubscribeFromListener: Ref<null | Unsubscribe> = ref(null);
 const popupUnsub: Ref<null | Unsubscribe> = ref(null);
 function handleListenerEvent(isActive: boolean) {
   showPopup.value = isActive;
@@ -40,16 +41,12 @@ function handleHoverListenerEvent(isActive: boolean) {
   }
 }
 onMounted(() => {
-  showPopup.value = true;
-  nextTick(() => {
-    const callback = props.listenerType === 'hover' ? handleHoverListenerEvent : handleListenerEvent;
-    unsubsribeFromListener.value = listenToEvents(target.value, callback, popup.value);
-    showPopup.value = false;
-  });
+  const callback = props.listenerType === 'hover' ? handleHoverListenerEvent : handleListenerEvent;
+  unsubscribeFromListener.value = listenToEvents(target.value, callback, props.delay);
 });
 onUnmounted(() => {
-  if (unsubsribeFromListener.value) {
-    unsubsribeFromListener.value();
+  if (unsubscribeFromListener.value) {
+    unsubscribeFromListener.value();
   };
 });
 const componentWasMounted = computed(() => !!target.value);
@@ -68,9 +65,9 @@ const popupStyleVariables = computed(() => {
     y = position.y;
   }
   return {
-    '--pos-x': `${x}px`,
-    '--pos-y': `${y}px`,
-    '--popup-z-index': props.zIndex,
+    'left': `${x}px`,
+    'top': `${y}px`,
+    'z-index': props.zIndex,
   }
 });
 </script>
@@ -88,6 +85,5 @@ const popupStyleVariables = computed(() => {
       </Teleport>
   </div>
 </template>
-
 
 <style src="./style.scss" /> 

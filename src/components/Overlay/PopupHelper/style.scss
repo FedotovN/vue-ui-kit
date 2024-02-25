@@ -1,26 +1,26 @@
-.popup-helper {
+body {
   .v-enter-active,
   .v-leave-active {
-    transition: opacity 0.5s ease;
+    transform: scale(1);
+    transition: all 0.1s ease;
+    transition-property: transform, opacity;
   }
 
   .v-enter-from,
   .v-leave-to {
     opacity: 0;
+    transform: scale(.98);
   }
+}
+.popup-helper {
+  display: inline-block;
   &__popup {
-    --popup-z-index: 0;
-    --pos-x: 0;
-    --pos-y: 0;
     position: absolute;
-    z-index: var(--popup-z-index);
+    z-index: 0;
     left: 0;
     top: 0;
-    transform: translateX(var(--pos-x)) translateY(var(--pos-y));
-    background-color: blue;
-    cursor: pointer;
   }
   &__target {
-    background-color: red;
+    display: inline-block;
   }
 }
