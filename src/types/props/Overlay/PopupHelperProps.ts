@@ -4,12 +4,13 @@ import { HorizontalAlignmentType, VerticalAlignmentType } from "@/types/alignmen
 export default interface PopupHelperProps {
   show?: boolean,
   listenerType?: ListenerType,
-  delay?: number,
+  delay?: string | number,
   alignX?: HorizontalAlignmentType,
   alignY?: VerticalAlignmentType,
   offsetX?: string | number,
   offsetY?: string | number,
   screenBoundaryOffset?: string | number,
   zIndex?: string | number,
-  keepOnHover?: boolean,
+  interactive?: boolean,
+  chain?: boolean,
 }

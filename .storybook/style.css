@@ -9,6 +9,12 @@ p {
   margin: 0;
   padding: 0;
 }
+.popup-helper-wrapper {
+  display: flex;
+  flex-flow: column;
+  gap: 10px;
+  padding: 10px;
+}
 .popup-helper__popup {
   padding: 5px 10px;
   border-radius: 2px;

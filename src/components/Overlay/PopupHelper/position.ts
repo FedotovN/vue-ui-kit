@@ -14,12 +14,12 @@ function getVerticalPositionRaw(align: VerticalAlignmentType, offset: number, ta
   if (align === 'bottom') return y + height + offset;
 };
 function limitByValue(value: number, maxValue: number, screenOffset: number, size: number, minValue = 0): number {
-  const tooSmall = value < 0;
+  const tooSmall = value < minValue;
   const tooBig = value + size > maxValue;
   if (tooSmall) {
-    return minValue + value + screenOffset + size;
+    return minValue + screenOffset;
   };
-  if(tooBig) {    
+  if(tooBig) {
     return maxValue - screenOffset - size;
   };
   return value;
@@ -27,9 +27,8 @@ function limitByValue(value: number, maxValue: number, screenOffset: number, siz
 export default function getPopupPosition(alignX: HorizontalAlignmentType, alignY: VerticalAlignmentType, offsetX: number, offsetY: number, targetRect: DOMRect, popupRect: DOMRect, screenBoundaryOffset): { x: number, y: number } {
   const posXRaw = getHorizontalPositionRaw(alignX, offsetX, targetRect, popupRect);
   const posYRaw = getVerticalPositionRaw(alignY, offsetY, targetRect, popupRect);
-  
   const { width, height } = popupRect;
-  
+
   return {
     x: limitByValue(posXRaw, window.innerWidth, screenBoundaryOffset, width),
     y: limitByValue(posYRaw, window.innerHeight, screenBoundaryOffset, height),
