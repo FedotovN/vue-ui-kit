@@ -19,6 +19,7 @@ p {
   padding: 5px 10px;
   border-radius: 2px;
   border: 1px solid rgb(80, 80, 80);
+  box-shadow: 1px 1px 15px 1px #adadad;
   background-color: white;
   font-size: 12px;
 }

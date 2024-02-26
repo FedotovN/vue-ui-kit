@@ -15,7 +15,7 @@ const props = withDefaults(defineProps<PopupHelperProps>(), {
   offsetY: 0,
   screenBoundaryOffset: 0,
   zIndex: 9999,
-  delay: 0,
+  delay: () => [0, 200],
   chain: false,
 });
 const popupIsActive = ref(false);
@@ -31,18 +31,12 @@ function handleListenerEvent(isActive: boolean) {
   popupIsActive.value = isActive;
 };
 function handleInteractiveListenerEvent(isActive: boolean) {
-  if (popupUnsub.value) {
-    popupUnsub.value();
-  }
-  if (isActive) {
-    popupIsActive.value = isActive;
-  } else {
-    const popupIsShown = popup.value;
-    if (popupIsShown) {
-      const popupIsHovered = popup.value.matches(":hover");
-      popupIsActive.value = popupIsHovered;
-      popupUnsub.value = listenToEvents(popup.value, handleListenerEvent);
-    }
+  if (isActive) return popupIsActive.value = isActive;
+  if (popup.value) {
+    popupIsActive.value = popup.value.matches(":hover");
+    popupUnsub.value?.();
+    if (!popupIsActive) return;
+    popupUnsub.value = listenToEvents(popup.value, handleListenerEvent);
   }
 }
 function setChainedPopupValue(isActive: boolean) {
@@ -50,12 +44,15 @@ function setChainedPopupValue(isActive: boolean) {
 }
 onMounted(() => {
   const callback = props.interactive ? handleInteractiveListenerEvent : handleListenerEvent;
-  unsubscribeFromListener.value = listenToEvents(target.value, callback, +props.delay);
+  unsubscribeFromListener.value = listenToEvents(target.value, callback, props.delay);
 });
 onUnmounted(() => {
   if (unsubscribeFromListener.value) {
     unsubscribeFromListener.value();
   };
+  if (popupUnsub.value) {
+    popupUnsub.value();
+  }
 });
 const toShowPopup = computed(() => {
   if(!props.chain) return popupIsActive.value;

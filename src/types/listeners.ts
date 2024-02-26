@@ -7,7 +7,7 @@ type ListenerCallbackFunction = (isActive: boolean) => void;
 type ListenerFunction = (
   target: HTMLElement,
   callback: ListenerCallbackFunction,
-  delay?: number,
+  delay?: [number, number],
 ) => () => {};
 
 export {

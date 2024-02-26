@@ -4,7 +4,7 @@ import { HorizontalAlignmentType, VerticalAlignmentType } from "@/types/alignmen
 export default interface PopupHelperProps {
   show?: boolean,
   listenerType?: ListenerType,
-  delay?: string | number,
+  delay?: [number, number],
   alignX?: HorizontalAlignmentType,
   alignY?: VerticalAlignmentType,
   offsetX?: string | number,

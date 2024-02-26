@@ -67,27 +67,38 @@ export const Chained = (args) => ({
   },
   template: `
     <div class="popup-helper-wrapper">
-      <PopupHelper listener-type="click" delay="2000" interactive chain align-x="center" align-y="bottom" offset-y="5">
-        <template #target>
-          <BaseButton raised>Open menu</BaseButton>
+      <PopupHelper interactive chain align-x="center" align-y="bottom" >
+        <template #target="{popupIsActive}">
+          <BaseButton raised>Open menu {{popupIsActive}}</BaseButton>
         </template>
         <template #popup="{ chain }">
-          <PopupHelper listener-type="click" delay="1700" interactive @popped="chain" chain align-x="center" align-y="bottom" offset-y="10">
+          <h3>Some form</h3>
+          <PopupHelper interactive @popped="chain" chain align-x="right">
             <template #target>
               <BaseButton>Open submenu</BaseButton>
             </template>
             <template #popup="{ chain: c1 }">
-              <PopupHelper listener-type="click" delay="1300" interactive @popped="c1" align-x="center" align-y="bottom" offset-y="10">
+              <h3>Some form</h3>
+              <PopupHelper chain interactive @popped="c1" align-x="center" align-y="bottom" offset-x="10" offset-y="10">
                 <template #target>
                   <BaseButton>Open another submenu</BaseButton>
                 </template>
                 <template #popup="{ chain: c2 }">
-                  <PopupHelper listener-type="click" delay="1000" interactive @popped="c2" align-x="center" align-y="bottom" offset-y="10">
+                  <h3>Some form</h3>
+                  <PopupHelper chain interactive @popped="c2" align-x="right" align-y="center" offset-y="-23" offset-x="15">
                     <template #target>
                       <BaseButton>I'm tired of these submenus!</BaseButton>
                     </template>
-                    <template #popup>
-                      Awesome!
+                    <template #popup="{ chain: c3 }">
+                      <h3>Another one</h3>
+                      <PopupHelper listener-type="hover" interactive @popped="c3" align-x="center" align-y="top" offset-y="10">
+                        <template #target="{popupIsActive}">
+                          <BaseButton>{{ popupIsActive }}</BaseButton>
+                        </template>
+                        <template #popup>
+                          <h3>Lets stop here</h3>
+                        </template>
+                      </PopupHelper>
                     </template>
                   </PopupHelper>
                 </template>

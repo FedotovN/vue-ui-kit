@@ -4,43 +4,64 @@ import {
   Unsubscribe,
   ListenerFunction,
 } from "@/types/listeners";
+import { data } from "autoprefixer";
 
-function addHoverListener(target: HTMLElement, callback: ListenerCallbackFunction, delay?: number): Unsubscribe {
+function addHoverListener(target: HTMLElement, callback: ListenerCallbackFunction, delay?: [number, number]): Unsubscribe {
   const handleMouseIn = (e: Event) => {
-    callback(true)
+    setTimeout(() => {
+      callback(true)
+    }, delay?.[0] || 0);
   };
   const handleMouseLeave = (e: Event) => {
-    setTimeout(() => {
-      if (!target.matches(':hover'))
+      setTimeout(() => {
         callback(false);
-    }, delay)
+      }, delay?.[1] || 0);
   };
-  target.addEventListener('mouseover', handleMouseIn);
+  target.addEventListener('mouseenter', handleMouseIn);
   target.addEventListener('mouseleave', handleMouseLeave);
   return () => {
-    target.removeEventListener('mouseover', handleMouseIn);
+    target.removeEventListener('mouseenter', handleMouseIn);
     target.removeEventListener('mouseleave', handleMouseLeave);
   };
 }
-function addClickListener(target: HTMLElement, callback: ListenerCallbackFunction): Unsubscribe {
-  const handleClick = (e: Event) => { 
-    if (target.contains(e.target as HTMLElement) || e.target === target)
-      callback(true)
-    else callback(false);
+function addClickListener(target: HTMLElement, callback: ListenerCallbackFunction, delay?: [number, number]): Unsubscribe {
+  const handleClick = (e: Event) => {
+      if (target.contains(e.target as HTMLElement) || e.target === target) {
+        setTimeout(() => {
+          callback(true)
+        }, delay?.[0] || 0);
+      }
+      else {
+        setTimeout(() => {
+          callback(false);
+        }, delay?.[1] || 0)
+      }
   }
   document.addEventListener('click', handleClick);
   return () => {
     document.removeEventListener('click', handleClick);
   };
 }
-function addHoldListener(target: HTMLElement, callback: ListenerCallbackFunction): Unsubscribe {
-  const handleMouseDown = (e: Event) => { callback(true) };
-  const handleMouseUp = (e: Event) => { callback(false) };
+function addHoldListener(target: HTMLElement, callback: ListenerCallbackFunction, delay?: [number, number]): Unsubscribe {
+  const handleMouseDown = (e: Event) => {
+    setTimeout(() => {
+      callback(true);
+    }, delay?.[0] || 0);
+  };
+  const handleMouseUp = (e: Event) => {
+    setTimeout(() => {
+      callback(false);
+    }, delay?.[1] || 0);
+  };
   target.addEventListener('mousedown', handleMouseDown);
-  document.addEventListener('mouseup', handleMouseUp)
+  target.addEventListener('touchstart', handleMouseDown);
+  document.addEventListener('mouseup', handleMouseUp);
+  document.addEventListener('touchend', handleMouseUp);
   return () => {
     target.removeEventListener('mousedown', handleMouseDown);
-    document.removeEventListener('mouseup', handleMouseUp)
+    target.removeEventListener('touchstart', handleMouseDown)
+    document.removeEventListener('mouseup', handleMouseUp);
+    document.addEventListener('touchend', handleMouseUp);
   };
 }
 
