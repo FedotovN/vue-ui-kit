@@ -17,9 +17,8 @@ p {
 }
 .popup-helper__popup {
   padding: 5px 10px;
-  border-radius: 2px;
   border: 1px solid rgb(80, 80, 80);
-  box-shadow: 1px 1px 15px 1px #adadad;
+  box-shadow: 3px 3px 0 2px black;
   background-color: white;
   font-size: 12px;
 }

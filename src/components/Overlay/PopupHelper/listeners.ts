@@ -1,21 +1,42 @@
 import {
   ListenerType,
   ListenerCallbackFunction,
+  ListenerFunctionOptions,
   Unsubscribe,
   ListenerFunction,
 } from "@/types/listeners";
-import { data } from "autoprefixer";
 
-function addHoverListener(target: HTMLElement, callback: ListenerCallbackFunction, delay?: [number, number]): Unsubscribe {
-  const handleMouseIn = (e: Event) => {
-    setTimeout(() => {
+function addHoverListener(target: HTMLElement, callback: ListenerCallbackFunction, options: ListenerFunctionOptions): Unsubscribe {
+  const { onBeforePopupUnmount, onPopupMount,  interactive, delay } = options;
+  const [startDelay, outDelay] = delay || [0, 0];
+  let currPopup: HTMLElement | null = null;
+  let startTimeout: NodeJS.Timeout, endTimeout: NodeJS.Timeout;
+  function isHovered(el: HTMLElement | null): boolean {
+    return el && el.matches(":hover");
+  }
+  if (interactive) {
+    onPopupMount(popup =>  {
+      currPopup = popup;
+      popup.addEventListener('mouseleave', handleMouseLeave);
+    });
+    onBeforePopupUnmount(popup => {
+      popup.removeEventListener('mouseleave', handleMouseLeave);
+      currPopup = null
+    })
+  }
+  const handleMouseIn = () => {
+    clearTimeout(startTimeout);
+    startTimeout = setTimeout(() => {
       callback(true)
-    }, delay?.[0] || 0);
+    }, startDelay);
   };
-  const handleMouseLeave = (e: Event) => {
-      setTimeout(() => {
+  const handleMouseLeave = () => {
+    clearTimeout(endTimeout);
+    endTimeout = setTimeout(() => {
+      if (!isHovered(currPopup) && !isHovered(target)) {
         callback(false);
-      }, delay?.[1] || 0);
+      }
+    }, outDelay);
   };
   target.addEventListener('mouseenter', handleMouseIn);
   target.addEventListener('mouseleave', handleMouseLeave);
@@ -24,17 +45,30 @@ function addHoverListener(target: HTMLElement, callback: ListenerCallbackFunctio
     target.removeEventListener('mouseleave', handleMouseLeave);
   };
 }
-function addClickListener(target: HTMLElement, callback: ListenerCallbackFunction, delay?: [number, number]): Unsubscribe {
+function addClickListener(target: HTMLElement, callback: ListenerCallbackFunction, options: ListenerFunctionOptions): Unsubscribe {
+  const { onBeforePopupUnmount, onPopupMount,  interactive, delay } = options;
+  const [startDelay, outDelay] = delay || [0, 0];
+  let currPopup: HTMLElement | null = null;
+  let startTimeout: NodeJS.Timeout, endTimeout: NodeJS.Timeout;
+  if (interactive) {
+    onPopupMount(popup => {currPopup = popup});
+    onBeforePopupUnmount(() => { currPopup = null });
+  }
   const handleClick = (e: Event) => {
       if (target.contains(e.target as HTMLElement) || e.target === target) {
-        setTimeout(() => {
+        clearTimeout(startTimeout);
+        startTimeout = setTimeout(() => {
           callback(true)
-        }, delay?.[0] || 0);
+        }, startDelay);
       }
       else {
-        setTimeout(() => {
+        const isInteractiveMode = interactive && currPopup;
+        const clickedOnPopup = currPopup?.contains(e.target as HTMLElement) || e.target === currPopup;
+        if (isInteractiveMode && clickedOnPopup) return;
+        clearTimeout(endTimeout);
+        endTimeout = setTimeout(() => {
           callback(false);
-        }, delay?.[1] || 0)
+        }, outDelay);
       }
   }
   document.addEventListener('click', handleClick);
@@ -42,16 +76,24 @@ function addClickListener(target: HTMLElement, callback: ListenerCallbackFunctio
     document.removeEventListener('click', handleClick);
   };
 }
-function addHoldListener(target: HTMLElement, callback: ListenerCallbackFunction, delay?: [number, number]): Unsubscribe {
-  const handleMouseDown = (e: Event) => {
-    setTimeout(() => {
+function addHoldListener(target: HTMLElement, callback: ListenerCallbackFunction, options: ListenerFunctionOptions): Unsubscribe {
+  const { delay } = options;
+  const [startDelay, outDelay] = delay;
+  let startTimeout: NodeJS.Timeout, endTimeout: NodeJS.Timeout;
+  if (options.interactive) {
+    console.warn('PopupHelper.vue: Listener type "hold" has no "interactive" mode.');
+  }
+  const handleMouseDown = () => {
+    clearTimeout(startTimeout);
+    startTimeout = setTimeout(() => {
       callback(true);
-    }, delay?.[0] || 0);
+    }, startDelay);
   };
-  const handleMouseUp = (e: Event) => {
-    setTimeout(() => {
+  const handleMouseUp = () => {
+    clearTimeout(endTimeout);
+    endTimeout = setTimeout(() => {
       callback(false);
-    }, delay?.[1] || 0);
+      }, outDelay);
   };
   target.addEventListener('mousedown', handleMouseDown);
   target.addEventListener('touchstart', handleMouseDown);

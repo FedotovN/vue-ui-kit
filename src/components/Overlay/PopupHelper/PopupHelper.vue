@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Ref, computed, onMounted, onUnmounted, ref, watch, nextTick } from "vue";
 import PopupHelperProps from "@/types/props/Overlay/PopupHelperProps";
+import { PopupLifecycleHookCallback } from "@/types/listeners";
 import { Unsubscribe } from "@/types/listeners";
 import getPopupPosition from "./position";
 import listeners from "./listeners";
@@ -15,56 +16,54 @@ const props = withDefaults(defineProps<PopupHelperProps>(), {
   offsetY: 0,
   screenBoundaryOffset: 0,
   zIndex: 9999,
-  delay: () => [0, 200],
+  delay: () => [0, 0],
+  interactive: false,
   chain: false,
 });
-const popupIsActive = ref(false);
-const chainedPopupIsActive = ref(false);
-const propped = computed(() => props.show);
-watch(propped, (v) => { popupIsActive.value = v; });
+const id = Math.random();
+const showPopup = ref(false);
 const target: Ref<HTMLElement> = ref(null);
 const popup: Ref<HTMLElement> = ref(null);
 const listenToEvents = listeners[props.listenerType];
 const unsubscribeFromListener: Ref<null | Unsubscribe> = ref(null);
-const popupUnsub: Ref<null | Unsubscribe> = ref(null);
+const popupUnmountCallbacks: Ref<PopupLifecycleHookCallback[]> = ref([]);
+const popupMountCallbacks: Ref<PopupLifecycleHookCallback[]> = ref([]);
 function handleListenerEvent(isActive: boolean) {
-  popupIsActive.value = isActive;
-};
-function handleInteractiveListenerEvent(isActive: boolean) {
-  if (isActive) return popupIsActive.value = isActive;
-  if (popup.value) {
-    popupIsActive.value = popup.value.matches(":hover");
-    popupUnsub.value?.();
-    if (!popupIsActive) return;
-    popupUnsub.value = listenToEvents(popup.value, handleListenerEvent);
+  if (!isActive) {
+    onBeforePopupUnmount();
   }
+  showPopup.value = isActive;
+  nextTick(() => {
+    if (showPopup.value) {
+      onPopupMount();
+    }
+  })
 }
-function setChainedPopupValue(isActive: boolean) {
-  chainedPopupIsActive.value = isActive;
+function onBeforePopupUnmount() {
+  popupUnmountCallbacks.value.forEach(cb => cb(popup.value));
+}
+function onPopupMount() {
+  popupMountCallbacks.value.forEach(cb => cb(popup.value));
 }
 onMounted(() => {
-  const callback = props.interactive ? handleInteractiveListenerEvent : handleListenerEvent;
-  unsubscribeFromListener.value = listenToEvents(target.value, callback, props.delay);
+  unsubscribeFromListener.value = listenToEvents(target.value, handleListenerEvent, {
+    interactive: props.interactive,
+    onPopupMount: callback => popupMountCallbacks.value.push(callback),
+    onBeforePopupUnmount: callback => popupUnmountCallbacks.value.push(callback),
+    delay: props.delay,
+  });
 });
 onUnmounted(() => {
   if (unsubscribeFromListener.value) {
-    unsubscribeFromListener.value();
-  };
-  if (popupUnsub.value) {
-    popupUnsub.value();
+    return unsubscribeFromListener.value();
   }
 });
-const toShowPopup = computed(() => {
-  if(!props.chain) return popupIsActive.value;
-  return popupIsActive.value || chainedPopupIsActive.value;
-});
-watch(toShowPopup, v => {
+watch(showPopup, v => {
   emit('popped', v);
 })
-const componentWasMounted = computed(() => !!target.value);
 const popupStyleVariables = computed(() => {
   let [x, y] = [0, 0];
-  if (componentWasMounted.value && toShowPopup.value && popup.value) {
+  if (target.value && popup.value) {
     const targetRect = target.value.getBoundingClientRect();
     const popupRect = popup.value.getBoundingClientRect();
     const position = getPopupPosition(
@@ -86,16 +85,16 @@ const popupStyleVariables = computed(() => {
 <template>
   <div class="popup-helper">
     <div class="popup-helper__target" ref="target">
-      <slot name="target" v-bind="{ chainedPopupIsActive, popupIsActive }" />
+      <slot name="target" v-bind="{ showPopup }" />
     </div>
     <Teleport to="body">
       <Transition>
-        <div v-if="toShowPopup" class="popup-helper__popup" ref="popup" :style="popupStyleVariables">
-          <slot name="popup" v-bind="{ chain: setChainedPopupValue, chainedIsActive: chainedPopupIsActive }" />
+        <div v-if="showPopup" class="popup-helper__popup" ref="popup" :style="popupStyleVariables">
+          <slot name="popup" />
         </div>
       </Transition>
-      </Teleport>
+    </Teleport>
   </div>
 </template>
 
-<style src="./style.scss" /> 
+<style src="./style.scss" />

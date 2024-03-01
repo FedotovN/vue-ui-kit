@@ -2,7 +2,7 @@ body {
   .v-enter-active,
   .v-leave-active {
     transform: scale(1);
-    transition: all 0.15s ease;
+    //transition: all 0.15s ease;
     transition-property: transform, opacity;
   }
 

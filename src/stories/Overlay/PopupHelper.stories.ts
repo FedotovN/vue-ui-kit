@@ -21,7 +21,7 @@ const Template: StoryFn = (args) => ({
           Hello there! 😊
         </template>
       </PopupHelper>
-      <PopupHelper  align-x="right" offset-x="5" offset-y="-1">
+      <PopupHelper interactive align-x="right">
         <template #target>
           <BaseButton>Hover me</BaseButton>
         </template>
@@ -67,38 +67,30 @@ export const Chained = (args) => ({
   },
   template: `
     <div class="popup-helper-wrapper">
-      <PopupHelper interactive chain align-x="center" align-y="bottom" >
-        <template #target="{popupIsActive}">
-          <BaseButton raised>Open menu {{popupIsActive}}</BaseButton>
+      <h2>Popups can be chained, so that one popup contains the other and this goes on</h2>
+      <PopupHelper chain interactive align-y="bottom">
+        <template #target="{chainedPopupIsActive, popupIsActive}">
+          <BaseButton size="small">I am a button hover me</BaseButton>
         </template>
-        <template #popup="{ chain }">
-          <h3>Some form</h3>
-          <PopupHelper interactive @popped="chain" chain align-x="right">
-            <template #target>
-              <BaseButton>Open submenu</BaseButton>
+        <template #popup="{ chain: c1 }">
+          <p>Wowza! I am a popup 1</p>
+          <PopupHelper @popped="c1" chain interactive align-y="bottom">
+            <template #target="{ chainedPopupIsActive, popupIsActive }">
+              <BaseButton size="small">And I am a button hover me</BaseButton>
             </template>
-            <template #popup="{ chain: c1 }">
-              <h3>Some form</h3>
-              <PopupHelper chain interactive @popped="c1" align-x="center" align-y="bottom" offset-x="10" offset-y="10">
+            <template #popup="{ chain: c2 }">
+              <p>Wowza! I am a popup 2</p>
+              <PopupHelper @popped="c2" chain interactive align-y="bottom">
                 <template #target>
-                  <BaseButton>Open another submenu</BaseButton>
+                  <BaseButton size="small">And I am a button hover me</BaseButton>
                 </template>
-                <template #popup="{ chain: c2 }">
-                  <h3>Some form</h3>
-                  <PopupHelper chain interactive @popped="c2" align-x="right" align-y="center" offset-y="-23" offset-x="15">
+                <template #popup="{chain: c3}">
+                  <PopupHelper @popped="c3" chain interactive align-y="bottom">
                     <template #target>
-                      <BaseButton>I'm tired of these submenus!</BaseButton>
+                      <BaseButton size="small">And I am a button hover me</BaseButton>
                     </template>
-                    <template #popup="{ chain: c3 }">
-                      <h3>Another one</h3>
-                      <PopupHelper listener-type="hover" interactive @popped="c3" align-x="center" align-y="top" offset-y="10">
-                        <template #target="{popupIsActive}">
-                          <BaseButton>{{ popupIsActive }}</BaseButton>
-                        </template>
-                        <template #popup>
-                          <h3>Lets stop here</h3>
-                        </template>
-                      </PopupHelper>
+                    <template #popup>
+
                     </template>
                   </PopupHelper>
                 </template>
