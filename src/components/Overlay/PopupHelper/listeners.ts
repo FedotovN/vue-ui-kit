@@ -14,6 +14,10 @@ function addHoverListener(target: HTMLElement, callback: ListenerCallbackFunctio
   function isHovered(el: HTMLElement | null): boolean {
     return el && el.matches(":hover");
   }
+  function clearTimeouts() {
+    clearTimeout(startTimeout);
+    clearTimeout(endTimeout);
+  }
   if (interactive) {
     onPopupMount(popup =>  {
       currPopup = popup;
@@ -25,13 +29,13 @@ function addHoverListener(target: HTMLElement, callback: ListenerCallbackFunctio
     })
   }
   const handleMouseIn = () => {
-    clearTimeout(startTimeout);
+    clearTimeouts();
     startTimeout = setTimeout(() => {
       callback(true)
     }, startDelay);
   };
   const handleMouseLeave = () => {
-    clearTimeout(endTimeout);
+    clearTimeouts();
     endTimeout = setTimeout(() => {
       if (!isHovered(currPopup) && !isHovered(target)) {
         callback(false);
@@ -54,9 +58,13 @@ function addClickListener(target: HTMLElement, callback: ListenerCallbackFunctio
     onPopupMount(popup => {currPopup = popup});
     onBeforePopupUnmount(() => { currPopup = null });
   }
+  function clearTimeouts() {
+    clearTimeout(startTimeout);
+    clearTimeout(endTimeout);
+  }
   const handleClick = (e: Event) => {
       if (target.contains(e.target as HTMLElement) || e.target === target) {
-        clearTimeout(startTimeout);
+        clearTimeouts();
         startTimeout = setTimeout(() => {
           callback(true)
         }, startDelay);
@@ -65,7 +73,7 @@ function addClickListener(target: HTMLElement, callback: ListenerCallbackFunctio
         const isInteractiveMode = interactive && currPopup;
         const clickedOnPopup = currPopup?.contains(e.target as HTMLElement) || e.target === currPopup;
         if (isInteractiveMode && clickedOnPopup) return;
-        clearTimeout(endTimeout);
+        clearTimeouts();
         endTimeout = setTimeout(() => {
           callback(false);
         }, outDelay);

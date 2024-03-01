@@ -19,34 +19,57 @@ const props = withDefaults(defineProps<PopupHelperProps>(), {
   delay: () => [0, 0],
   interactive: false,
   chain: false,
+  chainDelay: () => [0, 300],
 });
-const id = Math.random();
-const showPopup = ref(false);
+const id = Math.floor(Math.random() * 10**10);
+
+const popupIsActive = ref(false);
+const nextIsActive = ref(false);
+
 const target: Ref<HTMLElement> = ref(null);
 const popup: Ref<HTMLElement> = ref(null);
-const listenToEvents = listeners[props.listenerType];
-const unsubscribeFromListener: Ref<null | Unsubscribe> = ref(null);
+
+const listenerFunction = listeners[props.listenerType];
+const unsubscribe: Ref<null | Unsubscribe> = ref(null);
+
 const popupUnmountCallbacks: Ref<PopupLifecycleHookCallback[]> = ref([]);
 const popupMountCallbacks: Ref<PopupLifecycleHookCallback[]> = ref([]);
+
+let chainDelayStartTimeout: NodeJS.Timeout, chainDelayEndTimeout: NodeJS.Timeout;
+function chain(value: boolean) {
+  if (!props.chainDelay) return nextIsActive.value = value;
+  clearTimeout(chainDelayStartTimeout);
+  clearTimeout(chainDelayEndTimeout);
+  if (value) {
+    chainDelayStartTimeout = setTimeout(() => {
+      nextIsActive.value = value;
+    }, props.chainDelay[0]);
+  } else {
+    chainDelayEndTimeout = setTimeout(() => {
+      nextIsActive.value = value;
+    }, props.chainDelay[1]);
+  }
+}
 function handleListenerEvent(isActive: boolean) {
   if (!isActive) {
-    onBeforePopupUnmount();
+    callUnmountCallbacks();
   }
-  showPopup.value = isActive;
+  popupIsActive.value = isActive;
   nextTick(() => {
-    if (showPopup.value) {
-      onPopupMount();
+    if (popupIsActive.value) {
+      callMountCallbacks();
     }
   })
 }
-function onBeforePopupUnmount() {
+function callUnmountCallbacks() {
   popupUnmountCallbacks.value.forEach(cb => cb(popup.value));
 }
-function onPopupMount() {
+function callMountCallbacks() {
   popupMountCallbacks.value.forEach(cb => cb(popup.value));
 }
+
 onMounted(() => {
-  unsubscribeFromListener.value = listenToEvents(target.value, handleListenerEvent, {
+  unsubscribe.value = listenerFunction(target.value, handleListenerEvent, {
     interactive: props.interactive,
     onPopupMount: callback => popupMountCallbacks.value.push(callback),
     onBeforePopupUnmount: callback => popupUnmountCallbacks.value.push(callback),
@@ -54,13 +77,21 @@ onMounted(() => {
   });
 });
 onUnmounted(() => {
-  if (unsubscribeFromListener.value) {
-    return unsubscribeFromListener.value();
+  if (unsubscribe.value) {
+    return unsubscribe.value();
   }
 });
+
+const showPopup = computed(() => {
+  if (props.chain)
+    return popupIsActive.value || nextIsActive.value
+  return popupIsActive.value;
+})
+
 watch(showPopup, v => {
   emit('popped', v);
-})
+});
+
 const popupStyleVariables = computed(() => {
   let [x, y] = [0, 0];
   if (target.value && popup.value) {
@@ -85,12 +116,13 @@ const popupStyleVariables = computed(() => {
 <template>
   <div class="popup-helper">
     <div class="popup-helper__target" ref="target">
-      <slot name="target" v-bind="{ showPopup }" />
+<!--      <div>{{ showPopup }}</div>-->
+      <slot name="target" v-bind="{ popupIsActive }" />
     </div>
     <Teleport to="body">
       <Transition>
-        <div v-if="showPopup" class="popup-helper__popup" ref="popup" :style="popupStyleVariables">
-          <slot name="popup" />
+        <div v-if="showPopup" class="popup-helper__popup" :id="`popup-helper-popup-id-${id}`" ref="popup" :style="popupStyleVariables">
+          <slot name="popup" v-bind="{ chain }" />
         </div>
       </Transition>
     </Teleport>

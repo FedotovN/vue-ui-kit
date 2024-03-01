@@ -15,10 +15,11 @@ p {
   gap: 10px;
   padding: 10px;
 }
-.popup-helper__popup {
+.popup-content {
   padding: 5px 10px;
   border: 1px solid rgb(80, 80, 80);
-  box-shadow: 3px 3px 0 2px black;
+  /*box-shadow: -2px 2px 5px 0 #8f8f8f;*/
+  border-radius: 2px;
   background-color: white;
   font-size: 12px;
 }
