@@ -19,7 +19,6 @@ const props = withDefaults(defineProps<PopupHelperProps>(), {
   delay: () => [0, 0],
   interactive: false,
   chain: false,
-  chainDelay: () => [0, 300],
 });
 const id = Math.floor(Math.random() * 10**10);
 
@@ -34,20 +33,8 @@ const unsubscribe: Ref<null | Unsubscribe> = ref(null);
 const popupUnmountCallbacks: Ref<PopupLifecycleHookCallback[]> = ref([]);
 const popupMountCallbacks: Ref<PopupLifecycleHookCallback[]> = ref([]);
 
-let chainDelayStartTimeout: NodeJS.Timeout, chainDelayEndTimeout: NodeJS.Timeout;
 function chain(value: boolean) {
-  if (!props.chainDelay) return nextIsActive.value = value;
-  clearTimeout(chainDelayStartTimeout);
-  clearTimeout(chainDelayEndTimeout);
-  if (value) {
-    chainDelayStartTimeout = setTimeout(() => {
-      nextIsActive.value = value;
-    }, props.chainDelay[0]);
-  } else {
-    chainDelayEndTimeout = setTimeout(() => {
-      nextIsActive.value = value;
-    }, props.chainDelay[1]);
-  }
+  nextIsActive.value = value;
 }
 function handleListenerEvent(isActive: boolean) {
   if (!isActive) {
