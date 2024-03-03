@@ -14,7 +14,9 @@ const Template: StoryFn = (args) => ({
     return { args };
   },
   template: `
-    <BaseDropdown v-bind="{...args}" />
+    <div class="dropdown-default-story">
+      <BaseDropdown v-bind="{...args}" />
+    </div>
   `,
 });
 export const Default = Template.bind({});

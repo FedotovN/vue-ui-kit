@@ -13,5 +13,6 @@ export default interface PopupHelperProps {
   zIndex?: string | number,
   interactive?: boolean,
   chain?: boolean,
-  chainDelay?: [number, number];
+  teleportTo?: string,
+  dontTeleport?: boolean,
 }

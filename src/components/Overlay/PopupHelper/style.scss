@@ -1,5 +1,6 @@
 .popup-helper {
   display: inline-block;
+  position: relative;
   &__popup {
     position: absolute;
     z-index: 0;

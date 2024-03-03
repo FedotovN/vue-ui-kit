@@ -19,6 +19,7 @@ const props = withDefaults(defineProps<PopupHelperProps>(), {
   delay: () => [0, 0],
   interactive: false,
   chain: false,
+  teleportTo: 'body',
 });
 const id = Math.floor(Math.random() * 10**10);
 
@@ -77,16 +78,18 @@ const showPopup = computed(() => {
 watch(showPopup, v => {
   emit('popped', v);
 });
-
+onMounted(() => {
+  setTimeout(() => {
+    popupIsActive.value = true;
+  }, 2000);
+})
 const popupStyleVariables = computed(() => {
   let [x, y] = [0, 0];
   if (target.value && popup.value) {
-    const targetRect = target.value.getBoundingClientRect();
-    const popupRect = popup.value.getBoundingClientRect();
     const position = getPopupPosition(
       props.alignX, props.alignY,
       +props.offsetX, +props.offsetY,
-      targetRect, popupRect,
+      target.value, popup.value,
       +props.screenBoundaryOffset
     );
     x = position.x;
@@ -104,7 +107,7 @@ const popupStyleVariables = computed(() => {
     <div class="popup-helper__target" ref="target">
       <slot name="target" v-bind="{ popupIsActive }" />
     </div>
-    <Teleport to="body">
+    <Teleport :disabled="dontTeleport" :to="teleportTo">
       <Transition>
         <div v-if="showPopup" class="popup-helper__popup" :data-popup-id="`${id}`" ref="popup" :style="popupStyleVariables">
           <slot name="popup" v-bind="{ chain }" />

@@ -11,7 +11,7 @@ const props = withDefaults(defineProps<BaseDropdownProps>(), {
   options: () => ([
     { label: 'Label 1' },
     { label: 'Label 2' },
-    { label: 'Label 3' },
+    { label: 'Label 3 23 131 313 13 1' },
     { label: 'Label 4' },
     { label: 'Label 5' },
   ]),

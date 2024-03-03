@@ -1,12 +1,13 @@
 .base-dropdown {
   --force-width: auto;
   --accent-color: auto;
-  display: flex;
-  flex-flow: column;
+  display: inline-flex;
+  :deep(.popup-helper__popup) {
+    width: 100%;
+  }
   &-trigger, &-options, &-fallback {
     background-color: white;
     box-sizing: border-box;
-    width: var(--force-width);
     border: 1px solid #dadada;
     border-radius: 2px;
     color: #444444;
@@ -16,6 +17,7 @@
     align-items: center;
     padding: 5px 10px;
     height: 28px;
+    width: var(--force-width);
     justify-content: space-between;
     cursor: pointer;
     transition: border-color .15s;
@@ -52,6 +54,7 @@
     &__option {
       padding: 8px 10px;
       font-size: 14px;
+      white-space: nowrap;
       text-overflow: ellipsis;
       overflow: hidden;
       cursor: pointer;

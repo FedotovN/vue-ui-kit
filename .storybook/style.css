@@ -9,6 +9,9 @@ p {
   margin: 0;
   padding: 0;
 }
+.dropdown-default-story {
+  height: 150vh;
+}
 .popup-helper-wrapper {
   display: flex;
   flex-flow: column;
