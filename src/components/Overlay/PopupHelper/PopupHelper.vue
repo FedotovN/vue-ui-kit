@@ -25,7 +25,6 @@ const id = Math.floor(Math.random() * 10**10);
 
 const popupIsActive = ref(false);
 const nextIsActive = ref(false);
-
 const target: Ref<HTMLElement> = ref(null);
 const popup: Ref<HTMLElement> = ref(null);
 
@@ -101,7 +100,7 @@ const popupStyleVariables = computed(() => {
       props.alignX, props.alignY,
       +props.offsetX, +props.offsetY,
       targetRect, popupRect,
-      props.screenBoundaryOffset
+      +props.screenBoundaryOffset
     );
     x = position.x;
     y = position.y;

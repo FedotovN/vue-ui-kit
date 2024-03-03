@@ -24,13 +24,17 @@ function limitByValue(value: number, maxValue: number, screenOffset: number, siz
   };
   return value;
 }
-export default function getPopupPosition(alignX: HorizontalAlignmentType, alignY: VerticalAlignmentType, offsetX: number, offsetY: number, targetRect: DOMRect, popupRect: DOMRect, screenBoundaryOffset): { x: number, y: number } {
-  const posXRaw = getHorizontalPositionRaw(alignX, offsetX, targetRect, popupRect);
-  const posYRaw = getVerticalPositionRaw(alignY, offsetY, targetRect, popupRect);
-  const { width, height } = popupRect;
+export default function getPopupPosition(alignX: HorizontalAlignmentType, alignY: VerticalAlignmentType, offsetX: number, offsetY: number, targetRect: DOMRect, popupRect: DOMRect, screenBoundaryOffset: number): { x: number, y: number } {
+  const posXScrolled = getHorizontalPositionRaw(alignX, offsetX, targetRect, popupRect) + window.scrollX;
+  const posYScrolled = getVerticalPositionRaw(alignY, offsetY, targetRect, popupRect) + window.scrollY;
 
+  const { width, height } = popupRect;
+  const widthVisiblePartOfPageX = window.innerWidth + window.scrollX;
+  const heightVisiblePartOfPageY = window.innerHeight + window.scrollY;
+  const xVisiblePartOfPage = window.scrollX;
+  const yVisiblePart = window.scrollY;
   return {
-    x: limitByValue(posXRaw, window.innerWidth, screenBoundaryOffset, width),
-    y: limitByValue(posYRaw, window.innerHeight, screenBoundaryOffset, height),
+    x: limitByValue(posXScrolled, widthVisiblePartOfPageX, screenBoundaryOffset, width, xVisiblePartOfPage),
+    y: limitByValue(posYScrolled, heightVisiblePartOfPageY, screenBoundaryOffset, height, yVisiblePart),
   }
 }
