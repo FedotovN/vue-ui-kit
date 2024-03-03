@@ -5,14 +5,14 @@ function getHorizontalPositionRaw(align: HorizontalAlignmentType, offset: number
   if (align === 'left') return (x - offset) - popupWidth;
   if (align === 'center') return width / 2 + x + offset - popupWidth / 2;
   if (align === 'right') return x + width + offset;
-};
+}
 function getVerticalPositionRaw(align: VerticalAlignmentType, offset: number, targetRect: DOMRect, popupRect: DOMRect) {
   const { y, height } = targetRect;
   const popupHeight = popupRect.height;
   if (align === 'top') return (y - offset) - popupHeight;
   if (align === 'center') return height / 2 + y + offset - popupHeight / 2;
   if (align === 'bottom') return y + height + offset;
-};
+}
 function limitByValue(value: number, maxValue: number, screenOffset: number, size: number, minValue = 0): number {
   const tooSmall = value < minValue;
   const tooBig = value + size > maxValue;

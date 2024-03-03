@@ -4,7 +4,7 @@ import {
   ListenerFunctionOptions,
   Unsubscribe,
   ListenerFunction,
-} from "@/types/listeners";
+} from "@/types/props/Overlay/PopupHelper/listeners";
 
 function addHoverListener(target: HTMLElement, callback: ListenerCallbackFunction, options: ListenerFunctionOptions): Unsubscribe {
   const { onBeforePopupUnmount, onPopupMount,  interactive, delay } = options;

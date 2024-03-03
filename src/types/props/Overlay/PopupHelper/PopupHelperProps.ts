@@ -1,4 +1,4 @@
-import { ListenerType } from "@/types/listeners";
+import { ListenerType } from "@/types/props/Overlay/PopupHelper/listeners";
 import { HorizontalAlignmentType, VerticalAlignmentType } from "@/types/alignment";
 
 export default interface PopupHelperProps {
