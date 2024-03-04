@@ -8,15 +8,9 @@ const emit = defineEmits<{
   (event: 'update', value: object): void,
 }>();
 const props = withDefaults(defineProps<BaseDropdownProps>(), {
-  options: () => ([
-    { label: 'Label 1' },
-    { label: 'Label 2' },
-    { label: 'Label 3 23 131 313 13 1' },
-    { label: 'Label 4' },
-    { label: 'Label 5' },
-  ]),
   alignY: 'bottom',
-  alignX: 'center',
+  alignX: 'left',
+  offsetY: 5,
   listenerType: 'click',
   labelProperty: 'label',
   label: 'Select an option',
@@ -27,14 +21,15 @@ const props = withDefaults(defineProps<BaseDropdownProps>(), {
 const localValue = ref(null);
 
 const proppedValue = computed(() => props.value || props.modelValue);
-const calculateOffsetX = computed(() => props.alignX === 'left' ? -5 : props.alignX === 'right' ? 5 : 0);
-const calculateOffsetY = computed(() => props.alignY === 'top' ? -5 : props.alignY === 'bottom' ? 5 : 0);
 const baseDropdownStyles = computed(() => {
   return {
     '--accent-color': useColor().get(props.color),
     '--force-width': props.width,
   }
 });
+const hasOptions = computed(() => {
+  return props.options && props.options.length;
+})
 const dropdownLabel = computed(() => {
   if (localValue.value) {
     return localValue.value[props.labelProperty]
@@ -51,13 +46,15 @@ function onUpdate(value: object) {
 <template>
   <div class="base-dropdown" :style="baseDropdownStyles">
     <PopupHelper
+      dont-teleport
+      transition="drop"
       :listener-type="listenerType"
       :align-x="alignX"
       :align-y="alignY"
+      :offset-x="offsetX"
+      :offset-y="offsetY"
       :interactive="keepOnSelect"
       screen-boundary-offset="5"
-      :offset-x="calculateOffsetX"
-      :offset-y="calculateOffsetY"
     >
       <template #target="{ popupIsActive }">
         <div class="base-dropdown-trigger" :class="{ opened: popupIsActive }">
@@ -66,7 +63,7 @@ function onUpdate(value: object) {
         </div>
       </template>
       <template #popup>
-        <div class="base-dropdown-options" v-if="options.length" :style="baseDropdownStyles">
+        <div class="base-dropdown-options" v-if="hasOptions" :style="baseDropdownStyles">
           <div v-for="option in options" class="base-dropdown-options__option" @click="onUpdate(option)">
             {{ option[labelProperty ]}}
           </div>

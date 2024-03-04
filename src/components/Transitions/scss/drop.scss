@@ -1,0 +1,14 @@
+.drop-enter-active,
+.drop-leave-active {
+  transition: opacity var(--duration) ease;
+  transition-property: opacity, transform;
+}
+.drop-enter-to {
+  transform: translateY(0);
+}
+
+.drop-enter-from,
+.drop-leave-to {
+  opacity: 0;
+  transform: translateY(-5px);
+}

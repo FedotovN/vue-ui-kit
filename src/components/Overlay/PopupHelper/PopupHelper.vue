@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { Ref, computed, onMounted, onUnmounted, ref, watch, nextTick } from "vue";
-import PopupHelperProps from "@/types/props/Overlay/PopupHelper/PopupHelperProps";
 import { PopupLifecycleHookCallback } from "@/types/props/Overlay/PopupHelper/listeners";
 import { Unsubscribe } from "@/types/props/Overlay/PopupHelper/listeners";
+import TransitionWrapper from "@/components/Transitions/TransitionWrapper.vue";
+import PopupHelperProps from "@/types/props/Overlay/PopupHelper/PopupHelperProps";
 import getPopupPosition from "./position";
 import listeners from "./listeners";
 const emit = defineEmits<{
@@ -78,11 +79,6 @@ const showPopup = computed(() => {
 watch(showPopup, v => {
   emit('popped', v);
 });
-onMounted(() => {
-  setTimeout(() => {
-    popupIsActive.value = true;
-  }, 2000);
-})
 const popupStyleVariables = computed(() => {
   let [x, y] = [0, 0];
   if (target.value && popup.value) {
@@ -108,11 +104,11 @@ const popupStyleVariables = computed(() => {
       <slot name="target" v-bind="{ popupIsActive }" />
     </div>
     <Teleport :disabled="dontTeleport" :to="teleportTo">
-      <Transition>
+      <TransitionWrapper :name="transition">
         <div v-if="showPopup" class="popup-helper__popup" :data-popup-id="`${id}`" ref="popup" :style="popupStyleVariables">
           <slot name="popup" v-bind="{ chain }" />
         </div>
-      </Transition>
+      </TransitionWrapper>
     </Teleport>
   </div>
 </template>

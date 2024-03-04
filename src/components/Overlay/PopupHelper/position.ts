@@ -1,15 +1,15 @@
 import { HorizontalAlignmentType, VerticalAlignmentType } from "@/types/alignment";
 function getHorizontalPositionRaw(align: HorizontalAlignmentType, offset: number, targetRect: DOMRect, popupRect: DOMRect) {
-  const { x, width, right } = targetRect;
+  const { left, width, right } = targetRect;
   const popupWidth = popupRect.width;
-  if (align === 'left') return (x - offset) - popupWidth;
-  if (align === 'center') return width / 2 + x + offset - popupWidth / 2;
+  if (align === 'left') return left - offset;
+  if (align === 'center') return (width / 2) + left + offset - (popupWidth / 2);
   if (align === 'right') return right + offset;
 }
 function getVerticalPositionRaw(align: VerticalAlignmentType, offset: number, targetRect: DOMRect, popupRect: DOMRect) {
   const { y, height, bottom } = targetRect;
   const popupHeight = popupRect.height;
-  if (align === 'top') return (y - offset) - popupHeight;
+  if (align === 'top') return y - offset;
   if (align === 'center') return height / 2 + y + offset - popupHeight / 2;
   if (align === 'bottom') return bottom + offset;
 }
@@ -29,7 +29,6 @@ export default function getPopupPosition(alignX: HorizontalAlignmentType, alignY
   const parentRect = popupParent.getBoundingClientRect();
   const targetRect = target.getBoundingClientRect();
   const popupRect = popup.getBoundingClientRect();
-
 
   // POPUP POSITION relative to parent and current scroll
   const posXRaw = getHorizontalPositionRaw(alignX, offsetX, targetRect, popupRect);

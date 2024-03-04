@@ -1,5 +1,6 @@
 import { ListenerType } from "@/types/props/Overlay/PopupHelper/listeners";
 import { HorizontalAlignmentType, VerticalAlignmentType } from "@/types/alignment";
+import { Transitions } from "@/types/transitions";
 
 export default interface PopupHelperProps {
   show?: boolean,
@@ -15,4 +16,5 @@ export default interface PopupHelperProps {
   chain?: boolean,
   teleportTo?: string,
   dontTeleport?: boolean,
+  transition?: Transitions,
 }

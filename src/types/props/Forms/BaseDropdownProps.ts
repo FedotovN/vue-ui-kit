@@ -12,6 +12,8 @@ export default interface BaseDropdownProps {
   listenerType?: ListenerType,
   alignX?: HorizontalAlignmentType,
   alignY?: VerticalAlignmentType,
+  offsetX?: number,
+  offsetY?: number,
   width?: string,
   color?: keyof IColors,
 }

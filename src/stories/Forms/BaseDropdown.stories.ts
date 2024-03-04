@@ -15,7 +15,14 @@ const Template: StoryFn = (args) => ({
   },
   template: `
     <div class="dropdown-default-story">
-      <BaseDropdown v-bind="{...args}" />
+      <BaseDropdown
+        v-bind="{...args}"
+        :options="[ 
+          { label: 'Option 1' },
+          { label: 'Option 2' },
+          { label: 'Option Long long long long long' },
+        ]"
+      />
     </div>
   `,
 });
