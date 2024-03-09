@@ -1,0 +1,25 @@
+.modal-pop-enter-active,
+.modal-pop-leave-active {
+  transition: all var(--duration) ease;
+  .overlay-modal {
+    transition: all var(--duration) ease;
+  }
+}
+.modal-pop-enter-to {
+  opacity: 1;
+  .overlay-modal {
+    transform: scale(1);
+  }
+}
+.modal-pop-enter-from {
+  opacity: 0;
+  .overlay-modal {
+    transform: scale(.98);
+  }
+}
+.modal-pop-leave-to {
+  opacity: 0;
+  .overlay-modal {
+    transform: scale(.98);
+  }
+}

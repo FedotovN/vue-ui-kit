@@ -1,8 +1,8 @@
 .base-radio-group {
-  --selected-color: 0 0 0, display: flex;
+  --selected-color: 0 0 0;
+  display: flex;
   flex-flow: column;
   align-items: start;
-  padding: 5px 10px;
   border-radius: 4px;
   &.disabled {
     pointer-events: none;
@@ -33,7 +33,7 @@
     &.column {
       flex-flow: column;
     }
-    &:deep() .base-radio {
+    &:deep(.base-radio) {
       overflow: visible;
       label {
         white-space: nowrap;

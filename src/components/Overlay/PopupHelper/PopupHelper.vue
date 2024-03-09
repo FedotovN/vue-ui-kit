@@ -57,6 +57,7 @@ function callMountCallbacks() {
 }
 
 onMounted(() => {
+  console.log('on mounted');
   unsubscribe.value = listenerFunction(target.value, handleListenerEvent, {
     interactive: props.interactive,
     onPopupMount: callback => popupMountCallbacks.value.push(callback),

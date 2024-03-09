@@ -20,7 +20,7 @@ function onCheck(radio: BaseRadioProps) {
 }
 const style = computed(() => {
   return {
-    '--selected-color': useColor().get(localValue.value?.color || 'primary'),
+    '--selected-color': useColor().get(localValue.value?.color || 'none'),
   };
 });
 </script>

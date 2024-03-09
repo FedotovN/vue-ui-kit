@@ -10,6 +10,7 @@
 </script>
 <template>
   <Transition
+    :mode="mode"
     :name="name"
     :style="styleProperties"
   >

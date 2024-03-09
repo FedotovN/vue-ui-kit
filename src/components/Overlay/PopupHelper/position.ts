@@ -2,14 +2,14 @@ import { HorizontalAlignmentType, VerticalAlignmentType } from "@/types/alignmen
 function getHorizontalPositionRaw(align: HorizontalAlignmentType, offset: number, targetRect: DOMRect, popupRect: DOMRect) {
   const { left, width, right } = targetRect;
   const popupWidth = popupRect.width;
-  if (align === 'left') return left - offset;
+  if (align === 'left') return (left - offset) - popupWidth;
   if (align === 'center') return (width / 2) + left + offset - (popupWidth / 2);
   if (align === 'right') return right + offset;
 }
 function getVerticalPositionRaw(align: VerticalAlignmentType, offset: number, targetRect: DOMRect, popupRect: DOMRect) {
   const { y, height, bottom } = targetRect;
   const popupHeight = popupRect.height;
-  if (align === 'top') return y - offset;
+  if (align === 'top') return (y - offset) - popupHeight;
   if (align === 'center') return height / 2 + y + offset - popupHeight / 2;
   if (align === 'bottom') return bottom + offset;
 }

@@ -63,7 +63,7 @@ function addClickListener(target: HTMLElement, callback: ListenerCallbackFunctio
     clearTimeout(endTimeout);
   }
   const handleClick = (e: Event) => {
-      if (target.contains(e.target as HTMLElement) || e.target === target) {
+    if (target.contains(e.target as HTMLElement) || e.target === target) {
         clearTimeouts();
         startTimeout = setTimeout(() => {
           callback(true)

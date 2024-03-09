@@ -1,0 +1,61 @@
+.overlay-modal-wrapper {
+  --accent-color: none;
+  --force-width: none;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 99;
+  background-color: rgba(0, 0, 0, .4);
+  .overlay-modal {
+    transition: all .15s;
+    &-content {
+      position: relative;
+      background-color: white;
+      border-radius: 2px;
+      padding: 5px 15px 30px 15px;
+      width: var(--force-width);
+      max-width: calc(100% - 5px);
+    }
+    &-body {
+      padding-top: 10px;
+    }
+    &-header {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      &.hidden {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+      &__close-button {
+        display: flex;
+        margin: -10px -14px 0 -10px;
+        padding: 15px 10px 0 40px;
+        appearance: none;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        &:hover {
+          svg {
+            fill: rgb(var(--accent-color));
+          }
+        }
+        svg {
+          padding: 0;
+          height: 13px;
+          fill: #808080;
+          transition: .15s fill;
+        }
+      }
+    }
+    @media (max-width: 600px) {
+      width: 100%;
+      margin: 0 5px;
+    }
+  }
+}

@@ -9,7 +9,7 @@ const emit = defineEmits<{
 }>();
 const props = withDefaults(defineProps<BaseDropdownProps>(), {
   alignY: 'bottom',
-  alignX: 'left',
+  alignX: 'center',
   offsetY: 5,
   listenerType: 'click',
   labelProperty: 'label',

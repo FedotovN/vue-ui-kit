@@ -9,7 +9,7 @@ const props = withDefaults(defineProps<BaseRadioProps>(), {
   color: 'primary',
 });
 const inputId = `base-radio-id-${Math.random()}`;
-function onInput(event) {
+function onInput() {
   emit('checked');
 }
 const style = computed(() => ({

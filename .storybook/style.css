@@ -9,6 +9,32 @@ p {
   margin: 0;
   padding: 0;
 }
+.modal-overlay-default-story {
+  display: flex;
+  flex-flow: column;
+  gap: 25px;
+}
+.modal-overlay-default-story__components {
+  padding-bottom: 20px;
+  .base-checkbox {
+    padding-top: 10px;
+  }
+}
+.modal-overlay-default-story code {
+  color: #505050;
+  background-color: #eeeeee;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+.modal-overlay-default-story__form {
+  display: flex;
+  flex-flow: column;
+  gap: 5px;
+}
+.modal-overlay-default-story__id {
+  display: flex;
+  gap: 5px;
+}
 .dropdown-default-story {
   height: 200px;
 }
@@ -34,3 +60,5 @@ p {
 .popup-helper-link {
   color: blue;
 }
+
+

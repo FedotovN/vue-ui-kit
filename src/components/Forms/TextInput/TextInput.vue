@@ -5,7 +5,7 @@ import { computed, ref, watch } from 'vue';
 import { colors } from '@/types/colors';
 const inputId = `base-input-id-${Math.random()}`;
 const emit = defineEmits<{
-  (e: 'input', value: string | number);
+  (e: 'update:modelValue', value: string | number);
   (e: 'blur', value: string | number);
   (e: 'focusin', value: HTMLInputElement);
   (e: 'focusout', value: HTMLInputElement);
@@ -17,7 +17,7 @@ const props = withDefaults(defineProps<BaseInputProps>(), {
 const propped = computed(() => props.value || props.modelValue);
 const localValue = ref(props.value || props.modelValue || '');
 watch(propped, (v) => (localValue.value = propped.value));
-watch(localValue, (value) => emit('input', value));
+watch(localValue, (value) => emit('update:modelValue', value));
 const onFocusIn = (e: HTMLInputElement) => {
   isFocused.value = true;
   emit('focusin', e);
