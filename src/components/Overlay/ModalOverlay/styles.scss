@@ -13,13 +13,17 @@
   background-color: rgba(0, 0, 0, .4);
   .overlay-modal {
     transition: all .15s;
+    width: var(--force-width);
+    max-width: calc(100% - 5px);
+    @media (max-width: 600px) {
+      width: 100%;
+      margin: 0 5px;
+    }
     &-content {
       position: relative;
       background-color: white;
       border-radius: 2px;
       padding: 5px 15px 30px 15px;
-      width: var(--force-width);
-      max-width: calc(100% - 5px);
     }
     &-body {
       padding-top: 10px;
@@ -52,10 +56,6 @@
           transition: .15s fill;
         }
       }
-    }
-    @media (max-width: 600px) {
-      width: 100%;
-      margin: 0 5px;
     }
   }
 }
